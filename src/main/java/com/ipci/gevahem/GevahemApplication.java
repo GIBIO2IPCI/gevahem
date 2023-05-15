@@ -9,5 +9,4 @@ public class GevahemApplication {
     public static void main(String[] args) {
         SpringApplication.run(GevahemApplication.class, args);
     }
-
 }

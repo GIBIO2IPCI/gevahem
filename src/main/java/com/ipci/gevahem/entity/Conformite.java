@@ -13,5 +13,6 @@ public class Conformite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    private String libelle_conformite;
 
 }

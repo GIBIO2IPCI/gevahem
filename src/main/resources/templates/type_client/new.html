@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <h1>Formulaire d'enregistrement</h1>
+    <form action="" method="post" th:action="@{/typeclient/new}">
+        <label for="libelle">Libelle</label>
+        <input type="text" name="libelle" id="libelle" th:value="${typeClient.libelle}">
+        <input type="submit" value="Enregistrer">
+    </form>
 </body>
 </html>

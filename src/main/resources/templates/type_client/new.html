@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
 </head>
 <body>
     <h1>Formulaire d'enregistrement</h1>
     <form action="" method="post" th:action="@{/typeclient/new}">
-        <label for="libelle">Libelle</label>
-        <input type="text" name="libelle" id="libelle" th:value="${typeClient.libelle}">
-        <input type="submit" value="Enregistrer">
+        <label for="libelle" class="form-label">Libelle</label>
+        <input type="text" name="libelle" id="libelle" th:value="${typeClient.libelle}" class="form-control">
+        <input type="submit" value="Enregistrer" class="btn btn-success">
     </form>
 </body>
 </html>

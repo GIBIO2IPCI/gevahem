@@ -1,7 +1,8 @@
-package com.ipci.gevahem.service;
+package com.ipci.gevahem.service.implementation;
 
 import com.ipci.gevahem.entity.Ambulancier;
 import com.ipci.gevahem.repository.AmbulancierRepository;
+import com.ipci.gevahem.service.AmbulancierService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -32,8 +32,8 @@
             <tr th:each="client : ${clients}">
                 <td th:text="${client.id}"></td>
                 <td th:text="${client.type.libelle}"></td>
-                <td th:text="${client.code_client}"></td>
                 <td th:text="${client.raison_social}"></td>
+                <td th:text="${client.code_client}"></td>
                 <td th:text="${client.responsable}"></td>
                 <td th:text="${client.contact}"></td>
                 <td th:text="${client.email}"></td>

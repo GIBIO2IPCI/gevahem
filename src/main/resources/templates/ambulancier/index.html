@@ -12,7 +12,11 @@
     <div class="container my-2">
         <h1>Liste des ambulanciers</h1>
 
-        <a th:href="@{/ambulancier/add-form}" class="btn btn-primary btn-sm mb-3"> Ajouter un ambulancier </a>
+        <div class="d-flex mt-4">
+            <a th:href="@{/ambulancier/add-form}" class="btn btn-warning btn-sm mb-3 me-3"> Ajouter un nouvel ambulancier</a>
+            <a th:href="@{/reception/add-form}" class="btn btn-primary btn-sm mb-3 me-3"> Ajouter une nouvelle reception </a>
+            <a th:href="@{/glaciere/add-form}" class="btn btn-secondary btn-sm mb-3"> Ajouter une nouvelle glacière </a>
+        </div>
 
         <table class="table table-striped table-responsive-md table-bordered">
             <thead>

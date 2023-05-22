@@ -10,7 +10,7 @@ import java.util.Date;
 public class Reception {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date date_reception;
     @OneToOne
     private Glaciere glaciere;

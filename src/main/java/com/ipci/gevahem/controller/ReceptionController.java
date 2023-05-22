@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,7 @@ public class ReceptionController {
 
     @PostMapping("/add")
     public String add(@ModelAttribute Reception reception){
+        reception.setDate_reception(new Date());
         receptionService.saveReception(reception);
         return "redirect:/reception/";
     }

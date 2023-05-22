@@ -16,7 +16,6 @@ public class Glaciere {
     @ManyToOne
     private Conformite conformite;
     private String cause_non_conformite;
-
     @ManyToOne
     private Ambulancier ambulancier;
     @OneToOne(mappedBy = "glaciere")

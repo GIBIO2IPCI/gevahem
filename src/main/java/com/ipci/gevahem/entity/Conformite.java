@@ -1,18 +1,13 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
 @Entity
-@Table(name = "conformite")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Conformite {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String libelle_conformite;
+    private String libelle;
 
 }

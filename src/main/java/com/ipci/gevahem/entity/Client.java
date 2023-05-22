@@ -1,28 +1,19 @@
 package com.ipci.gevahem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Client {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code_client;
-    private String raison_sociale;
-    private String responsable_client;
-    private String contact_client;
-    private String email_client;
-    private String adresse_client;
+    private String raison_social;
+    private String responsable;
+    private String contact;
+    private String email;
+    private String adresse;
     @ManyToOne
-    private TypeClient type_client;
-
+    private TypeClient type;
 }

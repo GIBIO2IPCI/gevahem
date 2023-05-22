@@ -1,20 +1,16 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
 @Entity
-@Table(name = "glaciere")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Glaciere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
-    private String libelle_glaciere;
-    private Integer nombre_prelevement;
+    private String libelle;
+    private Integer nombre;
     private Integer temperature_depart;
     private Integer temperature_arrivee;
     @ManyToOne
@@ -23,5 +19,7 @@ public class Glaciere {
 
     @ManyToOne
     private Ambulancier ambulancier;
+    @OneToOne(mappedBy = "glaciere")
+    private Reception reception;
 
 }

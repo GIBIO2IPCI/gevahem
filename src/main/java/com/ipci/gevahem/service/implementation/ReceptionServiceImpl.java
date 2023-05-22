@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ReceptionServiceImpl implements ReceptionService {
     private ReceptionRepository receptionRepository;
+
     @Override
     public List<Reception> getAllReception() {
         return receptionRepository.findAll();

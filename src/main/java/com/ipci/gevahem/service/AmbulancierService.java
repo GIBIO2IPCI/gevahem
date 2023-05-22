@@ -8,6 +8,9 @@ public interface AmbulancierService {
     List<Ambulancier> getAllAmbulancier();
     void saveAmbulancier(Ambulancier ambulancier);
 
-    Ambulancier getAmbulancierById(long id);
-    void deleteAmbulancierById(long id);
+    Ambulancier updateAmbulancier(Ambulancier ambulancier);
+
+    Ambulancier getAmbulancierById(Long id);
+
+    void deleteAmbulancierById(Long id);
 }

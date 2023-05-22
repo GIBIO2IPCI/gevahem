@@ -1,24 +1,20 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
-@Getter
-@Setter
 @Entity
-@Table(name = "reception")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Reception {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date_reception;
-
-    @OneToOne(orphanRemoval = true)
+    @OneToOne
     private Glaciere glaciere;
+    @ManyToOne
+    private Ambulancier ambulancier;
 
 }

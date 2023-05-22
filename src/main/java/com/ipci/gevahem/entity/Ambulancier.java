@@ -1,23 +1,21 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+import java.util.Collection;
+
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "ambulancier")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Ambulancier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
-    private String nom_ambulancier;
-    private String contact_ambulancier;
+    private String nom;
+    private String contact;
+    @OneToMany(mappedBy = "ambulancier", fetch = FetchType.EAGER)
+    private Collection<Glaciere> glaciere;
+    @OneToMany(mappedBy = "ambulancier")
+    private Collection<Reception> reception;
 
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>glaciere update</title>
+</head>
+<body>
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+        <form th:action="@{/glaciere/add}" th:object="${glaciere}" method="POST">
+            <h2 class="mb-4">Enregistrer une glacière</h2>
+            <div class="row">
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="ambulancier">Ambulancier</label>
+                    <select th:field="*{ambulancier.id}" class="form-select" name="ambulancier" id="ambulancier">
+                        <option th:each="ambulancier : ${ambulanciers}" th:value="${ambulancier.id}" th:text="${ambulancier.contact}" th:selected="${ambulancier.id == glaciere.ambulancier.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="libelle">Libellé</label>
+                    <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-4 visually-hidden">
+                    <label class="form-label" for="id">Libellé</label>
+                    <input type="text" id="id" th:field="*{id}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="td">Température de départ</label>
+                    <input type="number" id="td" th:field="*{temperature_depart}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="ta">Température d'arrivée:</label>
+                    <input type="number" id="ta" th:field="*{temperature_arrivee}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="conformite">Conformité</label>
+                    <select th:field="*{conformite.id}" class="form-select" name="conformite" id="conformite">
+                        <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}" th:selected="${conformite.id == glaciere.conformite.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="cause">Cause non-conformité:</label>
+                    <input type="text" id="cause" th:field="*{cause_non_conformite}" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success mb-4 me-4">Modifier</button>
+                <a class="btn btn-primary mb-4" th:href="@{/glaciere/}">Retour à la liste</a>
+            </div>
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

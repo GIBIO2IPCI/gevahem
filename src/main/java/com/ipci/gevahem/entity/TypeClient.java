@@ -1,21 +1,16 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+import java.util.Collection;
+
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name = "type_client")
 public class TypeClient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
+    @OneToMany(mappedBy = "type", fetch = FetchType.EAGER)
+    private Collection<Client> client;
 }

@@ -24,12 +24,21 @@ public class AmbulancierServiceImpl implements AmbulancierService {
     }
 
     @Override
-    public Ambulancier getAmbulancierById(long id) {
+    public Ambulancier getAmbulancierById(Long id) {
         return ambulancierRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void deleteAmbulancierById(long id) {
+    public Ambulancier updateAmbulancier(Ambulancier ambulancier) {
+        Ambulancier existingAmbulancier = ambulancierRepository.findById(ambulancier.getId()).orElse(null);
+        assert existingAmbulancier != null;
+        existingAmbulancier.setNom(ambulancier.getNom());
+        existingAmbulancier.setContact(ambulancier.getContact());
+        return ambulancierRepository.save(existingAmbulancier);
+    }
+
+    @Override
+    public void deleteAmbulancierById(Long id) {
         ambulancierRepository.deleteById(id);
     }
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="./base"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ambulancier update</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="container">
+            <h1>Ambulancier Management System</h1>
+            <h2>Update Employee</h2>
+
+            <form th:action="@{/ambulancier/add}" th:object="${ambulancier}" method="POST">
+                <input type="hidden" th:field="*{id}" placeholder="Nom ambulancier" class="form-control mb-4 col-4">
+
+                <div class="">
+                    <label class="form-label" for="nom">Nom</label>
+                    <input id="nom" type="text" th:field="*{nom}" placeholder="Nom ambulancier" class="form-control mb-4 col-4">
+                </div>
+
+                <div class="">
+                    <label class="form-label" for="contact">Nom</label>
+                    <input id="contact" type="text" th:field="*{contact}" placeholder="Contact ambulancier" class="form-control mb-4 col-4">
+                </div>
+                <button type="submit" class="btn btn-info col-2"> Save ambulancier</button>
+            </form>
+
+            <a th:href="@{/ambulancier/}"> Back to Ambulancier List</a>
+        </div>
+    </section>
+</body>
+</html>

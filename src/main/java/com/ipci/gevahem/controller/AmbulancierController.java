@@ -4,9 +4,7 @@ import com.ipci.gevahem.entity.Ambulancier;
 import com.ipci.gevahem.service.AmbulancierService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/ambulancier")
@@ -18,15 +16,35 @@ public class AmbulancierController {
         this.ambulancierService = ambulancierService;
     }
 
-    @GetMapping("/liste")
-    public String list_ambulancier(Model model){
+    @GetMapping("/")
+    public String index(Model model){
         model.addAttribute("ambulanciers", ambulancierService.getAllAmbulancier());
-        return "ambulancier/list";
+        return "ambulancier/index";
+    }
+    
+    @PostMapping("/add")
+    public String add(@ModelAttribute Ambulancier ambulancier){
+        ambulancierService.saveAmbulancier(ambulancier);
+        return "redirect:/ambulancier/";
     }
 
-    @PostMapping("/add")
-    public String add_ambulancier(Ambulancier ambulancier){
-        ambulancierService.saveAmbulancier(ambulancier);
-        return "redirect:/ambulancier/liste";
+    @GetMapping("/add-form")
+    public String add_form(Model model){
+        Ambulancier ambulancier = new Ambulancier();
+        model.addAttribute("ambulancier", ambulancier);
+        return "ambulancier/new";
+    }
+
+    @GetMapping("/edit")
+    public String edit_form(@RequestParam(name = "id") long id, Model model){
+        Ambulancier ambulancier = ambulancierService.getAmbulancierById(id);
+        model.addAttribute("ambulancier", ambulancier);
+        return "ambulancier/update";
+    }
+
+    @GetMapping("/delete")
+    public String delete(Long id){
+        ambulancierService.deleteAmbulancierById(id);
+        return "redirect:/ambulancier/";
     }
 }

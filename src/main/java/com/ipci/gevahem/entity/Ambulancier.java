@@ -15,7 +15,4 @@ public class Ambulancier {
     private String contact;
     @OneToMany(mappedBy = "ambulancier", fetch = FetchType.EAGER)
     private Collection<Glaciere> glaciere;
-    @OneToMany(mappedBy = "ambulancier")
-    private Collection<Reception> reception;
-
 }

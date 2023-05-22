@@ -14,7 +14,5 @@ public class Reception {
     private Date date_reception;
     @OneToOne
     private Glaciere glaciere;
-    @ManyToOne
-    private Ambulancier ambulancier;
 
 }

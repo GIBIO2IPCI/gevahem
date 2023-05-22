@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>glaciere new</title>
 </head>
 <body>
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 
+        <form th:action="@{/reception/add}" th:object="${reception}" method="POST">
+            <h2 class="mb-4">Enregistrer une reception</h2>
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="glaciere">Glaciere</label>
+                    <select th:field="*{glaciere}" class="form-select" name="glaciere" id="glaciere">
+                        <option th:each="glaciere : ${glacieres}" th:value="${glaciere.id}" th:text="${glaciere.libelle}"></option>
+                    </select>
+                </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success mb-4 me-4">Enregistrer</button>
+                <a class="btn btn-primary mb-4" th:href="@{/reception/}">Retour à la liste</a>
+            </div>
+
+        </form>
+    </div>
+</section>
 </body>
 </html>

@@ -13,6 +13,6 @@ public class Ambulancier {
     private Long id;
     private String nom;
     private String contact;
-    @OneToMany(mappedBy = "ambulancier", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "ambulancier", fetch = FetchType.LAZY)
     private Collection<Glaciere> glaciere;
 }

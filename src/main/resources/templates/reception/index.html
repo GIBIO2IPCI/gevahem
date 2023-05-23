@@ -18,22 +18,23 @@
             <a th:href="@{/glaciere/add-form}" class="btn btn-secondary btn-sm mb-3"> Ajouter une nouvelle glacière </a>
         </div>
 
-        <table class="table table-striped table-responsive-md table-bordered">
+        <table class="table table-striped table-responsive-md table-bordered text-center">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Date de reception</th>
                 <th>Glacière</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="reception : ${receptiions}">
-                <td th:text="${reception.id}"></td>
+            <tr th:each="reception, index : ${receptiions}">
+                <td th:text="${index.index +1}"></td>
                 <td th:text="${reception.date_reception}"></td>
                 <td th:text="${reception.glaciere.libelle}"></td>
                 <td>
                     <a th:href="@{/reception/edit(id=${reception.id})}" class="btn btn-warning">Modifier</a>
+                    <a th:href="@{/reception/edit(id=${reception.id})}" class="btn btn-warning">Details</a>
                     <a th:href="@{/reception/delete(id=${reception.id})}" class="btn btn-outline-danger">Supprimer</a>
                 </td>
             </tr>

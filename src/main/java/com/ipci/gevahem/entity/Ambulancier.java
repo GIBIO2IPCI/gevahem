@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = "contact"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "contact"))
 public class Ambulancier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

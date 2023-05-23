@@ -18,32 +18,25 @@
             <a th:href="@{/ambulancier/add-form}" class="btn btn-warning btn-sm mb-3 me-3"> Ajouter un nouvel ambulancier</a>
         </div>
 
-        <table class="table table-striped table-responsive table-bordered">
+        <table class="table table-striped table-responsive table-bordered text-center">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Libellé</th>
-                <th>Nombre échantillon</th>
-                <th>Température d'arrivée</th>
-                <th>Température de départ</th>
-                <th>Ambulancier</th>
+                <th>Nombre échantillons</th>
                 <th>Conformité</th>
-                <th>Cause de conformité</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="glaciere : ${glacieres}">
-                <td th:text="${glaciere.id}"></td>
+            <tr th:each="glaciere, index : ${glacieres}">
+                <td th:text="${index.index +1}"></td>
                 <td th:text="${glaciere.libelle}"></td>
                 <td th:text="${glaciere.nombre_prelevement}"></td>
-                <td th:text="${glaciere.ambulancier.nom}"></td>
-                <td th:text="${glaciere.temperature_depart}"></td>
-                <td th:text="${glaciere.temperature_arrivee}"></td>
                 <td th:text="${glaciere.conformite.libelle}"></td>
-                <td th:text="${glaciere.cause_conformite}"></td>
                 <td>
                     <a th:href="@{/glaciere/edit(id=${glaciere.id})}" class="btn btn-warning">Modifier</a>
+                    <a th:href="@{/glaciere/edit(id=${glaciere.id})}" class="btn btn-info">Details</a>
                     <a th:href="@{/glaciere/delete(id=${glaciere.id})}" class="btn btn-outline-danger">Supprimer</a>
                 </td>
             </tr>

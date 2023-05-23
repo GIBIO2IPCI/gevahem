@@ -8,27 +8,31 @@
     <title>ambulancier new</title>
 </head>
 <body>
-<section layout:fragment="content">
-    <div class="container p-4">
-        <h2 class="mb-4">Enregistrer un ambulanciers</h2>
-
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <form th:action="@{/ambulancier/add}" th:object="${ambulancier}" method="POST">
-            <div class="mb-4">
-                <label for="nom">Nom:</label>
-                <input type="text" id="nom" th:field="*{nom}" placeholder="Nom ambulancier" class="form-control">
-                <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
+            <h2 class="mb-4">Enregistrer un ambulancier</h2>
+            <div class="row">
+                <div class="mb-4">
+                    <label for="nom">Nom:</label>
+                    <input type="text" id="nom" th:field="*{nom}" placeholder="Nom ambulancier" class="form-control">
+                    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" th:field="*{contact}" placeholder="Contact ambulancier" class="form-control">
+                    <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success me-4 mb-4">Enregistrer</button>
+                <a th:href="@{/ambulancier/}" class="mb-4 btn btn-outline-primary"> Retour à la liste</a>
             </div>
 
-            <div class="mb-4">
-                <label for="contact">Contact:</label>
-                <input type="text" id="contact" th:field="*{contact}" placeholder="Contact ambulancier" class="form-control">
-                <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-success col-2">Enregistrer</button>
         </form>
 
-        <a th:href="@{/ambulancier/}" class=""> Retour à la liste</a>
+
     </div>
 </section>
 </body>

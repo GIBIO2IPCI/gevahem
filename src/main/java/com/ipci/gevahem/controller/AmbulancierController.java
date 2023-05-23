@@ -29,7 +29,30 @@ public class AmbulancierController {
         if (result.hasErrors()){
             return "ambulancier/new";
         }
-        ambulancierService.saveAmbulancier(ambulancier);
+
+        try {
+            ambulancierService.saveAmbulancier(ambulancier);
+        }catch (Exception e){
+            result.rejectValue("contact", "error.ambulancier", "Ce contact existe déjà");
+            return "ambulancier/new";
+        }
+
+        return "redirect:/ambulancier/";
+    }
+
+    @PostMapping("/update")
+    public String update(@Valid @ModelAttribute Ambulancier ambulancier, BindingResult result){
+        if (result.hasErrors()){
+            return "ambulancier/update";
+        }
+
+        try {
+            ambulancierService.saveAmbulancier(ambulancier);
+        }catch (Exception e){
+            result.rejectValue("contact", "error.ambulancier", "Ce contact existe déjà");
+            return "ambulancier/update";
+        }
+
         return "redirect:/ambulancier/";
     }
 

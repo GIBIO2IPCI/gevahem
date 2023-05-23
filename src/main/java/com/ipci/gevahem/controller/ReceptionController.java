@@ -4,8 +4,10 @@ import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.entity.Reception;
 import com.ipci.gevahem.service.GlaciereService;
 import com.ipci.gevahem.service.ReceptionService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -30,9 +32,13 @@ public class ReceptionController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute Reception reception){
+    public String add(@Valid @ModelAttribute Reception reception, BindingResult result){
+        if (result.hasErrors()){
+            return "reception/new";
+        }
         reception.setDate_reception(new Date());
         receptionService.saveReception(reception);
+
         return "redirect:/reception/";
     }
 

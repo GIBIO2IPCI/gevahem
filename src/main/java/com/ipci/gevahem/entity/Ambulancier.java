@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-import java.util.Collection;
-
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "contact"))

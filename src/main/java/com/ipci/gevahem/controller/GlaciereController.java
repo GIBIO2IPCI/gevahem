@@ -6,8 +6,10 @@ import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.service.AmbulancierService;
 import com.ipci.gevahem.service.ConformiteService;
 import com.ipci.gevahem.service.GlaciereService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +35,34 @@ public class GlaciereController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute Glaciere glaciere){
-        glaciereService.saveGlaciere(glaciere);
+    public String add(@Valid @ModelAttribute Glaciere glaciere, BindingResult result){
+        if (result.hasErrors()){
+            return "glaciere/new";
+        }
+
+        try {
+            glaciereService.saveGlaciere(glaciere);
+        }catch (Exception e){
+            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
+            return "glaciere/new";
+        }
+
+        return "redirect:/glaciere/";
+    }
+
+    @PostMapping("/update")
+    public String update(@Valid @ModelAttribute Glaciere glaciere, BindingResult result){
+        if (result.hasErrors()){
+            return "glaciere/update";
+        }
+
+        try {
+            glaciereService.saveGlaciere(glaciere);
+        }catch (Exception e){
+            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
+            return "glaciere/update";
+        }
+
         return "redirect:/glaciere/";
     }
 

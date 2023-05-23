@@ -2,6 +2,7 @@ package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -14,22 +15,21 @@ public class Glaciere {
     @NotBlank
     @Column(unique = true)
     private String libelle;
-    @NotBlank
+    @NotNull
     private Integer nombre_prelevement;
-    @NotBlank
+    @NotNull
     private Integer temperature_depart;
-    @NotBlank
+    @NotNull
     private Integer temperature_arrivee;
     @ManyToOne
-    @NotBlank
+    @NotNull
     private Conformite conformite;
     @NotBlank
     private String cause_conformite;
     @ManyToOne
-    @NotBlank
+    @NotNull
     private Ambulancier ambulancier;
     @OneToOne(mappedBy = "glaciere")
-    @NotBlank
     private Reception reception;
 
 }

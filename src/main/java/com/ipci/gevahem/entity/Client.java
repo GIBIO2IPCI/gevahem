@@ -27,6 +27,6 @@ public class Client {
     @NotBlank
     private String adresse;
     @ManyToOne
-    @NotNull
+    @NotNull(message = "ce champ est obligatoire")
     private TypeClient type;
 }

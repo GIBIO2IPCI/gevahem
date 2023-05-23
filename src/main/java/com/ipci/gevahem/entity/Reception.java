@@ -1,6 +1,7 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Reception {
     @Temporal(TemporalType.DATE)
     private Date date_reception;
     @OneToOne
+    @NotNull(message = "ce champ est obligatoire")
     private Glaciere glaciere;
 
 }

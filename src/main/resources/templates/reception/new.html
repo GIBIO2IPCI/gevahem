@@ -12,11 +12,12 @@
 
         <form th:action="@{/reception/add}" th:object="${reception}" method="POST">
             <h2 class="mb-4">Enregistrer une reception</h2>
-                <div class="mb-4 col-3">
+                <div class="mb-4">
                     <label class="form-label" for="glaciere">Glaciere</label>
                     <select th:field="*{glaciere}" class="form-select" name="glaciere" id="glaciere">
                         <option th:each="glaciere : ${glacieres}" th:value="${glaciere.id}" th:text="${glaciere.libelle}"></option>
                     </select>
+                    <span th:if="${#fields.hasErrors('glaciere')}" th:errors="*{glaciere}" class="text-danger"></span>
                 </div>
 
             <div class="d-flex">

@@ -2,6 +2,7 @@ package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -26,6 +27,6 @@ public class Client {
     @NotBlank
     private String adresse;
     @ManyToOne
-    @NotBlank
+    @NotNull
     private TypeClient type;
 }

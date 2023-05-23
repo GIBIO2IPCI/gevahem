@@ -4,9 +4,11 @@ import com.ipci.gevahem.entity.Client;
 import com.ipci.gevahem.entity.TypeClient;
 import com.ipci.gevahem.service.ClientService;
 import com.ipci.gevahem.service.TypeClientService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +26,41 @@ public class ClientController{
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute Client client){
-        client.setCode_client("CL" + client.getContact());
-        clientService.saveClient(client);
+    public String add(@Valid @ModelAttribute Client client, BindingResult result){
+
+        if (result.hasErrors()){
+            return "client/new";
+        }
+
+        try {
+            client.setCode_client("CL" + client.getContact());
+            clientService.saveClient(client);
+        }catch (Exception e){
+            result.rejectValue("contact", "error.client", "Ce contact existe déjà");
+            result.rejectValue("email", "error.client", "L'email existe déjà");
+            result.rejectValue("code_client", "error.client", "Le code client existe déjà");
+            return "client/new";
+        }
+        return "redirect:/client/";
+    }
+
+    @PostMapping("/update")
+    public String update(@Valid @ModelAttribute Client client, BindingResult result){
+
+        if (result.hasErrors()){
+            return "client/update";
+        }
+
+        try {
+            client.setCode_client("CL" + client.getContact());
+            clientService.saveClient(client);
+        }catch (Exception e){
+            result.rejectValue("contact", "error.client", "Ce contact existe déjà");
+            result.rejectValue("email", "error.client", "L'email existe déjà");
+            result.rejectValue("code_client", "error.client", "Le code client existe déjà");
+            return "client/update";
+        }
+
         return "redirect:/client/";
     }
 
@@ -53,5 +87,4 @@ public class ClientController{
         clientService.deleteClientById(id);
         return "redirect:/client/";
     }
-
 }

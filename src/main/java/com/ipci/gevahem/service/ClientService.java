@@ -6,7 +6,12 @@ import java.util.List;
 
 public interface ClientService {
     List<Client> getAllClient();
+
     void saveClient(Client client);
+
     Client getClientById(long id);
+
+    Client getClientByEmail(String email);
+
     void deleteClientById(long id);
 }

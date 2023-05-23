@@ -24,6 +24,11 @@ public class GlaciereServiceImpl implements GlaciereService {
     }
 
     @Override
+    public Glaciere getGlaciereByLibelle(String libelle) {
+        return glaciereRepository.findByLibelle(libelle);
+    }
+
+    @Override
     public Glaciere getGlaciereById(long id) {
         return glaciereRepository.findById(id).orElse(null);
     }

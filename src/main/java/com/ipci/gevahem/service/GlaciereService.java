@@ -10,6 +10,7 @@ public interface GlaciereService {
     List<Glaciere> getAllGlaciere();
     void saveGlaciere(Glaciere glaciere);
 
+    Glaciere getGlaciereByLibelle(String libelle);
 
     Glaciere getGlaciereById(long id);
 

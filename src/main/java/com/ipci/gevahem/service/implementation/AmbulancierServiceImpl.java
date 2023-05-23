@@ -29,12 +29,8 @@ public class AmbulancierServiceImpl implements AmbulancierService {
     }
 
     @Override
-    public Ambulancier updateAmbulancier(Ambulancier ambulancier) {
-        Ambulancier existingAmbulancier = ambulancierRepository.findById(ambulancier.getId()).orElse(null);
-        assert existingAmbulancier != null;
-        existingAmbulancier.setNom(ambulancier.getNom());
-        existingAmbulancier.setContact(ambulancier.getContact());
-        return ambulancierRepository.save(existingAmbulancier);
+    public Ambulancier getAmbulancierByContact(String contact) {
+        return ambulancierRepository.findByContact(contact);
     }
 
     @Override

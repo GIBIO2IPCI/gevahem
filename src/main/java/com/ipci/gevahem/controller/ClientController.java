@@ -32,7 +32,7 @@ public class ClientController{
 
     @GetMapping("/add-form")
     public String add_form(Model model){
-        Client client =new Client();
+        Client client = new Client();
         List<TypeClient> typeClient = typeClientService.getAllTypeClient();
         model.addAttribute("client",client);
         model.addAttribute("types",typeClient);

@@ -2,15 +2,17 @@ package com.ipci.gevahem.controller;
 
 import com.ipci.gevahem.entity.Ambulancier;
 import com.ipci.gevahem.service.AmbulancierService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/ambulancier")
 public class AmbulancierController {
 
-    private AmbulancierService ambulancierService;
+    private final AmbulancierService ambulancierService;
 
     public AmbulancierController(AmbulancierService ambulancierService) {
         this.ambulancierService = ambulancierService;
@@ -23,7 +25,10 @@ public class AmbulancierController {
     }
     
     @PostMapping("/add")
-    public String add(@ModelAttribute Ambulancier ambulancier){
+    public String add(@Valid @ModelAttribute Ambulancier ambulancier, BindingResult result){
+        if (result.hasErrors()){
+            return "ambulancier/new";
+        }
         ambulancierService.saveAmbulancier(ambulancier);
         return "redirect:/ambulancier/";
     }

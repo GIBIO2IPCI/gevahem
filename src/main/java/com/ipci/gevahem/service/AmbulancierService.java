@@ -6,11 +6,12 @@ import java.util.List;
 
 public interface AmbulancierService {
     List<Ambulancier> getAllAmbulancier();
+
     void saveAmbulancier(Ambulancier ambulancier);
 
-    Ambulancier updateAmbulancier(Ambulancier ambulancier);
-
     Ambulancier getAmbulancierById(Long id);
+
+    Ambulancier getAmbulancierByContact(String contact);
 
     void deleteAmbulancierById(Long id);
 }

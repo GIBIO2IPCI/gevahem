@@ -11,14 +11,15 @@
 <body>
 <section layout:fragment="content" class="section">
     <div class="container my-2">
-        <h1>clients list</h1>
+        <h1>Liste des clients</h1>
 
-        <a th:href="@{/client/add-form}" class="btn btn-primary btn-sm mb-3"> Ajouter un client </a>
+        <a th:href="@{/client/add-form}" class="btn btn-primary btn-sm mb-3">Ajouter un client</a>
+        <a th:href="@{/client/add-form}" class="btn btn-warning btn-sm mb-3">Ajouter Une glacière</a>
 
-        <table class="table table-striped table-responsive-md table-bordered">
+        <table class="table table-striped table-responsive table-bordered text-center">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Type</th>
                 <th>Raison Social</th>
                 <th>Code client</th>
@@ -26,13 +27,13 @@
                 <th>Contact</th>
                 <th>Email</th>
                 <th>Adresse</th>
-                <th> Actions </th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="client : ${clients}">
-                <td th:text="${client.id}"></td>
-                <td th:text="${client.type.libelle}"></td>
+            <tr th:each="client, index : ${clients}">
+                <td th:text="${index.index}"></td>
+                <td th:text="${client.typeClient.libelle}"></td>
                 <td th:text="${client.raison_social}"></td>
                 <td th:text="${client.code_client}"></td>
                 <td th:text="${client.responsable}"></td>

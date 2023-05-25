@@ -2,7 +2,6 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>client new</title>
@@ -16,11 +15,11 @@
 
             <div class="row">
                 <div class="col-4 mb-4">
-                    <label class="form-label" for="type">Type client</label>
-                    <select th:field="*{type}" class="form-select" name="type" id="type">
-                        <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.libelle}"></option>
+                    <label class="form-label" for="typeClient">Type client</label>
+                    <select th:field="*{typeClient}" class="form-select" name="typeClient" id="typeClient">
+                        <option th:each="type : ${typeClients}" th:value="${type.id}" th:text="${type.libelle}"></option>
                     </select>
-                    <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="text-danger"></span>
+                    <span th:if="${#fields.hasErrors('typeClient')}" th:errors="*{typeClient}" class="text-danger"></span>
                 </div>
 
                 <div class="col-4 mb-4">

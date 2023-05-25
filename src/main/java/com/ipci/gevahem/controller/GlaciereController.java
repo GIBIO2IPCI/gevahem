@@ -7,26 +7,23 @@ import com.ipci.gevahem.service.AmbulancierService;
 import com.ipci.gevahem.service.ConformiteService;
 import com.ipci.gevahem.service.GlaciereService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/glaciere")
 public class GlaciereController {
 
     private final GlaciereService glaciereService;
     private final AmbulancierService ambulancierService;
     private final ConformiteService conformiteService;
-
-    public GlaciereController(GlaciereService glaciereService, AmbulancierService ambulancierService, ConformiteService conformiteService) {
-        this.glaciereService = glaciereService;
-        this.ambulancierService = ambulancierService;
-        this.conformiteService = conformiteService;
-    }
 
     @GetMapping("/")
     public String index(Model model){
@@ -35,32 +32,36 @@ public class GlaciereController {
     }
 
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute Glaciere glaciere, BindingResult result){
+    public String add(@Valid @ModelAttribute Glaciere glaciere, BindingResult result, RedirectAttributes redirectAttributes){
         if (result.hasErrors()){
-            return "glaciere/new";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.glaciere", result);
+            redirectAttributes.addFlashAttribute("glaciere", glaciere);
+            return "redirect:/glaciere/add-form";
         }
 
         try {
             glaciereService.saveGlaciere(glaciere);
         }catch (Exception e){
             result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
-            return "glaciere/new";
+            return "redirect:/glaciere/add-form";
         }
 
         return "redirect:/glaciere/";
     }
 
     @PostMapping("/update")
-    public String update(@Valid @ModelAttribute Glaciere glaciere, BindingResult result){
+    public String update(@Valid @ModelAttribute Glaciere glaciere, BindingResult result, RedirectAttributes redirectAttributes){
         if (result.hasErrors()){
-            return "glaciere/update";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.glaciere", result);
+            redirectAttributes.addFlashAttribute("glaciere", glaciere);
+            return "redirect:/glaciere/edit-form";
         }
 
         try {
             glaciereService.saveGlaciere(glaciere);
         }catch (Exception e){
             result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
-            return "glaciere/update";
+            return "redirect:/glaciere/edit-form";
         }
 
         return "redirect:/glaciere/";
@@ -68,23 +69,26 @@ public class GlaciereController {
 
     @GetMapping("/add-form")
     public String add_form(Model model){
-        Glaciere glaciere = new Glaciere();
+        if (!model.containsAttribute("glaciere")){
+            model.addAttribute("glaciere", new Glaciere());
+        }
+
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
-        model.addAttribute("glaciere", glaciere);
         return "glaciere/new";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/edit-form")
     public String edit_form(@RequestParam(name = "id") long id, Model model){
-        Glaciere glaciere = glaciereService.getGlaciereById(id);
+        if (!model.containsAttribute("glaciere")){
+            model.addAttribute("glaciere", glaciereService.getGlaciereById(id));
+        }
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
-        model.addAttribute("glaciere", glaciere);
         return "glaciere/update";
     }
 

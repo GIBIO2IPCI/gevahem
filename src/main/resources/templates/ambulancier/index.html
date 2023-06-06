@@ -33,7 +33,7 @@
                 <td th:text="${ambulancier.nom}"></td>
                 <td th:text="${ambulancier.contact}"></td>
                 <td>
-                    <a th:href="@{/ambulancier/edit(id=${ambulancier.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a th:href="@{/ambulancier/edit-form(id=${ambulancier.id})}" class="btn btn-warning btn-sm">Modifier</a>
                     <a th:href="@{/ambulancier/delete(id=${ambulancier.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>
                 </td>
             </tr>

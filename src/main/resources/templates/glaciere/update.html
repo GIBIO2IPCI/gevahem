@@ -10,7 +10,7 @@
 <section layout:fragment="content" class="container">
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 
-        <form th:action="@{/glaciere/add}" th:object="${glaciere}" method="POST">
+        <form th:action="@{/glaciere/update}" th:object="${glaciere}" method="POST">
             <h2 class="mb-4">Enregistrer une glacière</h2>
 
             <input type="hidden" id="id" th:field="*{id}" class="form-control">

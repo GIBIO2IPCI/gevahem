@@ -10,7 +10,8 @@
 <body>
 <section layout:fragment="content" class="container">
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <form th:action="@{/ambulancier/add}" th:object="${ambulancier}" method="POST">
+        <form th:action="@{/ambulancier/update}" th:object="${ambulancier}" method="POST">
+            <input type="hidden" name="id" th:field="*{id}">
             <h2 class="mb-4">Modifier les informations d'un ambulancier</h2>
             <div class="row">
                 <div class="mb-4">

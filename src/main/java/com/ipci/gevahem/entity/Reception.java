@@ -13,7 +13,7 @@ public class Reception {
     private Long id;
     @Temporal(TemporalType.DATE)
     private Date date_reception;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
     @JoinColumn
     @NotNull(message = "ce champ est obligatoire")
     private Glaciere glaciere;

@@ -11,6 +11,11 @@
 <section layout:fragment="content">
     <div class="container my-2">
         <h1>Liste des clients</h1>
+
+        <div class="d-flex mt-4">
+            <a th:href="@{/client/add-form}" class="btn btn-primary btn-sm mb-3 me-3"> Ajouter un nouveau client</a>
+        </div>
+
         <table class="table table-striped table-responsive-md table-bordered text-center">
             <thead>
             <tr>
@@ -35,6 +40,7 @@
                 <td th:text="${client.typeClient}"></td>
                 <td>
                     <a th:href="@{/client/edit-form(id=${client.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a th:href="@{/client/edit-form(id=${client.id})}" class="btn btn-primary btn-sm">Details</a>
                     <a th:href="@{/client/delete(id=${client.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>
                 </td>
             </tr>

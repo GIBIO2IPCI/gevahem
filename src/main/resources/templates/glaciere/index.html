@@ -36,7 +36,7 @@
                 <td th:text="${glaciere.conformite.libelle}"></td>
                 <td>
                     <a th:href="@{/glaciere/edit-form(id=${glaciere.id})}" class="btn btn-warning">Modifier</a>
-                    <a th:href="@{/glaciere/edit(id=${glaciere.id})}" class="btn btn-info">Details</a>
+                    <a th:href="@{/glaciere/show(id=${glaciere.id})}" class="btn btn-info">Details</a>
                     <a th:href="@{/glaciere/delete(id=${glaciere.id})}" class="btn btn-outline-danger">Supprimer</a>
                 </td>
             </tr>

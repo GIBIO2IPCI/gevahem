@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>reception details</title>
+</head>
+<body>
+
+
+<section layout:fragment="content" th:object="${reception}" class="container">
+  <div class="d-flex mt-4 mb-5">
+    <a th:href="@{/reception/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle reception </a>
+    <a class="btn btn-outline-primary btn-sm" th:href="@{/reception/}">Retour à la liste</a>
+  </div>
+
+  <div class="row">
+    <div class="col-6 ">
+      <h5 th:text=" 'Date de reception: ' +  *{date_reception}"></h5>
+      <h5 th:text=" 'Nom de l\'ambulancier: ' +  *{glaciere.ambulancier.nom}"></h5>
+      <h5 th:text=" 'Contact de l\'ambulancier: ' +  *{glaciere.ambulancier.contact}"></h5>
+      <h5 th:text=" 'Libellé de la glacière: ' +  *{glaciere.libelle}"></h5>
+      <h5 th:text=" 'Nombre de prelevement: ' +  *{glaciere.nombre_prelevement}"></h5>
+      <h5 th:text=" 'Température d\'arrivée: ' +  *{glaciere.temperature_arrivee}"></h5>
+      <h5 th:text=" 'Température de départ: ' +  *{glaciere.temperature_depart}"></h5>
+      <h5 th:text=" 'Conformité: ' +  *{glaciere.conformite.libelle}"></h5>
+      <h5 th:text=" 'Cause conformité: ' +  *{glaciere.cause_conformite}"></h5>
+      <h5 th:text=" 'Raison sociale du client: ' +  *{glaciere.client.raison_sociale}"></h5>
+      <h5 th:text=" 'Responsable du client: ' +  *{glaciere.client.responsable_client}"></h5>
+      <h5 th:text=" 'Contact du client: ' +  *{glaciere.client.contact}"></h5>
+      <h5 th:text=" 'E-mail du Client: ' +  *{glaciere.client.email}"></h5>
+    </div>
+    <div class="col-6">
+      <img src="/images/reception.jpg" width="500" alt="reception">
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

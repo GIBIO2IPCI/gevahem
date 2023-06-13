@@ -31,5 +31,7 @@ public class Glaciere {
     private Ambulancier ambulancier;
     @OneToOne(mappedBy = "glaciere", cascade = CascadeType.ALL, orphanRemoval = true)
     private Reception reception;
-
+    @ManyToOne
+    @NotNull
+    private Client client;
 }

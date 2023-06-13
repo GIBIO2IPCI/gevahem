@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>glaciere details</title>
+</head>
+<body>
+
+
+<section layout:fragment="content" th:object="${glaciere}" class="container">
+    <div class="d-flex mt-4 mb-5">
+        <a th:href="@{/glaciere/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle glacière </a>
+        <a class="btn btn-outline-primary btn-sm" th:href="@{/glaciere/}">Retour à la liste</a>
+    </div>
+
+        <div class="row">
+            <div class="col-6 ">
+                <h5 th:text=" 'Libelle glacière: ' +  *{libelle}"></h5>
+                <h5 th:text=" 'Nom de l\'ambulancier: ' +  *{ambulancier.nom}"></h5>
+                <h5 th:text=" 'Contact de l\'ambulancier: ' +  *{ambulancier.contact}"></h5>
+                <h5 th:text=" 'Nombre de prelevement: ' +  *{nombre_prelevement}"></h5>
+                <h5 th:text=" 'Température d\'arrivée: ' +  *{temperature_arrivee}"></h5>
+                <h5 th:text=" 'Température de départ: ' +  *{temperature_depart}"></h5>
+                <h5 th:text=" 'Conformité: ' +  *{conformite.libelle}"></h5>
+                <h5 th:text=" 'Cause conformité: ' +  *{cause_conformite}"></h5>
+                <h5 th:text=" 'Raison sociale du client: ' +  *{client.raison_sociale}"></h5>
+                <h5 th:text=" 'Contact du client: ' +  *{client.contact}"></h5>
+            </div>
+            <div class="col-6">
+                <img src="/images/glaciere_bleue.jpg" width="500" alt="glaciere">
+            </div>
+        </div>
+
+</section>
+
+</body>
+</html>

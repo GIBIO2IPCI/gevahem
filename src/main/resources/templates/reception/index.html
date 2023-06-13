@@ -34,7 +34,7 @@
                 <td th:text="${reception.glaciere.libelle}"></td>
                 <td>
                     <a th:href="@{/reception/edit-form(id=${reception.id})}" class="btn btn-warning">Modifier</a>
-                    <a th:href="@{/reception/edit(id=${reception.id})}" class="btn btn-warning">Details</a>
+                    <a th:href="@{/reception/show(id=${reception.id})}" class="btn btn-warning">Details</a>
                     <a th:href="@{/reception/delete(id=${reception.id})}" class="btn btn-outline-danger">Supprimer</a>
                 </td>
             </tr>

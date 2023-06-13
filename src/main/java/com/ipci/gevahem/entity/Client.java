@@ -3,6 +3,7 @@ package com.ipci.gevahem.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,11 +22,12 @@ public class Client {
     private String contact;
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
     @NotBlank
     private String adresse;
     @ManyToOne
-    @JoinColumn(name = "type_client_id")
+    @NotNull
     private TypeClient typeClient;
 
 }

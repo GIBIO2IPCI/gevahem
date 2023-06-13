@@ -1,9 +1,11 @@
 package com.ipci.gevahem.controller;
 
 import com.ipci.gevahem.entity.Ambulancier;
+import com.ipci.gevahem.entity.Client;
 import com.ipci.gevahem.entity.Conformite;
 import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.service.AmbulancierService;
+import com.ipci.gevahem.service.ClientService;
 import com.ipci.gevahem.service.ConformiteService;
 import com.ipci.gevahem.service.GlaciereService;
 import jakarta.validation.Valid;
@@ -24,6 +26,7 @@ public class GlaciereController {
     private final GlaciereService glaciereService;
     private final AmbulancierService ambulancierService;
     private final ConformiteService conformiteService;
+    private final ClientService clientService;
 
     @GetMapping("/")
     public String index(Model model){
@@ -75,8 +78,10 @@ public class GlaciereController {
 
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
+        List<Client> client = clientService.getAllClient();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
+        model.addAttribute("clients", client);
         return "glaciere/new";
     }
 
@@ -87,9 +92,17 @@ public class GlaciereController {
         }
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
+        List<Client> client = clientService.getAllClient();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
+        model.addAttribute("clients", client);
         return "glaciere/update";
+    }
+
+    @GetMapping("/show")
+    public String show(@RequestParam(name = "id") long id, Model model){
+        model.addAttribute("glaciere", glaciereService.getGlaciereById(id));
+        return "/glaciere/show";
     }
 
     @GetMapping("/delete")

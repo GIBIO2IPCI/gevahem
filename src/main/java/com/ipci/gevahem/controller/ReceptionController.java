@@ -80,6 +80,12 @@ public class ReceptionController {
         return "reception/update";
     }
 
+    @GetMapping("/show")
+    public String show(@RequestParam(name = "id") long id, Model model){
+        model.addAttribute("reception", receptionService.getReceptionById(id));
+        return "/reception/show";
+    }
+
     @GetMapping("/delete")
     public String delete(Long id){
         receptionService.deleteReceptionById(id);

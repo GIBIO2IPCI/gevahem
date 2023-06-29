@@ -84,6 +84,12 @@ public class ClientController {
         return "client/update";
     }
 
+    @GetMapping("/show")
+    public String show(@RequestParam(name = "id") long id, Model model){
+        model.addAttribute("client", clientService.getClientById(id));
+        return "/client/show";
+    }
+
     @GetMapping("/delete")
     public String delete(Long id){
         clientService.deleteClientById(id);

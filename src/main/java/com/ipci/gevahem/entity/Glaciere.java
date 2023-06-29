@@ -34,4 +34,6 @@ public class Glaciere {
     @ManyToOne
     @NotNull
     private Client client;
+    @ManyToOne
+    private Etude etude;
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>client details</title>
+</head>
+<body>
+
+
+<section layout:fragment="content" th:object="${client}" class="container">
+    <div class="d-flex mt-4 mb-5">
+        <a th:href="@{/client/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter un nouveau client </a>
+        <a class="btn btn-outline-primary btn-sm" th:href="@{/client/}">Retour à la liste</a>
+    </div>
+
+    <div class="row">
+        <div class="col-6 ">
+            <h5 th:text=" 'Type client: ' +  *{typeClient.libelle}"></h5>
+            <h5 th:text=" 'Raison sociale du client: ' +  *{raison_sociale}"></h5>
+            <h5 th:text=" 'Nom du responsable: ' +  *{responsable_client}"></h5>
+            <h5 th:text=" 'Contact du client: ' +  *{contact}"></h5>
+            <h5 th:text=" 'E-mail du client: ' +  *{email}"></h5>
+            <h5 th:text=" 'Adresse du client: ' +  *{adresse}"></h5>
+        </div>
+        <div class="col-6">
+            <img src="/images/reception.jpg" width="500" alt="reception">
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

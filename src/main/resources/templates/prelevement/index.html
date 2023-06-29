@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prelevement list</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container my-2">
+        <h1>Liste des prélèvements</h1>
+
+        <div class="d-flex mt-4">
+            <a th:href="@{/prelevement/add-form}" class="btn btn-primary btn-sm mb-3 me-3"> Ajouter un nouveau prélèvement </a>
+        </div>
+
+        <table class="table table-striped table-responsive table-bordered text-center">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Glacière</th>
+                <th>Patient</th>
+                <th>Libellé</th>
+                <th>Unité</th>
+                <th>Volume</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="prelevement, index : ${prelevements}">
+                <td th:text="${index.index +1}"></td>
+                <td th:text="${prelevement.glaciere.libelle}"></td>
+                <td th:text="${prelevement.patient.contact}"></td>
+                <td th:text="${prelevement.libelle}"></td>
+                <td th:text="${prelevement.unite}"></td>
+                <td th:text="${prelevement.volume}"></td>
+                <td>
+                    <a th:href="@{/prelevement/edit-form(id=${prelevement.id})}" class="btn btn-warning">Modifier</a>
+                    <a th:href="@{/prelevement/show(id=${prelevement.id})}" class="btn btn-info">Details</a>
+                    <a th:href="@{/prelevement/delete(id=${prelevement.id})}" class="btn btn-outline-danger">Supprimer</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

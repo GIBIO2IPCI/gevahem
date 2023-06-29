@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prelevement new</title>
+</head>
+<body>
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+        <form th:action="@{/prelevement/add}" th:object="${prelevement}" method="POST">
+            <h2 class="mb-4">Enregistrer un prélèvement</h2>
+            <div class="row">
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="glaciere">Glacière:</label>
+                    <select th:field="*{glaciere}" class="form-select" name="glaciere" id="glaciere">
+                        <option th:each="glaciere : ${glacieres}" th:value="${glaciere.id}" th:text="${glaciere.libelle}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('glaciere')}" th:errors="*{glaciere}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="patient">Patient:</label>
+                    <select th:field="*{patient}" class="form-select" name="patient" id="patient">
+                        <option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.contact}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="libelle">Libellé:</label>
+                    <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
+                    <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="unite">Unité:</label>
+                    <input type="text" id="unite" th:field="*{unite}" class="form-control">
+                    <span th:if="${#fields.hasErrors('unite')}" th:errors="*{unite}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="volume">Volume:</label>
+                    <input type="text" id="volume" th:field="*{volume}" class="form-control">
+                    <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="conformite">Conformité</label>
+                    <select th:field="*{conformite}" class="form-select" name="conformite" id="conformite">
+                        <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('conformite')}" th:errors="*{conformite}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                   <label class="form-label" for="typePrelevement">Type de prélèvement:</label>
+                   <select th:field="*{typePrelevement}" class="form-select" name="typePrelevement" id="typePrelevement">--><option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>
+                   </select>
+                    <span th:if="${#fields.hasErrors('typePrelevement')}" th:errors="*{typePrelevement}" class="text-danger"></span>
+                </div>
+
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="analyse">Analyse:</label>
+                    <select th:field="*{analyse}" class="form-select" name="analyse" id="analyse">
+                        <option th:each="analyse : ${analyses}" th:value="${analyse.id}" th:text="${analyse.libelle}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('analyse')}" th:errors="*{analyse}" class="text-danger"></span>
+               </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="cause">Cause conformité:</label>
+                    <input type="text" id="cause" th:field="*{cause_conformite}" class="form-control">
+                    <span th:if="${#fields.hasErrors('cause_conformite')}" th:errors="*{cause_conformite}" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success mb-4 me-4">Enregistrer</button>
+                <a class="btn btn-outline-primary mb-4" th:href="@{/prelevement/}">Retour à la liste</a>
+            </div>
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

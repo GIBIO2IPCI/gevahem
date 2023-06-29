@@ -1,6 +1,5 @@
 package com.ipci.gevahem.service;
 
-import com.ipci.gevahem.entity.Ambulancier;
 import com.ipci.gevahem.entity.Glaciere;
 
 import java.util.List;

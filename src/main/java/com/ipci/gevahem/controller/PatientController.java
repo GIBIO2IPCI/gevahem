@@ -26,7 +26,7 @@ public class PatientController {
     @PostMapping("/add")
     public String add(@Valid @ModelAttribute Patient patient, BindingResult result, RedirectAttributes redirectAttributes){
         if (result.hasErrors()){
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ambulancier", result);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.patient", result);
             redirectAttributes.addFlashAttribute("patient", patient);
             return "redirect:/patient/add-form";
         }

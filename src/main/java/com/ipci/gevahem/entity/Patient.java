@@ -28,6 +28,8 @@ public class Patient {
     @NotBlank(message = "ce champ est obligatoire")
     private String adresse;
     @Column(nullable = true)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_naissance;
 
 }

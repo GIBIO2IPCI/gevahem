@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
-    <script src="/webjars/bootstrap/5.2.3/js/bootstrap.min.js" defer></script>
+    <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js" defer></script>
+<!--    <script src="/js/index.js" defer></script>-->
     <title>Title</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo" loading="lazy"/>
                 </a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tableau de bord</a>
                     </li>
@@ -30,13 +31,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Conservation</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/client/}">Client</a>
-                    </li>
                 </ul>
+                <div class="dropdown mx-5">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </button>
+                    <ul class="dropdown-menu" id="dropdownToggleEl">
+                        <li><a class="dropdown-item" th:href="@{/patient/}">Liste des patients</a></li>
+                        <li><a class="dropdown-item" th:href="@{/prelevement/}">Liste des prélèvements</a></li>
+                        <li><a class="dropdown-item" th:href="@{/client/}">Liste des clients</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
+
 
     <section layout:fragment="content">
     </section>

@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prelevement update</title>
 </head>
 <body>
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 
+        <form th:action="@{/prelevement/update}" th:object="${prelevement}" method="POST">
+            <h2 class="mb-4">Enregistrer un prélèvement</h2>
+
+            <input type="hidden" id="id" th:field="*{id}" class="form-control">
+
+            <div class="row">
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="glaciere">Glacière:</label>
+                    <select th:field="*{glaciere.id}" class="form-select" name="glaciere" id="glaciere">
+                        <option th:each="glaciere : ${glacieres}" th:value="${glaciere.id}" th:text="${glaciere.libelle}" th:selected="${glaciere.id == prelevement.glaciere.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="patient">Patient:</label>
+                    <select th:field="*{patient.id}" class="form-select" name="patient" id="patient">
+                        <option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.email}" th:selected="${patient.id == prelevement.patient.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="libelle">Libellé:</label>
+                    <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="unite">Unité:</label>
+                    <input type="text" id="unite" th:field="*{unite}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="volume">Volume:</label>
+                    <input type="text" id="volume" th:field="*{volume}" class="form-control">
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="conformite">Conformité</label>
+                    <select th:field="*{conformite.id}" class="form-select" name="conformite" id="conformite">
+                        <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}" th:selected="${conformite.id == prelevement.conformite.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="typePrelevement">Type de prélèvement:</label>
+                    <select th:field="*{typePrelevement.id}" class="form-select" name="typePrelevement" id="typePrelevement">
+                        <option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}" th:selected="${typePrelevement.id == prelevement.typePrelevement.id}"></option>
+                    </select>
+                </div>
+
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="analyse">Analyse:</label>
+                    <select th:field="*{analyse.id}" class="form-select" name="analyse" id="analyse">
+                        <option th:each="analyse : ${analyses}" th:value="${analyse.id}" th:text="${analyse.libelle}" th:selected="${analyse.id == prelevement.analyse.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="cause">Cause conformité:</label>
+                    <input type="text" id="cause" th:field="*{cause_conformite}" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success mb-4 me-4">Modifier</button>
+                <a class="btn btn-outline-primary mb-4" th:href="@{/prelevement/}">Retour à la liste</a>
+            </div>
+
+        </form>
+    </div>
+</section>
 </body>
 </html>

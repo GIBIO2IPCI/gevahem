@@ -4,10 +4,7 @@ import com.ipci.gevahem.entity.Ambulancier;
 import com.ipci.gevahem.entity.Client;
 import com.ipci.gevahem.entity.Conformite;
 import com.ipci.gevahem.entity.Glaciere;
-import com.ipci.gevahem.service.AmbulancierService;
-import com.ipci.gevahem.service.ClientService;
-import com.ipci.gevahem.service.ConformiteService;
-import com.ipci.gevahem.service.GlaciereService;
+import com.ipci.gevahem.service.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +24,7 @@ public class GlaciereController {
     private final AmbulancierService ambulancierService;
     private final ConformiteService conformiteService;
     private final ClientService clientService;
+
 
     @GetMapping("/")
     public String index(Model model){

@@ -14,6 +14,7 @@ public class Client {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     public Long id;
+    private String code;
     @NotBlank
     private String raison_sociale;
     @NotBlank

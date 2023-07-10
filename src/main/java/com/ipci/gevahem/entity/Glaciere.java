@@ -5,6 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "libelle"))
@@ -12,6 +17,7 @@ public class Glaciere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
     @NotBlank
     @Column(unique = true)
     private String libelle;
@@ -36,4 +42,7 @@ public class Glaciere {
     private Client client;
     @ManyToOne
     private Etude etude;
+    @OneToMany(mappedBy = "glaciere", orphanRemoval = true)
+    private List<Prelevement> prelevements = new ArrayList<>();
 }
+

@@ -10,29 +10,35 @@
 
 
 <section layout:fragment="content" th:object="${reception}" class="container">
-  <div class="d-flex mt-4 mb-5">
-    <a th:href="@{/reception/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle reception </a>
-    <a class="btn btn-outline-primary btn-sm" th:href="@{/reception/}">Retour à la liste</a>
-  </div>
 
+<h1 class="text-center mt-2">Détails Réception</h1>
   <div class="row">
-    <div class="col-6 ">
-      <h5 th:text=" 'Date de reception: ' +  *{date_reception}"></h5>
-      <h5 th:text=" 'Nom de l\'ambulancier: ' +  *{glaciere.ambulancier.nom}"></h5>
-      <h5 th:text=" 'Contact de l\'ambulancier: ' +  *{glaciere.ambulancier.contact}"></h5>
-      <h5 th:text=" 'Libellé de la glacière: ' +  *{glaciere.libelle}"></h5>
-      <h5 th:text=" 'Nombre de prelevement: ' +  *{glaciere.nombre_prelevement}"></h5>
-      <h5 th:text=" 'Température d\'arrivée: ' +  *{glaciere.temperature_arrivee}"></h5>
-      <h5 th:text=" 'Température de départ: ' +  *{glaciere.temperature_depart}"></h5>
-      <h5 th:text=" 'Conformité: ' +  *{glaciere.conformite.libelle}"></h5>
-      <h5 th:text=" 'Cause conformité: ' +  *{glaciere.cause_conformite}"></h5>
-      <h5 th:text=" 'Raison sociale du client: ' +  *{glaciere.client.raison_sociale}"></h5>
-      <h5 th:text=" 'Responsable du client: ' +  *{glaciere.client.responsable_client}"></h5>
-      <h5 th:text=" 'Contact du client: ' +  *{glaciere.client.contact}"></h5>
-      <h5 th:text=" 'E-mail du Client: ' +  *{glaciere.client.email}"></h5>
+    <div class="col-6 mt-4">
+      <h6 th:text=" 'Date de reception: ' +  *{date_reception}"></h6>
+      <h6 th:text=" 'Numéro de la reception: ' +  *{date_reception}"></h6>
+      <h4>Informations du client</h4>
+      <h6 th:text=" 'Raison sociale du client: ' +  *{glaciere.client.raison_sociale}"></h6>
+      <h6 th:text=" 'Responsable du client: ' +  *{glaciere.client.responsable_client}"></h6>
+      <h6 th:text=" 'Contact du client: ' +  *{glaciere.client.contact}"></h6>
+      <h6 th:text=" 'E-mail du Client: ' +  *{glaciere.client.email}"></h6>
+      <h4>Information de l'ambulancier</h4>
+      <h6 th:text=" 'Nom de l\'ambulancier: ' +  *{glaciere.ambulancier.nom}"></h6>
+      <h6 th:text=" 'Contact de l\'ambulancier: ' +  *{glaciere.ambulancier.contact}"></h6>
+      <h4>Information de la glacière</h4>
+      <h6 th:text=" 'Libellé de la glacière: ' +  *{glaciere.libelle}"></h6>
+      <h6 th:text=" 'Nombre de prelevement: ' +  *{glaciere.nombre_prelevement}"></h6>
+      <h6 th:text=" 'Température d\'arrivée: ' +  *{glaciere.temperature_arrivee}"></h6>
+      <h6 th:text=" 'Température de départ: ' +  *{glaciere.temperature_depart}"></h6>
+      <h6 th:text=" 'Conformité: ' +  *{glaciere.conformite.libelle}"></h6>
+      <h6 th:text=" 'Cause conformité: ' +  *{glaciere.cause_conformite}"></h6>
     </div>
-    <div class="col-6">
+
+    <div class="col-6 mt-5">
       <img src="/images/reception.jpg" width="500" alt="reception">
+      <div class="d-flex mt-4 mt-6">
+        <a th:href="@{/reception/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle reception </a>
+        <a class="btn btn-outline-primary btn-sm" th:href="@{/reception/}">Retour à la liste</a>
+      </div>
     </div>
   </div>
 

@@ -24,7 +24,7 @@
                 <div class="mb-4 col-3">
                     <label class="form-label" for="patient">Patient:</label>
                     <select th:field="*{patient}" class="form-select" name="patient" id="patient">
-                        <option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.contact}"></option>
+                        <option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.email}"></option>
                     </select>
                     <span th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}" class="text-danger"></span>
                 </div>

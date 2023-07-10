@@ -22,6 +22,8 @@
                 <th>No</th>
                 <th>Date de reception</th>
                 <th>Glacière</th>
+                <th>Client</th>
+                <th>Prélèvement</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -30,6 +32,9 @@
                 <td th:text="${index.index +1}"></td>
                 <td th:text="${reception.date_reception}"></td>
                 <td th:text="${reception.glaciere.libelle}"></td>
+                <td th:text="${reception.glaciere.client.raison_sociale}"></td>
+                <td th:text="${reception.glaciere.nombre_prelevement}"></td>
+                <td th:text="${reception.glaciere.nombre_prelevement}"></td>
                 <td>
                     <a th:href="@{/reception/edit-form(id=${reception.id})}" class="btn btn-warning">Modifier</a>
                     <a th:href="@{/reception/show(id=${reception.id})}" class="btn btn-warning">Details</a>

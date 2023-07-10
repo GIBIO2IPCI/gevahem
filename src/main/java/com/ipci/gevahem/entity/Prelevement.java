@@ -15,6 +15,7 @@ public class Prelevement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
     @NotBlank(message = "ce champ est obligatoire")
     @Column(unique = true)
     private String libelle;

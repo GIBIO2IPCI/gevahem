@@ -16,6 +16,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
     @NotBlank(message = "ce champ est obligatoire")
     private String nom;
     @NotBlank(message = "ce champ est obligatoire")

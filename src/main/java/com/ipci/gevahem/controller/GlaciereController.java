@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
@@ -46,7 +47,6 @@ public class GlaciereController {
             glaciere.setCode("GL" + temps.getTime());
             glaciereService.saveGlaciere(glaciere);
         }catch (Exception e){
-            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
             return "redirect:/glaciere/add-form";
         }
 
@@ -59,15 +59,10 @@ public class GlaciereController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.glaciere", result);
             redirectAttributes.addFlashAttribute("glaciere", glaciere);
-            return "redirect:/glaciere/edit-form";
+            return "redirect:/glaciere/edit-form?id=" + glaciere.getId();
         }
 
-        try {
-            glaciereService.saveGlaciere(glaciere);
-        }catch (Exception e){
-            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
-            return "redirect:/glaciere/edit-form";
-        }
+        glaciereService.saveGlaciere(glaciere);
 
         return "redirect:/glaciere/";
     }

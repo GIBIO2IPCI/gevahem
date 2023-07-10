@@ -63,8 +63,8 @@
 
                 <div class="mb-4 col-3">
                     <label class="form-label" for="analyse">Analyse:</label>
-                    <select th:field="*{analyse.id}" class="form-select" name="analyse" id="analyse">
-                        <option th:each="analyse : ${analyses}" th:value="${analyse.id}" th:text="${analyse.libelle}" th:selected="${analyse.id == prelevement.analyse.id}"></option>
+                    <select th:field="*{analyse}" class="form-select" name="analyse" id="analyse">
+                        <option th:each="analyse : ${analyses}" th:value="${analyse.id}" th:text="${analyse.libelle}" th:selected="${analyse.id == prelevement.analyse}"></option>
                     </select>
                 </div>
 

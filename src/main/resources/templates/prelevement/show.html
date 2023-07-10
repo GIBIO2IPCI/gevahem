@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prélèvement details</title>
+</head>
+<body>
+
+
+<section layout:fragment="content" th:object="${prelevement}" class="container">
+
+  <h1 class="text-center mt-2">Détails prélèvement</h1>
+  <div class="row">
+    <div class="col-6 mt-4">
+      <h6 th:text=" 'Code Prelevement: ' +  *{libelle}"></h6>
+      <h6 th:text=" 'Volume: ' +  *{volume} + *{unite}"></h6>
+      <h6 th:text=" 'Patient: ' +  *{patient.email}"></h6>
+      <h6 th:text=" 'Glacière: ' +  *{glaciere.code}"></h6>
+      <h6 th:text=" 'Conformité: ' +  *{conformite.libelle}"></h6>
+      <h6 th:text=" 'Cause conformité: ' +  *{cause_conformite}"></h6>
+      <h6 th:text=" 'Type Prélèvement: ' +  *{typePrelevement.libelle}"></h6>
+
+    </div>
+
+    <div class="col-6 mt-5">
+      <img src="/images/reception.jpg" width="500" alt="reception">
+      <div class="d-flex mt-4 mt-6">
+        <a th:href="@{/prelevement/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter un nouveau prélèvement </a>
+        <a class="btn btn-outline-primary btn-sm" th:href="@{/prelevement/}">Retour à la liste</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

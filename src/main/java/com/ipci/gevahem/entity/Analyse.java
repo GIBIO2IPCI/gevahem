@@ -9,5 +9,5 @@ public class Analyse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer libelle;
+    private String libelle;
 }

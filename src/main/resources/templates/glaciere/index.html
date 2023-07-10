@@ -20,6 +20,7 @@
             <thead>
             <tr>
                 <th>No</th>
+                <th>Code glacière</th>
                 <th>Libellé</th>
                 <th>Nombre échantillons</th>
                 <th>Conformité</th>
@@ -29,6 +30,7 @@
             <tbody>
             <tr th:each="glaciere, index : ${glacieres}">
                 <td th:text="${index.index +1}"></td>
+                <td th:text="${glaciere.code}"></td>
                 <td th:text="${glaciere.libelle}"></td>
                 <td th:text="${glaciere.nombre_prelevement}"></td>
                 <td th:text="${glaciere.conformite.libelle}"></td>

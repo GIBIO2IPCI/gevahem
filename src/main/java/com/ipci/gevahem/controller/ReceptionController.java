@@ -39,7 +39,9 @@ public class ReceptionController {
             return "redirect:/reception/add-form";
         }
 
-        reception.setDate_reception(new Date());
+        Date temps = new Date();
+        reception.setDate_reception(temps);
+        reception.setCode("REC" + temps.getTime());
         receptionService.saveReception(reception);
         return "redirect:/reception/";
     }
@@ -53,7 +55,6 @@ public class ReceptionController {
             return "redirect:/reception/add-form";
         }
 
-        reception.setDate_reception(new Date());
         receptionService.saveReception(reception);
         return "redirect:/reception/";
     }

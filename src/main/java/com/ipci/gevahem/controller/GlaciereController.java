@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -41,11 +42,14 @@ public class GlaciereController {
         }
 
         try {
+            Date temps = new Date();
+            glaciere.setCode("GL" + temps.getTime());
             glaciereService.saveGlaciere(glaciere);
         }catch (Exception e){
             result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
             return "redirect:/glaciere/add-form";
         }
+
 
         return "redirect:/glaciere/";
     }

@@ -1,9 +1,6 @@
 package com.ipci.gevahem.controller;
 
-import com.ipci.gevahem.entity.Ambulancier;
-import com.ipci.gevahem.entity.Client;
-import com.ipci.gevahem.entity.Conformite;
-import com.ipci.gevahem.entity.Glaciere;
+import com.ipci.gevahem.entity.*;
 import com.ipci.gevahem.service.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -26,6 +23,7 @@ public class GlaciereController {
     private final AmbulancierService ambulancierService;
     private final ConformiteService conformiteService;
     private final ClientService clientService;
+    private final EtudeService etudeService;
 
 
     @GetMapping("/")
@@ -42,14 +40,9 @@ public class GlaciereController {
             return "redirect:/glaciere/add-form";
         }
 
-        try {
-            Date temps = new Date();
-            glaciere.setCode("GL" + temps.getTime());
-            glaciereService.saveGlaciere(glaciere);
-        }catch (Exception e){
-            return "redirect:/glaciere/add-form";
-        }
-
+        Date temps = new Date();
+        glaciere.setCode("GL" + temps.getTime());
+        glaciereService.saveGlaciere(glaciere);
 
         return "redirect:/glaciere/";
     }
@@ -76,9 +69,11 @@ public class GlaciereController {
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         List<Client> client = clientService.getAllClient();
+        List<Etude> etude = etudeService.getAllEtude();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
         model.addAttribute("clients", client);
+        model.addAttribute("etudes", etude);
         return "glaciere/new";
     }
 
@@ -90,9 +85,11 @@ public class GlaciereController {
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         List<Client> client = clientService.getAllClient();
+        List<Etude> etude = etudeService.getAllEtude();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
         model.addAttribute("clients", client);
+        model.addAttribute("etudes", etude);
         return "glaciere/update";
     }
 

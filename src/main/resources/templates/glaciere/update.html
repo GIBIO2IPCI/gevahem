@@ -8,10 +8,10 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="d-flex justify-content-center">
 
         <form th:action="@{/glaciere/update}" th:object="${glaciere}" method="POST">
-            <h2 class="mb-4">Enregistrer une glacière</h2>
+            <h2 class="text-center my-3">Modifier une glacière</h2>
 
             <input type="hidden" id="id" th:field="*{id}" class="form-control">
 
@@ -25,9 +25,25 @@
                 </div>
 
                 <div class="mb-4 col-3">
+                    <label class="form-label" for="client">Client</label>
+                    <select th:field="*{client}" class="form-select" name="client" id="client">
+                        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.email}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
                     <label class="form-label" for="libelle">Libellé</label>
                     <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
                     <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-3">
+                    <label for="etude" class="form-label">Etude</label>
+                    <select th:field="*{etude}" class="form-select" name="etude" id="etude">
+                        <option th:each="etude : ${etudes}" th:value="${etude.id}" th:text="${etude.nom}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('etude')}" th:errors="*{etude}" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4 col-3">
@@ -42,13 +58,13 @@
                     <span th:if="${#fields.hasErrors('temperature_depart')}" th:errors="*{temperature_depart}" class="text-danger"></span>
                 </div>
 
-                <div class="mb-4 col-4">
+                <div class="mb-4 col-3">
                     <label class="form-label" for="ta">Température d'arrivée:</label>
                     <input type="number" id="ta" th:field="*{temperature_arrivee}" class="form-control">
                     <span th:if="${#fields.hasErrors('temperature_arrivee')}" th:errors="*{temperature_arrivee}" class="text-danger"></span>
                 </div>
 
-                <div class="mb-4 col-4">
+                <div class="mb-4 col-3">
                     <label class="form-label" for="conformite">Conformité</label>
                     <select th:field="*{conformite.id}" class="form-select" name="conformite" id="conformite">
                         <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}" th:selected="${conformite.id == glaciere.conformite.id}"></option>
@@ -56,9 +72,9 @@
                     <span th:if="${#fields.hasErrors('conformite')}" th:errors="*{conformite}" class="text-danger"></span>
                 </div>
 
-                <div class="mb-4 col-4">
+                <div class="mb-4 col-12">
                     <label class="form-label" for="cause">Cause conformité:</label>
-                    <input type="text" id="cause" th:field="*{cause_conformite}" class="form-control">
+                    <textarea id="cause" th:field="*{cause_conformite}" class="form-control" rows="5" cols="250"></textarea>
                     <span th:if="${#fields.hasErrors('cause_conformite')}" th:errors="*{cause_conformite}" class="text-danger"></span>
                 </div>
             </div>

@@ -13,123 +13,69 @@
         <form th:action="@{/glaciere/add}" th:object="${glaciere}" method="POST">
             <h2 class="my-3 text-center">Enregistrer une glacière</h2>
 
-            <h6>Informations sur la glacière</h6>
-            <fieldset class="form-group border p-3" >
-                <div class="row">
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="ambulancier">Ambulancier</label>
-                        <select th:field="*{ambulancier}" class="form-select" name="ambulancier" id="ambulancier">
-                            <option th:each="ambulancier : ${ambulanciers}" th:value="${ambulancier.id}" th:text="${ambulancier.contact}"></option>
-                        </select>
-                        <span th:if="${#fields.hasErrors('ambulancier')}" th:errors="*{ambulancier}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="ambulancier">Client</label>
-                        <select th:field="*{client}" class="form-select" name="client" id="client">
-                            <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.email}"></option>
-                        </select>
-                        <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="libelle">Libellé</label>
-                        <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
-                        <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="nbe">Nombre d'échantillons</label>
-                        <input type="number" id="nbe" th:field="*{nombre_prelevement}" class="form-control">
-                        <span th:if="${#fields.hasErrors('nombre_prelevement')}" th:errors="*{nombre_prelevement}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="td">Température de départ</label>
-                        <input type="number" id="td" th:field="*{temperature_depart}" class="form-control">
-                        <span th:if="${#fields.hasErrors('temperature_depart')}" th:errors="*{temperature_depart}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="ta">Température d'arrivée:</label>
-                        <input type="number" id="ta" th:field="*{temperature_arrivee}" class="form-control">
-                        <span th:if="${#fields.hasErrors('temperature_arrivee')}" th:errors="*{temperature_arrivee}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="conformite">Conformité</label>
-                        <select th:field="*{conformite}" class="form-select" name="conformite" id="conformite">
-                            <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}"></option>
-                        </select>
-                        <span th:if="${#fields.hasErrors('conformite')}" th:errors="*{conformite}" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-4 col-3">
-                        <label class="form-label" for="cause">Cause conformité:</label>
-                        <input type="text" id="cause" th:field="*{cause_conformite}" class="form-control">
-                        <span th:if="${#fields.hasErrors('cause_conformite')}" th:errors="*{cause_conformite}" class="text-danger"></span>
-                    </div>
+            <div class="row">
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="ambulancier">Ambulancier</label>
+                    <select th:field="*{ambulancier}" class="form-select" name="ambulancier" id="ambulancier">
+                        <option th:each="ambulancier : ${ambulanciers}" th:value="${ambulancier.id}" th:text="${ambulancier.contact}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('ambulancier')}" th:errors="*{ambulancier}" class="text-danger"></span>
                 </div>
-            </fieldset>
 
-<!--            <h6 class="mt-4">Informations sur l'étude de la glacière</h6>-->
-<!--            <fieldset class="form-group border p-3 " >-->
-<!--                <div class="row">-->
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="ambulancier">Ambulancier</label>-->
-<!--                        <select th:field="*{ambulancier}" class="form-select" name="ambulancier" id="ambulancier">-->
-<!--                            <option th:each="ambulancier : ${ambulanciers}" th:value="${ambulancier.id}" th:text="${ambulancier.contact}"></option>-->
-<!--                        </select>-->
-<!--                        <span th:if="${#fields.hasErrors('ambulancier')}" th:errors="*{ambulancier}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="client">Client</label>
+                    <select th:field="*{client}" class="form-select" name="client" id="client">
+                        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.email}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="ambulancier">Client</label>-->
-<!--                        <select th:field="*{client}" class="form-select" name="client" id="client">-->
-<!--                            <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.email}"></option>-->
-<!--                        </select>-->
-<!--                        <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="libelle">Libellé</label>
+                    <input type="text" id="libelle" th:field="*{libelle}" class="form-control">
+                    <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="libelle">Libellé</label>-->
-<!--                        <input type="text" id="libelle" th:field="*{libelle}" class="form-control">-->
-<!--                        <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="etude">Etude</label>
+                    <select th:field="*{etude}" class="form-select" name="etude" id="etude">
+                        <option th:each="etude : ${etudes}" th:value="${etude.id}" th:text="${etude.nom}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('etude')}" th:errors="*{etude}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="nbe">Nombre d'échantillons</label>-->
-<!--                        <input type="number" id="nbe" th:field="*{nombre_prelevement}" class="form-control">-->
-<!--                        <span th:if="${#fields.hasErrors('nombre_prelevement')}" th:errors="*{nombre_prelevement}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="nbe">Nombre d'échantillons</label>
+                    <input type="number" id="nbe" th:field="*{nombre_prelevement}" class="form-control">
+                    <span th:if="${#fields.hasErrors('nombre_prelevement')}" th:errors="*{nombre_prelevement}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="td">Température de départ</label>-->
-<!--                        <input type="number" id="td" th:field="*{temperature_depart}" class="form-control">-->
-<!--                        <span th:if="${#fields.hasErrors('temperature_depart')}" th:errors="*{temperature_depart}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="td">Température de départ</label>
+                    <input type="number" id="td" th:field="*{temperature_depart}" class="form-control">
+                    <span th:if="${#fields.hasErrors('temperature_depart')}" th:errors="*{temperature_depart}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="ta">Température d'arrivée:</label>-->
-<!--                        <input type="number" id="ta" th:field="*{temperature_arrivee}" class="form-control">-->
-<!--                        <span th:if="${#fields.hasErrors('temperature_arrivee')}" th:errors="*{temperature_arrivee}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="ta">Température d'arrivée:</label>
+                    <input type="number" id="ta" th:field="*{temperature_arrivee}" class="form-control">
+                    <span th:if="${#fields.hasErrors('temperature_arrivee')}" th:errors="*{temperature_arrivee}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="conformite">Conformité</label>-->
-<!--                        <select th:field="*{conformite}" class="form-select" name="conformite" id="conformite">-->
-<!--                            <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}"></option>-->
-<!--                        </select>-->
-<!--                        <span th:if="${#fields.hasErrors('conformite')}" th:errors="*{conformite}" class="text-danger"></span>-->
-<!--                    </div>-->
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="conformite">Conformité</label>
+                    <select th:field="*{conformite}" class="form-select" name="conformite" id="conformite">
+                        <option th:each="conformite : ${conformites}" th:value="${conformite.id}" th:text="${conformite.libelle}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('conformite')}" th:errors="*{conformite}" class="text-danger"></span>
+                </div>
 
-<!--                    <div class="mb-4 col-3">-->
-<!--                        <label class="form-label" for="cause">Cause conformité:</label>-->
-<!--                        <input type="text" id="cause" th:field="*{cause_conformite}" class="form-control">-->
-<!--                        <span th:if="${#fields.hasErrors('cause_conformite')}" th:errors="*{cause_conformite}" class="text-danger"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </fieldset>-->
+                <div class="mb-4 col-12">
+                    <label class="form-label" for="cause">Cause conformité:</label>
+                    <textarea id="cause" th:field="*{cause_conformite}" class="form-control" rows="5" cols="250"></textarea>
+                    <span th:if="${#fields.hasErrors('cause_conformite')}" th:errors="*{cause_conformite}" class="text-danger"></span>
+                </div>
+            </div>
 
             <div class="d-flex mt-3">
                 <button type="submit" class="btn btn-success mb-4 me-4">Enregistrer</button>

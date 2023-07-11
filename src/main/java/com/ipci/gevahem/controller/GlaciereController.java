@@ -1,9 +1,6 @@
 package com.ipci.gevahem.controller;
 
-import com.ipci.gevahem.entity.Ambulancier;
-import com.ipci.gevahem.entity.Client;
-import com.ipci.gevahem.entity.Conformite;
-import com.ipci.gevahem.entity.Glaciere;
+import com.ipci.gevahem.entity.*;
 import com.ipci.gevahem.service.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @AllArgsConstructor
@@ -25,6 +23,7 @@ public class GlaciereController {
     private final AmbulancierService ambulancierService;
     private final ConformiteService conformiteService;
     private final ClientService clientService;
+    private final EtudeService etudeService;
 
 
     @GetMapping("/")
@@ -41,15 +40,9 @@ public class GlaciereController {
             return "redirect:/glaciere/add-form";
         }
 
-        try {
-            Date temps = new Date();
-            glaciere.setCode("GL" + temps.getTime());
-            glaciereService.saveGlaciere(glaciere);
-        }catch (Exception e){
-            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
-            return "redirect:/glaciere/add-form";
-        }
-
+        Date temps = new Date();
+        glaciere.setCode("GL" + temps.getTime());
+        glaciereService.saveGlaciere(glaciere);
 
         return "redirect:/glaciere/";
     }
@@ -59,15 +52,10 @@ public class GlaciereController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.glaciere", result);
             redirectAttributes.addFlashAttribute("glaciere", glaciere);
-            return "redirect:/glaciere/edit-form";
+            return "redirect:/glaciere/edit-form?id=" + glaciere.getId();
         }
 
-        try {
-            glaciereService.saveGlaciere(glaciere);
-        }catch (Exception e){
-            result.rejectValue("libelle", "error.glaciere", "Ce libellé existe déjà");
-            return "redirect:/glaciere/edit-form";
-        }
+        glaciereService.saveGlaciere(glaciere);
 
         return "redirect:/glaciere/";
     }
@@ -81,9 +69,11 @@ public class GlaciereController {
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         List<Client> client = clientService.getAllClient();
+        List<Etude> etude = etudeService.getAllEtude();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
         model.addAttribute("clients", client);
+        model.addAttribute("etudes", etude);
         return "glaciere/new";
     }
 
@@ -95,9 +85,11 @@ public class GlaciereController {
         List<Ambulancier> ambulancier = ambulancierService.getAllAmbulancier();
         List<Conformite> conformite = conformiteService.getAllConformite();
         List<Client> client = clientService.getAllClient();
+        List<Etude> etude = etudeService.getAllEtude();
         model.addAttribute("ambulanciers", ambulancier);
         model.addAttribute("conformites", conformite);
         model.addAttribute("clients", client);
+        model.addAttribute("etudes", etude);
         return "glaciere/update";
     }
 

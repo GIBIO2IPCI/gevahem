@@ -7,47 +7,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/tom-select.bootstrap5.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js" defer></script>
-<!--    <script src="/js/index.js" defer></script>-->
+    <script src="/js/tom-select.complete.js"></script>
+    <script src="/js/all.min.js"></script>
+    <script src="/js/index.js" defer></script>
     <title>Title</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center">
+
+        <!-- Container wrapper -->
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo" loading="lazy"/>
+
+        <!-- Navbar brand -->
+        <div class="">
+
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo" loading="lazy"/>
+                <span class="ms-4">GEVAHEM ECHANTILLONS HUMAINS</span>
+            </a>
+        </div>
+
+        <!-- Left links -->
+        <div class="">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tableau de bord</a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="btn-group">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reception
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-start">
+                            <li><a class="dropdown-item" th:href="@{/reception/}">Les enregistrement</a></li>
+                            <li><a class="dropdown-item" th:href="@{/ambulancier/}">Les ambulanciers</a></li>
+                            <li><a class="dropdown-item" th:href="@{/client/}">Les clients</a></li>
+                            <li><a class="dropdown-item" th:href="@{/patient/}">Les patients</a></li>
+                            <li><a class="dropdown-item" th:href="@{/glaciere/}">Les glacières</a></li>
+                            <li><a class="dropdown-item" th:href="@{/prelevement/}">Les prélèvements</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Préparation</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Conservation</a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- Left links -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+
+            <!-- Notifications -->
+            <div class="dropdown mx-2">
+                <a class="dropdown-toggle dropdown-toggle-split nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-gear"></i>
                 </a>
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tableau de bord</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">Some news</a>
                     </li>
-                    <li class="nav-item">
-                        <div class="btn-group">
-                            <a class="nav-link" th:href="@{/reception/}">Reception</a>
-                            <a class="dropdown-toggle dropdown-toggle-split nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden">Toggle Dropdown</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/ambulancier/}">Liste des ambulanciers</a></li>
-                                <li><a class="dropdown-item" th:href="@{/client/}">Liste des clients</a></li>
-                                <li><a class="dropdown-item" th:href="@{/patient/}">Liste des patients</a></li>
-                                <li><a class="dropdown-item" th:href="@{/glaciere/}">Liste des glacières</a></li>
-                                <li><a class="dropdown-item" th:href="@{/prelevement/}">Liste des prélèvements</a></li>
-                            </ul>
-                        </div>
+                    <li>
+                        <a class="dropdown-item" href="#">Another news</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Préparation</a>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Conservation</a>
+                </ul>
+            </div>
+            <!-- Avatar -->
+            <div class="dropdown mx-2">
+                <a class="dropdown-toggle dropdown-toggle-split nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
+        <!-- Right elements -->
 
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
 
     <section layout:fragment="content">
     </section>

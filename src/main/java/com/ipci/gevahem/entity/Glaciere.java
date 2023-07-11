@@ -12,14 +12,12 @@ import java.util.Set;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "libelle"))
 public class Glaciere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     @NotBlank
-    @Column(unique = true)
     private String libelle;
     @NotNull
     private Integer nombre_prelevement;

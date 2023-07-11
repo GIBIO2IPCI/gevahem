@@ -1,4 +1,7 @@
 package com.ipci.gevahem.repository;
 
-public interface EtudeRepository {
+import com.ipci.gevahem.entity.Etude;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EtudeRepository extends JpaRepository<Etude, Long> {
 }

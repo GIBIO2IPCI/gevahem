@@ -20,24 +20,22 @@
             <thead>
             <tr>
                 <th>No</th>
+                <th>Code patient</th>
                 <th>Nom</th>
                 <th>Prénoms</th>
-                <th>Date de Naissance</th>
                 <th>E-mail</th>
                 <th>Contact</th>
-                <th>Adresse</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="patient, index: ${patients}">
                 <td th:text="${index.index + 1}"></td>
+                <td th:text="${patient.code}"></td>
                 <td th:text="${patient.nom}"></td>
                 <td th:text="${patient.prenom}"></td>
-                <td th:text="${patient.date_naissance}"></td>
                 <td th:text="${patient.email}"></td>
                 <td th:text="${patient.contact}"></td>
-                <td th:text="${patient.adresse}"></td>
                 <td>
                     <a th:href="@{/patient/edit-form(id=${patient.id})}" class="btn btn-warning btn-sm">Modifier</a>
                     <a th:href="@{/patient/delete(id=${patient.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>

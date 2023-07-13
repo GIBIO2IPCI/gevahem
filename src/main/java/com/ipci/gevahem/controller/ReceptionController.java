@@ -27,6 +27,7 @@ public class ReceptionController {
     public String index(Model model){
 
         model.addAttribute("receptions", receptionService.getAllReception());
+        model.addAttribute("reception2", receptionService.getReceptionByCodeAndGlaciere_libelle());
         return "reception/index";
     }
 

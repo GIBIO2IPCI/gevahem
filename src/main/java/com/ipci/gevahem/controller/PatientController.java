@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Date;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/patient")
@@ -37,6 +39,9 @@ public class PatientController {
             result.rejectValue("contact", "error.patient", "Ce contact existe déjà");
             return "redirect:/patient/add-form";
         }
+        Date temps = new Date();
+        patient.setCode("PAT" + temps.getTime());
+        patientService.savePatient(patient);
 
         return "redirect:/patient/";
     }

@@ -12,6 +12,7 @@
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <form th:action="@{/patient/update}" th:object="${patient}" method="POST">
                 <input type="hidden" name="id" th:field="*{id}">
+                <input type="hidden" name="code" th:field="*{code}">
                 <h2 class="mb-4">Modifier les informations d'un patient</h2>
                 <div class="row">
                     <div class="mb-4 col-4">

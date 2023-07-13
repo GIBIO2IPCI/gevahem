@@ -14,6 +14,7 @@
             <h2 class="text-center my-3">Modifier une glacière</h2>
 
             <input type="hidden" id="id" th:field="*{id}" class="form-control">
+            <input type="hidden" id="code" th:field="*{code}" class="form-control">
 
             <div class="row mt-4">
                 <div class="mb-4 col-3">
@@ -41,7 +42,7 @@
                 <div class="mb-4 col-3">
                     <label for="etude" class="form-label">Etude</label>
                     <select th:field="*{etude}" class="form-select" name="etude" id="etude">
-                        <option th:each="etude : ${etudes}" th:value="${etude.id}" th:text="${etude.nom}"></option>
+                        <option th:each="etude : ${etudes}" th:value="${etude.id}" th:text="${etude.thematique}"></option>
                     </select>
                     <span th:if="${#fields.hasErrors('etude')}" th:errors="*{etude}" class="text-danger"></span>
                 </div>

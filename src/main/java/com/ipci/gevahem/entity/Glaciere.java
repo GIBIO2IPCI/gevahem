@@ -21,14 +21,11 @@ public class Glaciere {
     private String libelle;
     @NotNull
     private Integer nombre_prelevement;
-    @NotNull
     private Integer temperature_depart;
-    @NotNull
     private Integer temperature_arrivee;
     @ManyToOne
     @NotNull
     private Conformite conformite;
-    @NotBlank
     private String cause_conformite;
     @ManyToOne
     @NotNull

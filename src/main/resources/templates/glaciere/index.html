@@ -32,7 +32,7 @@
             <tr th:each="glaciere, index : ${glacieres}">
                 <td th:text="${index.index +1}"></td>
                 <td th:text="${glaciere.code}"></td>
-                <td th:text="${glaciere.etude.nom}"></td>
+                <td th:text="${glaciere.etude.thematique}"></td>
                 <td th:text="${glaciere.libelle}"></td>
                 <td th:text="${glaciere.nombre_prelevement}"></td>
                 <td th:text="${glaciere.conformite.libelle}"></td>

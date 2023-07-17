@@ -31,6 +31,8 @@
       <h6 th:text=" 'Température de départ: ' +  *{glaciere.temperature_depart}"></h6>
       <h6 th:text=" 'Conformité: ' +  *{glaciere.conformite.libelle}"></h6>
       <h6 th:text=" 'Cause conformité: ' +  *{glaciere.cause_conformite}"></h6>
+      <h4>Information des échantillons</h4>
+
     </div>
 
     <div class="col-6 mt-5">
@@ -40,6 +42,29 @@
         <a class="btn btn-outline-primary btn-sm" th:href="@{/reception/}">Retour à la liste</a>
       </div>
     </div>
+
+    <table class="table table-striped col-6 table-responsive-md table-bordered text-center">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Code échantillon</th>
+        <th>Patient</th>
+        <th>Volume</th>
+        <th>Type échantillon</th>
+        <th>Analyse</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="echantillon, index : *{glaciere.prelevements}">
+        <td th:text="${index.index +1}"></td>
+        <td th:text="${echantillon.libelle}"></td>
+        <td th:text="${echantillon.patient.email}"></td>
+        <td th:text="${echantillon.volume}"></td>
+        <td th:text="${echantillon.typePrelevement.libelle}"></td>
+        <td th:text="${echantillon.analyse.libelle}"></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 
 </section>

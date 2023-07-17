@@ -9,5 +9,4 @@ public interface ReceptionService {
     void saveReception(Reception reception);
     void deleteReceptionById(long id);
     Reception getReceptionById(long id);
-    Reception getReceptionByCodeAndGlaciere_libelle(String code, String libelle);
 }

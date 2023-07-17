@@ -34,8 +34,4 @@ public class ReceptionServiceImpl implements ReceptionService {
         return receptionRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public Reception getReceptionByCodeAndGlaciere_libelle(String code, String libelle) {
-        return receptionRepository.findByCodeAndGlaciere_Libelle(code, libelle);
-    }
 }

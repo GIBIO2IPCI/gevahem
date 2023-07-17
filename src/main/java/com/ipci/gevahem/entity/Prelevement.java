@@ -34,8 +34,8 @@ public class Prelevement {
     @ManyToOne
     private TypePrelevement typePrelevement;
     @NotNull(message = "ce champ est obligatoire")
-    @OneToMany
-    private List<Analyse> analyse = new ArrayList<>();
+    @OneToOne
+    private Analyse analyse;
     @ManyToOne
     @NotNull(message = "ce champ est obligatoire")
     private Glaciere glaciere;

@@ -11,27 +11,26 @@
 
 <section layout:fragment="content" th:object="${reception}" class="container">
 
-<h1 class="text-center mt-2">Détails Réception</h1>
+<h1 class="mt-2" th:text="'Reception ' + *{code} + ' du '+ *{date_reception}"></h1>
   <div class="row">
     <div class="col-6 mt-4">
-      <h6 th:text=" 'Date de reception: ' +  *{date_reception}"></h6>
-      <h6 th:text=" 'Numéro de la reception: ' +  *{date_reception}"></h6>
-      <h4>Informations du client</h4>
-      <h6 th:text=" 'Raison sociale du client: ' +  *{glaciere.client.raison_sociale}"></h6>
-      <h6 th:text=" 'Responsable du client: ' +  *{glaciere.client.responsable_client}"></h6>
-      <h6 th:text=" 'Contact du client: ' +  *{glaciere.client.contact}"></h6>
-      <h6 th:text=" 'E-mail du Client: ' +  *{glaciere.client.email}"></h6>
-      <h4>Information de l'ambulancier</h4>
-      <h6 th:text=" 'Nom de l\'ambulancier: ' +  *{glaciere.ambulancier.nom}"></h6>
-      <h6 th:text=" 'Contact de l\'ambulancier: ' +  *{glaciere.ambulancier.contact}"></h6>
-      <h4>Information de la glacière</h4>
-      <h6 th:text=" 'Libellé de la glacière: ' +  *{glaciere.libelle}"></h6>
-      <h6 th:text=" 'Nombre de prelevement: ' +  *{glaciere.nombre_prelevement}"></h6>
-      <h6 th:text=" 'Température d\'arrivée: ' +  *{glaciere.temperature_arrivee}"></h6>
-      <h6 th:text=" 'Température de départ: ' +  *{glaciere.temperature_depart}"></h6>
-      <h6 th:text=" 'Conformité: ' +  *{glaciere.conformite.libelle}"></h6>
-      <h6 th:text=" 'Cause conformité: ' +  *{glaciere.cause_conformite}"></h6>
-      <h4>Information des échantillons</h4>
+      <h3 class="mt-3">Informations du client</h3>
+      <h5>Raison sociale <span th:text="*{glaciere.client.raison_sociale}" class="badge bg-primary"></span></h5>
+      <h5>Responsable <span th:text=" *{glaciere.client.responsable_client}" class="badge bg-primary"></span></h5>
+      <h5>Contact <span th:text=" *{glaciere.client.contact}" class="badge bg-primary"></span></h5>
+      <h5>E-mail <span th:text=" *{glaciere.client.email}" class="badge bg-primary"></span></h5>
+      <h3 class="mt-3">Information de l'ambulancier</h3>
+      <h5>Nom <span th:text=" *{glaciere.ambulancier.nom}" class="badge bg-primary"></span></h5>
+      <h5>Contact  <span th:text=" *{glaciere.ambulancier.contact}" class="badge bg-primary"></span></h5>
+      <h3 class="mt-3">Information de la glacière</h3>
+      <h5>Libellé <span th:text=" *{glaciere.libelle}" class="badge bg-primary"></span></h5>
+      <h5>Prélèvement <span th:text="*{glaciere.nombre_prelevement}" class="badge bg-primary"></span></h5>
+      <h5>Température d'arrivée <span th:text="*{glaciere.temperature_arrivee}" class="badge bg-primary"></span></h5>
+      <h5>Température de départ <span th:text="*{glaciere.temperature_depart}" class="badge bg-primary"></span></h5>
+      <h5>Conformité <span th:text="*{glaciere.conformite.libelle}" class="badge bg-primary"></span></h5>
+      <h5>Cause conformité <span th:text="*{glaciere.cause_conformite}" class="badge bg-primary"></span></h5>
+
+      <h4 class="mt-3">Information des échantillons</h4>
 
     </div>
 

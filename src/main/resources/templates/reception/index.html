@@ -25,7 +25,6 @@
                 <th>Glacière</th>
                 <th>Client</th>
                 <th>Nombre échantillons</th>
-                <th>Prélèvement</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -37,7 +36,6 @@
                 <td th:text="${reception.glaciere.libelle}"></td>
                 <td th:text="${reception.glaciere.client.raison_sociale}"></td>
                 <td th:text="${reception.glaciere.nombre_prelevement}"></td>
-                <td><a th:href="@{/prelevement/edit-form(id=${reception.id})}" class="btn btn-warning">Echantillons</a></td>
                 <td>
                     <a th:href="@{/reception/edit-form(id=${reception.id})}" class="btn btn-warning">Modifier</a>
                     <a th:href="@{/reception/show(id=${reception.id})}" class="btn btn-outline-primary">Details</a>

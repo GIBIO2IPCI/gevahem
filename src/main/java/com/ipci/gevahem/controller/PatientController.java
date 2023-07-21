@@ -19,7 +19,7 @@ public class PatientController {
 
     private final PatientService patientService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
         model.addAttribute("patients", patientService.getAllPatient());
         return "patient/index";
@@ -43,7 +43,7 @@ public class PatientController {
         patient.setCode("PAT" + temps.getTime());
         patientService.savePatient(patient);
 
-        return "redirect:/patient/";
+        return "redirect:/patient";
     }
 
     @PostMapping("/update")
@@ -51,17 +51,17 @@ public class PatientController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ambulancier", result);
             redirectAttributes.addFlashAttribute("patient", patient);
-            return "redirect:/patient/edit-form";
+            return "redirect:/patient/edit-form?id=" + patient.getId();
         }
 
         try {
             patientService.savePatient(patient);
         }catch (Exception e){
             result.rejectValue("contact", "error.patient", "Ce contact existe déjà");
-            return "redirect:/patient/edit-form";
+            return "redirect:/patient/edit-form?id=" + patient.getId();
         }
 
-        return "redirect:/patient/";
+        return "redirect:/patient";
     }
 
     @GetMapping("/add-form")
@@ -85,6 +85,6 @@ public class PatientController {
     @GetMapping("/delete")
     public String delete(Long id){
         patientService.deletePatientById(id);
-        return "redirect:/patient/";
+        return "redirect:/patient";
     }
 }

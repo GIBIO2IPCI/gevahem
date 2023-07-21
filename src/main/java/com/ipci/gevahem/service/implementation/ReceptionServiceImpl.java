@@ -6,6 +6,7 @@ import com.ipci.gevahem.service.ReceptionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,6 +21,9 @@ public class ReceptionServiceImpl implements ReceptionService {
 
     @Override
     public void saveReception(Reception reception) {
+        Date temps = new Date();
+        reception.setDate_reception(temps);
+        reception.setCode("REC" + temps.getTime());
         receptionRepository.save(reception);
 
     }

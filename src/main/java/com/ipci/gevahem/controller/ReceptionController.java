@@ -23,7 +23,7 @@ public class ReceptionController {
     private final ReceptionService receptionService;
     private final GlaciereService glaciereService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
 
         model.addAttribute("receptions", receptionService.getAllReception());
@@ -39,11 +39,8 @@ public class ReceptionController {
             return "redirect:/reception/add-form";
         }
 
-        Date temps = new Date();
-        reception.setDate_reception(temps);
-        reception.setCode("REC" + temps.getTime());
         receptionService.saveReception(reception);
-        return "redirect:/reception/";
+        return "redirect:/reception";
     }
 
     @PostMapping("/update")
@@ -52,11 +49,11 @@ public class ReceptionController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.reception", result);
             redirectAttributes.addFlashAttribute("reception", reception);
-            return "redirect:/reception/add-form";
+            return "redirect:/reception/edit-form";
         }
 
         receptionService.saveReception(reception);
-        return "redirect:/reception/";
+        return "redirect:/reception";
     }
 
     @GetMapping("/add-form")
@@ -90,6 +87,6 @@ public class ReceptionController {
     @GetMapping("/delete")
     public String delete(Long id){
         receptionService.deleteReceptionById(id);
-        return "redirect:/reception/";
+        return "redirect:/reception";
     }
 }

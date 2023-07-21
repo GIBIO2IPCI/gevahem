@@ -18,7 +18,7 @@ public class AmbulancierController {
 
     private final AmbulancierService ambulancierService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
         model.addAttribute("ambulanciers", ambulancierService.getAllAmbulancier());
         return "ambulancier/index";
@@ -39,7 +39,7 @@ public class AmbulancierController {
             return "redirect:/ambulancier/add-form";
         }
 
-        return "redirect:/ambulancier/";
+        return "redirect:/ambulancier";
     }
 
     @PostMapping("/update")
@@ -47,17 +47,17 @@ public class AmbulancierController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ambulancier", result);
             redirectAttributes.addFlashAttribute("ambulancier", ambulancier);
-            return "redirect:/ambulancier/edit-form";
+            return "redirect:/ambulancier/edit-form?id=" + ambulancier.getId();
         }
 
         try {
             ambulancierService.saveAmbulancier(ambulancier);
         }catch (Exception e){
             result.rejectValue("contact", "error.ambulancier", "Ce contact existe déjà");
-            return "redirect:/ambulancier/edit-form";
+            return "redirect:/ambulancier/edit-form?id=" + ambulancier.getId();
         }
 
-        return "redirect:/ambulancier/";
+        return "redirect:/ambulancier";
     }
 
     @GetMapping("/add-form")

@@ -26,7 +26,7 @@ public class GlaciereController {
     private final EtudeService etudeService;
 
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
         model.addAttribute("glacieres", glaciereService.getAllGlaciere());
         return "glaciere/index";
@@ -44,7 +44,7 @@ public class GlaciereController {
         glaciere.setCode("GL" + temps.getTime());
         glaciereService.saveGlaciere(glaciere);
 
-        return "redirect:/glaciere/";
+        return "redirect:/glaciere";
     }
 
     @PostMapping("/update")
@@ -57,7 +57,7 @@ public class GlaciereController {
 
         glaciereService.saveGlaciere(glaciere);
 
-        return "redirect:/glaciere/";
+        return "redirect:/glaciere";
     }
 
     @GetMapping("/add-form")
@@ -102,6 +102,6 @@ public class GlaciereController {
     @GetMapping("/delete")
     public String delete(Long id){
         glaciereService.deleteGlaciereById(id);
-        return "redirect:/glaciere/";
+        return "redirect:/glaciere";
     }
 }

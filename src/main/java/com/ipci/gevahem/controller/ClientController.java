@@ -21,7 +21,7 @@ public class ClientController {
     private final ClientService clientService;
     private final TypeClientService typeClientService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
         model.addAttribute("clients", clientService.getAllClient());
         return "client/index";
@@ -50,14 +50,14 @@ public class ClientController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.glaciere", result);
             redirectAttributes.addFlashAttribute("client", client);
-            return "redirect:/client/edit-form";
+            return "redirect:/client/edit-form?id=" + client.getId();
         }
 
         try {
             clientService.saveClient(client);
         }catch (Exception e){
             result.rejectValue("contact", "error.client", "Ce contact existe déjà");
-            return "redirect:/client/edit-form";
+            return "redirect:/client/edit-form?id=" + client.getId();
         }
 
         return "redirect:/client/";

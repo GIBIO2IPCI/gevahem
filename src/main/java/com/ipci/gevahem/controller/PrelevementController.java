@@ -24,7 +24,7 @@ public class PrelevementController {
     private final AnalyseService analyseService;
     private final TypePrelevementService typePrelevementService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model){
         model.addAttribute("prelevements", prelevementService.getAllPrelevement());
         return "prelevement/index";
@@ -45,7 +45,7 @@ public class PrelevementController {
             return "redirect:/prelevement/add-form";
         }
 
-        return "redirect:/prelevement/";
+        return "redirect:/prelevement";
     }
 
     @PostMapping("/update")
@@ -63,7 +63,7 @@ public class PrelevementController {
             return "redirect:/prelevement/edit-form";
         }
 
-        return "redirect:/prelevement/";
+        return "redirect:/prelevement";
     }
 
     @GetMapping("/add-form")
@@ -112,6 +112,6 @@ public class PrelevementController {
     @GetMapping("/delete")
     public String delete(Long id){
         prelevementService.deletePrelevementById(id);
-        return "redirect:/prelevement/";
+        return "redirect:/prelevement";
     }
 }

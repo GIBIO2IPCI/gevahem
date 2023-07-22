@@ -1,5 +1,6 @@
 package com.ipci.gevahem.service.implementation;
 
+import com.ipci.gevahem.entity.Conformite;
 import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.entity.Prelevement;
 import com.ipci.gevahem.repository.GlaciereRepository;
@@ -30,6 +31,16 @@ public class PrelevementServiceImpl implements PrelevementService {
     public Prelevement getPrelevementByLibelle(String libelle) {
         return prelevementRepository.findByLibelle(libelle);
     }
+
+    @Override
+    public Prelevement getPrelevementByConformite(String conformite) {return prelevementRepository.findByConformite(conformite);}
+
+
+    @Override
+    public Prelevement getPrelevementByCodeAndConformite(String code, Conformite conformite) {
+        return null;
+    }
+
 
     @Override
     public Prelevement getPrelevementById(long id) {

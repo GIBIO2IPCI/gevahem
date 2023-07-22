@@ -109,6 +109,12 @@ public class PrelevementController {
         return "/prelevement/show";
     }
 
+    @GetMapping("/conforme")
+    public String conforme(@RequestParam(name = "conformite") String conformite, Model model){
+        model.addAttribute("prelevement", prelevementService.getPrelevementByConformite(conformite));
+        return "/prelevement/conforme";
+    }
+
     @GetMapping("/delete")
     public String delete(Long id){
         prelevementService.deletePrelevementById(id);

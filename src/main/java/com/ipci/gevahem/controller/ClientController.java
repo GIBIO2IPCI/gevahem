@@ -42,7 +42,7 @@ public class ClientController {
             return "redirect:/client/add-form";
         }
 
-        return "redirect:/client/";
+        return "redirect:/client";
     }
 
     @PostMapping("/update")
@@ -60,7 +60,7 @@ public class ClientController {
             return "redirect:/client/edit-form?id=" + client.getId();
         }
 
-        return "redirect:/client/";
+        return "redirect:/client";
     }
 
     @GetMapping("/add-form")
@@ -93,6 +93,6 @@ public class ClientController {
     @GetMapping("/delete")
     public String delete(Long id){
         clientService.deleteClientById(id);
-        return "redirect:/client/";
+        return "redirect:/client";
     }
 }

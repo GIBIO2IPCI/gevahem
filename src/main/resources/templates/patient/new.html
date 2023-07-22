@@ -14,19 +14,19 @@
             <div class="row">
                 <div class="mb-4 col-4">
                     <label for="nom">Nom:</label>
-                    <input type="text" id="nom" th:field="*{nom}" placeholder="Nom ambulancier" class="form-control">
+                    <input type="text" id="nom" th:field="*{nom}" placeholder="Nom patient" class="form-control">
                     <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4 col-4">
                     <label for="prenom">Prénoms:</label>
-                    <input type="text" id="prenom" th:field="*{prenom}" placeholder="Prenom patient" class="form-control">
+                    <input type="text" id="prenom" th:field="*{prenom}" placeholder="Prénom patient" class="form-control">
                     <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4 col-4">
                    <label for="date_naissance">Date de Naissance:</label>
-                    <input type="date" id="date_naissance" th:field="*{date_naissance}" placeholder="Naissance patient" class="form-control">
+                    <input type="date" id="date_naissance" th:field="*{date_naissance}" placeholder="Date de naissance du patient" class="form-control">
                     <span th:if="${#fields.hasErrors('date_naissance')}" th:errors="*{date_naissance}" class="text-danger"></span>
                 </div>
 

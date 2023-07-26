@@ -26,7 +26,11 @@ public class PrelevementController {
 
     @GetMapping("")
     public String index(Model model){
+        String conforme = "CONFORME";
+        String non_conforme = "NON-CONFORME";
         model.addAttribute("prelevements", prelevementService.getAllPrelevement());
+        model.addAttribute("conformes", prelevementService.getByConformiteLibelle(conforme));
+        model.addAttribute("non_conformes", prelevementService.getByConformiteLibelle(non_conforme));
         return "prelevement/index";
     }
 
@@ -107,12 +111,6 @@ public class PrelevementController {
     public String show(@RequestParam(name = "id") long id, Model model){
         model.addAttribute("prelevement", prelevementService.getPrelevementById(id));
         return "/prelevement/show";
-    }
-
-    @GetMapping("/conforme")
-    public String conforme(@RequestParam(name = "conformite") String conformite, Model model){
-        model.addAttribute("prelevement", prelevementService.getPrelevementByConformite(conformite));
-        return "/prelevement/conforme";
     }
 
     @GetMapping("/delete")

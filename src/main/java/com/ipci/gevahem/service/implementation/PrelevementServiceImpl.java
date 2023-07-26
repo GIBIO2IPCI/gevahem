@@ -1,11 +1,8 @@
 package com.ipci.gevahem.service.implementation;
 
 import com.ipci.gevahem.entity.Conformite;
-import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.entity.Prelevement;
-import com.ipci.gevahem.repository.GlaciereRepository;
 import com.ipci.gevahem.repository.PrelevementRepository;
-import com.ipci.gevahem.service.GlaciereService;
 import com.ipci.gevahem.service.PrelevementService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +20,12 @@ public class PrelevementServiceImpl implements PrelevementService {
     }
 
     @Override
+    public List<Prelevement> getByConformiteLibelle(String libelle) {
+        return prelevementRepository.findByConformiteLibelle(libelle);
+    }
+
+
+    @Override
     public void savePrelevement(Prelevement prelevement) {
         prelevementRepository.save(prelevement);
     }
@@ -33,7 +36,9 @@ public class PrelevementServiceImpl implements PrelevementService {
     }
 
     @Override
-    public Prelevement getPrelevementByConformite(String conformite) {return prelevementRepository.findByConformite(conformite);}
+    public Prelevement getPrelevementByConformite(String conformite) {
+        return null;
+    }
 
 
     @Override

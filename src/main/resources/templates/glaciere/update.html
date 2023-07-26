@@ -17,20 +17,21 @@
             <input type="hidden" id="code" th:field="*{code}" class="form-control">
 
             <div class="row mt-4">
+
+                <div class="mb-4 col-3">
+                    <label class="form-label" for="client">Client</label>
+                    <select th:field="*{client}" class="form-select" name="client" id="client">
+                        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.raison_sociale}" th:selected="${client.id == glaciere.client.raison_sociale}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>
+                </div>
+
                 <div class="mb-4 col-3">
                     <label class="form-label" for="ambulancier">Ambulancier</label>
                     <select th:field="*{ambulancier.id}" class="form-select" name="ambulancier" id="ambulancier">
                         <option th:each="ambulancier : ${ambulanciers}" th:value="${ambulancier.id}" th:text="${ambulancier.contact}" th:selected="${ambulancier.id == glaciere.ambulancier.id}"></option>
                     </select>
                     <span th:if="${#fields.hasErrors('ambulancier')}" th:errors="*{ambulancier}" class="text-danger"></span>
-                </div>
-
-                <div class="mb-4 col-3">
-                    <label class="form-label" for="client">Client</label>
-                    <select th:field="*{client}" class="form-select" name="client" id="client">
-                        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.email}"></option>
-                    </select>
-                    <span th:if="${#fields.hasErrors('client')}" th:errors="*{client}" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4 col-3">

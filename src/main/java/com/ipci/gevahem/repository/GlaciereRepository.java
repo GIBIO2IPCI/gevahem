@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GlaciereRepository extends JpaRepository<Glaciere, Long> {
     Glaciere findByLibelle(String libelle);
+
 }

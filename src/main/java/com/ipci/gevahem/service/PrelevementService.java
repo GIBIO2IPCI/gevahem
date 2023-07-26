@@ -8,6 +8,8 @@ import java.util.List;
 public interface PrelevementService {
 
     List<Prelevement> getAllPrelevement();
+
+    List<Prelevement> getByConformiteLibelle(String libelle);
     void savePrelevement(Prelevement glaciere);
 
     Prelevement getPrelevementByLibelle(String libelle);

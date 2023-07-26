@@ -20,7 +20,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.formLogin();
-        httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
+        httpSecurity.authorizeHttpRequests()
+                .requestMatchers("/").hasRole("CHEF D'UNITE")
+                .anyRequest().authenticated();
         httpSecurity.userDetailsService(userDetailServiceImpl);
 
         return httpSecurity.build();

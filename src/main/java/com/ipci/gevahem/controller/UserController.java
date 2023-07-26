@@ -40,7 +40,7 @@ public class UserController {
         try {
             appUserService.addUser(user);
         } catch (Exception e) {
-            result.rejectValue("username", "error.appUser", "Ce username existe déjà");
+            result.rejectValue("username", "error.user", "Ce username existe déjà");
             return "redirect:/user/add-form";
         }
 
@@ -52,13 +52,13 @@ public class UserController {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
             redirectAttributes.addFlashAttribute("user", user);
-            return "redirect:/appUser/edit-form?id=" + user.getId();
+            return "redirect:/user/edit-form?id=" + user.getId();
         }
 
         try {
             appUserService.addUser(user);
         } catch (Exception e) {
-            result.rejectValue("username", "error.appUser", "Ce username existe déjà");
+            result.rejectValue("username", "error.user", "Ce username existe déjà");
             return "redirect:/user/edit-form";
         }
 

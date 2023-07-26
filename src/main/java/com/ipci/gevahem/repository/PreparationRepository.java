@@ -1,4 +1,8 @@
 package com.ipci.gevahem.repository;
 
-public interface PreparationRepository {
+import com.ipci.gevahem.entity.Preparation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PreparationRepository extends JpaRepository<Preparation, Long>{
+
 }

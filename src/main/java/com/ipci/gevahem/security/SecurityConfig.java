@@ -22,6 +22,8 @@ public class SecurityConfig {
         httpSecurity.formLogin();
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/").hasRole("CHEF D'UNITE")
+                .requestMatchers("/preparation/**").hasRole("CHEF D'UNITE")
+                .requestMatchers("/preparation/**").hasRole("TECHNICIEN")
                 .anyRequest().authenticated();
         httpSecurity.userDetailsService(userDetailServiceImpl);
 

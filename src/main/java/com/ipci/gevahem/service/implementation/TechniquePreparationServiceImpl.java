@@ -1,4 +1,8 @@
 package com.ipci.gevahem.service.implementation;
 
-public class TechniquePreparationServiceImpl {
+import com.ipci.gevahem.service.TechniquePreparationService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TechniquePreparationServiceImpl implements TechniquePreparationService {
 }

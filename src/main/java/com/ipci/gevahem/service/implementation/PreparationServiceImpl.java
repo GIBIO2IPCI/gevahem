@@ -23,13 +23,11 @@ public class PreparationServiceImpl implements PreparationService {
 
     @Override
     public Object getPreparationByID(Long id) {
-       preparationRepository.findById(id);
-        return null;
+        return preparationRepository.findById(id);
     }
 
     @Override
     public Object getAllPreparations() {
-        preparationRepository.findAll();
-        return null;
+        return preparationRepository.findAll();
     }
 }

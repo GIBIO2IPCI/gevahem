@@ -26,7 +26,7 @@ public class PreparationController {
 
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("preparation", preparationService.getAllPreparations());
+        model.addAttribute("preparations", preparationService.getAllPreparations());
         return "preparation/index";
     }
 
@@ -35,9 +35,10 @@ public class PreparationController {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            redirectAttributes.addFlashAttribute("preparation", preparation);
             return "redirect:/preparation/add-form";
         }
+
+        preparationService.addPreparation(preparation);
 
         return "redirect:/preparation";
 

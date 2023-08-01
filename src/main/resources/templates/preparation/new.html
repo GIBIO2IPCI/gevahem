@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>glaciere new</title>
+    <title>Préparation new</title>
 </head>
 <body>
 <section layout:fragment="content" class="container">
@@ -23,11 +23,11 @@
 
                 <div class="mb-4 col-6">
                     <label class="form-label" for="technique">Technique:</label>
-                    <select th:field="*{techniquePreparation}" class="form-select" name="technique" id="technique">
+                    <select th:field="*{techniquePreparations}" class="form-select" name="technique" id="technique">
                         <option value=" " selected></option>
                         <option th:each="technique : ${techniquePreparations}" th:value="${technique.id}" th:text="${technique.libelle}"></option>
                     </select>
-                    <span th:if="${#fields.hasErrors('techniquePreparation')}" th:errors="*{techniquePreparation}" class="text-danger"></span>
+                    <span th:if="${#fields.hasErrors('techniquePreparations')}" th:errors="*{techniquePreparations}" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4 col-3">

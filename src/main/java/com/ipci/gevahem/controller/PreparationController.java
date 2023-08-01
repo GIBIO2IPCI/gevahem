@@ -38,6 +38,7 @@ public class PreparationController {
             return "redirect:/preparation/add-form";
         }
 
+        preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
         preparationService.addPreparation(preparation);
 
         return "redirect:/preparation";

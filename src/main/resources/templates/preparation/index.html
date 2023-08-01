@@ -20,6 +20,7 @@
             <thead>
             <tr>
                 <th>No</th>
+                <th>Code Préparation</th>
                 <th>Technique de Préparation</th>
                 <th>Prélèvement</th>
                 <th>Actions</th>
@@ -28,7 +29,8 @@
             <tbody>
             <tr th:each="preparation, index: ${preparations}">
                 <td th:text="${index.index + 1}"></td>
-                <td th:text="${preparation.techniquePreparation.libelle}"></td>
+                <td th:text="${preparation.code}"></td>
+                <td th:text="${preparation.techniquePreparations.libelle}"></td>
                 <td th:text="${preparation.prelevement.libelle}"></td>
                 <td>
                     <a th:href="@{/preparation/edit-form(id=${preparation.id})}" class="btn btn-warning btn-sm">Modifier</a>

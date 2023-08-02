@@ -12,10 +12,8 @@ public class EchantillonDerive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String libelle;
     private String unite;
     private Float volume;
-    private Float volume_aliquotage;
     private Integer conformite;
     @ManyToOne
     private Prelevement prelevement;

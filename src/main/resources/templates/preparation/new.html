@@ -8,42 +8,86 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
+    <h2 class="mb-4 text-center">Enregistrer une préparation</h2>
+
     <div class="d-flex justify-content-center " >
-        <form th:action="@{/preparation/add}" th:object="${preparation}" method="post">
-            <h2 class="mb-4">Enregistrer une préparation</h2>
-            <div class="row">
-                <div class="mb-4 col-3">
-                    <label class="form-label" for="prelevement">Prélèvement:</label>
-                    <select th:field="*{prelevement}" class="form-select" name="prelevement" id="prelevement" required>
-                        <option value=" " selected></option>
-                        <option th:each="prelevement : ${prelevements}" th:value="${prelevement.id}" th:text="${prelevement.libelle}"></option>
-                    </select>
-                    <span th:if="${#fields.hasErrors('prelevement')}" th:errors="*{prelevement}" class="text-danger"></span>
+
+        <div class="">
+            <form th:action="@{/preparation/add}" th:object="${preparation}" method="post">
+                <div class="row">
+                    <div class="mb-4 col-6">
+                        <label class="form-label" for="prelevement">Prélèvement:</label>
+                        <select th:field="*{prelevement}" class="form-select" name="prelevement" id="prelevement" required>
+                            <option value=" " selected></option>
+                            <option th:each="prelevement : ${prelevements}" th:value="${prelevement.id}" th:text="${prelevement.libelle}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('prelevement')}" th:errors="*{prelevement}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4 col-6">
+                        <label class="form-label" for="nombre">Nombre de préparation:</label>
+                        <input type="number" id="nombre" th:field="*{nombre}" class="form-control">
+                        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4 col-12">
+                        <label class="form-label" for="technique">Technique:</label>
+                        <select th:field="*{techniquePreparations}" class="form-select" name="technique" id="technique">
+                            <option value=" " selected></option>
+                            <option th:each="technique : ${techniquePreparations}" th:value="${technique.id}" th:text="${technique.libelle}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('techniquePreparations')}" th:errors="*{techniquePreparations}" class="text-danger"></span>
+                    </div>
+
                 </div>
+            </form>
+        </div>
 
-                <div class="mb-4 col-6">
-                    <label class="form-label" for="technique">Technique:</label>
-                    <select th:field="*{techniquePreparations}" class="form-select" name="technique" id="technique">
-                        <option value=" " selected></option>
-                        <option th:each="technique : ${techniquePreparations}" th:value="${technique.id}" th:text="${technique.libelle}"></option>
-                    </select>
-                    <span th:if="${#fields.hasErrors('techniquePreparations')}" th:errors="*{techniquePreparations}" class="text-danger"></span>
-                </div>
-
-                <div class="mb-4 col-3">
-                    <label class="form-label" for="nombre">Nombre:</label>
-                    <input type="number" id="nombre" th:field="*{nombre}" class="form-control">
-                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-danger"></span>
-                </div>
-
-            </div>
-
-            <div class="d-flex">
-                <button type="submit" class="btn btn-success mb-4 me-4">Enregistrer</button>
-                <a class="btn btn-outline-primary mb-4" th:href="@{/preparation}">Retour à la liste</a>
-            </div>
-        </form>
     </div>
+
+    <div class="row mt-4" id="derive">
+        <!--            <div class="col-6">-->
+        <!--                <div class="">-->
+        <!--                    <label for="nbDerive">Nombre d'échantillons Dérivés:</label>-->
+        <!--                    <input type="number" name="nbDerive" id="nbDerive">-->
+        <!--                </div>-->
+<!--                        <div class="mb-2">-->
+<!--                            <form th:action="@{/preparation/add}" th:object="${echantillonDerive}" method="post">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="mb-4 col-12">-->
+<!--                                        <label class="form-label" for="typePrelevement">Technique:</label>-->
+<!--                                        <select th:field="*{typePrelevement}" class="form-select" name="technique" id="typePrelevement">-->
+<!--                                            <option value=" " selected></option>-->
+<!--                                            <option th:each="typePrelevement : ${techniquePreparations}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>-->
+<!--                                        </select>-->
+<!--                                        <span th:if="${#fields.hasErrors('typePrelevements')}" th:errors="*{typePrelevement}" class="text-danger"></span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                    <div class="mb-4 col-2">-->
+<!--                                        <label class="form-label" for="volume">Volume:</label>-->
+<!--                                        <input type="text" id="volume" th:field="*{volume}" class="form-control">-->
+<!--                                        <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="mb-4 col-1">-->
+<!--                                        <label class="form-label" for="unite">Unité:</label>-->
+<!--                                        <select th:field="*{unite}" class="form-select" name="unite" id="unite">-->
+<!--                                            <option th:value="ml" th:text="ml"></option>-->
+<!--                                            <option th:value="g" th:text="g"></option>-->
+<!--                                        </select>-->
+<!--                                        <span th:if="${#fields.hasErrors('unite')}" th:errors="*{unite}" class="text-danger"></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+        <!--            </div>-->
+    </div>
+
+<!--    <div class="d-flex">-->
+<!--        <button onclick="" class="btn btn-success mb-4 me-4">Enregistrer</button>-->
+<!--        <a class="btn btn-outline-primary mb-4" th:href="@{/preparation}">Retour à la liste</a>-->
+<!--    </div>-->
 </section>
+
 </body>
 </html>

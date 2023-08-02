@@ -1,5 +1,6 @@
 package com.ipci.gevahem.controller;
 
+import com.ipci.gevahem.entity.EchantillonDerive;
 import com.ipci.gevahem.entity.Prelevement;
 import com.ipci.gevahem.entity.Preparation;
 import com.ipci.gevahem.entity.TechniquePreparation;
@@ -31,14 +32,14 @@ public class PreparationController {
     }
 
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String add(@Valid @ModelAttribute Preparation preparation, @Valid @ModelAttribute EchantillonDerive echantillonDerive, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
+            redirectAttributes.addFlashAttribute("echantillonDerive", echantillonDerive);
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
             return "redirect:/preparation/add-form";
         }
 
-        preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
         preparationService.addPreparation(preparation);
 
         return "redirect:/preparation";
@@ -70,6 +71,7 @@ public class PreparationController {
     public String add_form(Model model) {
         if (!model.containsAttribute("preparation")) {
             model.addAttribute("preparation", new Preparation());
+            model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
         List<TechniquePreparation> techniquePreparations = techniquePreparationService.getAllTechniquePreparation();

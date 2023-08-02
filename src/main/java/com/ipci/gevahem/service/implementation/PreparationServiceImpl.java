@@ -13,6 +13,7 @@ public class PreparationServiceImpl implements PreparationService {
     private final PreparationRepository preparationRepository;
     @Override
     public void addPreparation(Preparation preparation) {
+        preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
         preparationRepository.save(preparation);
     }
 

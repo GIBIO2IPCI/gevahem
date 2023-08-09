@@ -87,5 +87,11 @@ public class PreparationController {
         return "redirect:/preparation";
     }
 
+    @GetMapping("/echantillon")
+    public String echantillon(@RequestParam int nombre, Model model) {
+        model.addAttribute("nombre_prepa", nombre);
+        return "preparation/echantillons";
+    }
+
 
 }

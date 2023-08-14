@@ -23,6 +23,7 @@
                 <th>Code Préparation</th>
                 <th>Technique de Préparation</th>
                 <th>Prélèvement</th>
+                <th>Nombre Préparation</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                 <td th:text="${preparation.code}"></td>
                 <td th:text="${preparation.techniquePreparations.libelle}"></td>
                 <td th:text="${preparation.prelevement.libelle}"></td>
+                <td th:text="${preparation.nombre}"></td>
                 <td>
                     <a th:href="@{/preparation/edit-form(id=${preparation.id})}" class="btn btn-warning btn-sm">Modifier</a>
                     <a th:href="@{/preparation/delete(id=${preparation.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>

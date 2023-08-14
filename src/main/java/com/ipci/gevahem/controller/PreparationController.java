@@ -42,7 +42,7 @@ public class PreparationController {
 
         preparationService.addPreparation(preparation);
 
-        return "redirect:/preparation";
+        return "redirect:/echantillonDerive/new";
 
     }
 

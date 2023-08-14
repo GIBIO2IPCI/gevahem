@@ -14,14 +14,9 @@ public class Preparation {
     private Long id;
     private String code;
     private Integer nombre;
-
     @ManyToOne
     private Prelevement prelevement;
-
     @ManyToMany
-    @JoinTable(name = "preparation_technique_preparations",
-            joinColumns = @JoinColumn(name = "preparation_id"),
-            inverseJoinColumns = @JoinColumn(name = "technique_preparations_id"))
     private Set<TechniquePreparation> techniquePreparations = new LinkedHashSet<>();
 
 }

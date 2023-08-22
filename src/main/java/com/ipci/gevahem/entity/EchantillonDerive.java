@@ -14,7 +14,6 @@ public class EchantillonDerive {
     private Long id;
     private String unite;
     private Float volume;
-    private Integer conformite;
     @ManyToOne
     private Prelevement prelevement;
     @ManyToOne

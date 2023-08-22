@@ -26,9 +26,8 @@ public class Patient {
     @Email
     @NotBlank(message = "ce champ est obligatoire")
     private String email;
-    @NotBlank(message = "ce champ est obligatoire")
     private String adresse;
-    @Column(nullable = true)
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_naissance;

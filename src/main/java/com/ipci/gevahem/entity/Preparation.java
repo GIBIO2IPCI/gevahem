@@ -3,6 +3,7 @@ package com.ipci.gevahem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -14,6 +15,10 @@ public class Preparation {
     private Long id;
     private String code;
     private Integer nombre;
+    private Integer nombreRestant;
+    private Float volumeRestant;
+    @Temporal(TemporalType.DATE)
+    private Date datePreparation;
     @ManyToOne
     private Prelevement prelevement;
     @ManyToMany

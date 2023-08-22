@@ -1,4 +1,7 @@
 package com.ipci.gevahem.repository;
 
-public interface EchantillonDeriveRepository {
+import com.ipci.gevahem.entity.EchantillonDerive;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EchantillonDeriveRepository extends JpaRepository<EchantillonDerive, Long> {
 }

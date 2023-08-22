@@ -6,6 +6,8 @@ import com.ipci.gevahem.service.PreparationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @AllArgsConstructor
 public class PreparationServiceImpl implements PreparationService {
@@ -14,6 +16,8 @@ public class PreparationServiceImpl implements PreparationService {
     @Override
     public void addPreparation(Preparation preparation) {
         preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
+        preparation.setDatePreparation(new Date());
+        preparation.setNombreRestant(preparation.getNombre());
         preparationRepository.save(preparation);
     }
 

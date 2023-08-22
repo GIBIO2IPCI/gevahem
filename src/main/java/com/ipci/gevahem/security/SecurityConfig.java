@@ -19,9 +19,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.formLogin();
+        httpSecurity.formLogin().loginPage("/login").permitAll();
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/").hasRole("CHEF D'UNITE")
+                .requestMatchers("/webjars/**").permitAll()
                 .requestMatchers("/preparation/**").hasRole("CHEF D'UNITE")
                 .requestMatchers("/preparation/**").hasRole("TECHNICIEN")
                 .anyRequest().authenticated();

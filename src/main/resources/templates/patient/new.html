@@ -20,7 +20,7 @@
 
                 <div class="mb-4 col-4">
                     <label for="prenom">Prénoms:</label>
-                    <input type="text" id="prenom" th:field="*{prenom}" placeholder="Prénom patient" class="form-control">
+                    <input type="text" id="prenom" th:field="*{prenom}" placeholder="Prénoms patient" class="form-control">
                     <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" class="text-danger"></span>
                 </div>
 
@@ -32,7 +32,7 @@
 
                 <div class="mb-4 col-4">
                     <label for="contact">Contact:</label>
-                    <input type="text" id="contact" th:field="*{contact}" placeholder="Contact patient" class="form-control">
+                    <input type="tel" id="contact" th:field="*{contact}" placeholder="Contact patient" class="form-control">
                     <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}" class="text-danger"></span>
                 </div>
 

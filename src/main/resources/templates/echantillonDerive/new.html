@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Echantillons derives new</title>
 </head>
 <body>
+    <section layout:fragment="content" class="container">
+        <h2 class="mb-4 text-center">Enregistrer un échantillon dérivé</h2>
+        <div class="d-flex justify-content-center " >
 
+            <div class="">
+                <form th:action="@{/echantillonDerive/add}" th:object="${echantillonDerive}" method="post">
+                    <div class="row">
+
+                        <div class="mb-4 col-12">
+                            <label class="form-label" for="nombre">Nombre d'échantillons dérivés:</label>
+                            <input type="number" id="nombre"  class="form-control">
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

@@ -29,6 +29,7 @@ public class Glaciere {
     private String cause_conformite;
     @ManyToOne
     @NotNull
+
     private Ambulancier ambulancier;
     @OneToOne(mappedBy = "glaciere", cascade = CascadeType.ALL, orphanRemoval = true)
     private Reception reception;

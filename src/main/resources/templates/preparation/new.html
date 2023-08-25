@@ -32,11 +32,11 @@
 
                     <div class="mb-4 col-12">
                         <label class="form-label" for="technique">Technique:</label>
-                        <select th:field="*{techniquePreparations}" class="form-select" name="technique" id="technique">
-                            <option value=" " selected></option>
-                            <option th:each="technique : ${techniquePreparations}" th:value="${technique.id}" th:text="${technique.libelle}"></option>
+                        <select class="form-select" name="technique" id="technique">
+                            <option value="AUCUNE">AUCUNE</option>
+                            <option value="CENTRIFUGATION">CENTRIFUGATION</option>
                         </select>
-                        <span th:if="${#fields.hasErrors('techniquePreparations')}" th:errors="*{techniquePreparations}" class="text-danger"></span>
+                        <span class="text-danger"></span>
                     </div>
 
                 </div>

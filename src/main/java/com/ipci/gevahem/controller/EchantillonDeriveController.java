@@ -26,17 +26,18 @@ public class EchantillonDeriveController {
         return "echantillonDerive/index";
     }
 
+
     @PostMapping("/add")
     public String add(@Valid @ModelAttribute EchantillonDerive echantillonDerive, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("echantillonDerive", echantillonDerive);
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            return "redirect:/echantillonDerive/add-form";
+            return "redirect:/echantillons-derives/add-form";
         }
 
         echantillonDeriveService.addEchantillonDerive(echantillonDerive);
 
-        return "redirect:/echantillonDerive";
+        return "redirect:/echantillons-derives";
 
     }
 
@@ -45,23 +46,31 @@ public class EchantillonDeriveController {
         if (result.hasErrors()){
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.echantillonDerive", result);
             redirectAttributes.addFlashAttribute("echantillonDerive", echantillonDerive);
-            return "redirect:/echantillonDerive/edit-form?id=" + echantillonDerive.getId();
+            return "redirect:/echantillons-derives/edit-form?id=" + echantillonDerive.getId();
         }
 
         echantillonDeriveService.addEchantillonDerive(echantillonDerive);
 
-        return "redirect:/echantillonDerive";
+        return "redirect:/echantillons-derives";
     }
 
     @GetMapping("/add-form")
-    public String add_form(Model model){
+    public String add_form(Model model, @RequestParam int pre, @RequestParam int nombre){
         if (!model.containsAttribute("echantillonDerive")){
             model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
         List<Preparation> preparation = (List<Preparation>) preparationService.getAllPreparations();
         model.addAttribute("preparations", preparation);
+        model.addAttribute("nb", nombre);
+        model.addAttribute("id", pre);
         return "echantillonDerive/new";
+    }
+
+    @GetMapping("/nb_select")
+    public String select_nb(Model model, @RequestParam int prelevement){
+        model.addAttribute("id_pre", prelevement);
+        return "echantillonDerive/nb_echantillon";
     }
 
     @GetMapping("/edit-form")
@@ -83,6 +92,6 @@ public class EchantillonDeriveController {
     @GetMapping("/delete")
     public String delete(Long id){
         echantillonDeriveService.deleteEchantillonDeriveById(id);
-        return "redirect:/echantillonDerive";
+        return "redirect:/echantillons-derives";
     }
 }

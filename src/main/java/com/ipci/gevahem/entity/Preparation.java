@@ -21,7 +21,7 @@ public class Preparation {
     private Date datePreparation;
     @ManyToOne
     private Prelevement prelevement;
-    @ManyToMany
-    private Set<TechniquePreparation> techniquePreparations = new LinkedHashSet<>();
+    @ElementCollection
+    private Set<String> technique_preparation;
 
 }

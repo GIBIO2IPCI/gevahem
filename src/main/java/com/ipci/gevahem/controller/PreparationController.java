@@ -3,10 +3,8 @@ package com.ipci.gevahem.controller;
 import com.ipci.gevahem.entity.EchantillonDerive;
 import com.ipci.gevahem.entity.Prelevement;
 import com.ipci.gevahem.entity.Preparation;
-import com.ipci.gevahem.entity.TechniquePreparation;
 import com.ipci.gevahem.service.PrelevementService;
 import com.ipci.gevahem.service.PreparationService;
-import com.ipci.gevahem.service.TechniquePreparationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,7 +21,6 @@ import java.util.List;
 public class PreparationController {
     private final PreparationService preparationService;
     private final PrelevementService prelevementService;
-    private final TechniquePreparationService techniquePreparationService;
 
     @GetMapping("")
     public String index(Model model) {
@@ -32,7 +29,7 @@ public class PreparationController {
     }
 
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes, @RequestParam int prelevement) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
@@ -40,8 +37,8 @@ public class PreparationController {
         }
 
         preparationService.addPreparation(preparation);
-
-        return "redirect:/echantillons-derives/add-form";
+        redirectAttributes.addAttribute("prelevement", prelevement);
+        return "redirect:/echantillons-derives/nb_select";
 
     }
 
@@ -73,9 +70,7 @@ public class PreparationController {
             model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
-        List<TechniquePreparation> techniquePreparations = techniquePreparationService.getAllTechniquePreparation();
         List<Prelevement> prelevements = prelevementService.getAllPrelevement();
-        model.addAttribute("techniquePreparations", techniquePreparations);
         model.addAttribute("prelevements", prelevements);
         return "preparation/new";
     }

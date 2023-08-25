@@ -9,22 +9,39 @@
 <body>
     <section layout:fragment="content" class="container">
         <h2 class="mb-4 text-center">Enregistrer un échantillon dérivé</h2>
-        <div class="d-flex justify-content-center " >
+        <h1 class="text-center mt-5" th:text="${nb}"></h1>
+        <h1 class="text-center mt-5" th:text="${id}"></h1>
+<!--        <div class="row">-->
 
-            <div class="">
-                <form th:action="@{/echantillonDerive/add}" th:object="${echantillonDerive}" method="post">
-                    <div class="row">
+<!--            <div class="col-6">-->
+<!--                <form method="post" th:action="@{/echantillons-derives/add}" th:each="nombre, index : ${nb}">-->
 
-                        <div class="mb-4 col-12">
-                            <label class="form-label" for="nombre">Nombre d'échantillons dérivés:</label>
-                            <input type="number" id="nombre"  class="form-control">
 
-                        </div>
 
-                    </div>
-                </form>
-            </div>
-        </div>
+<!--                    <div class="col-6">-->
+<!--                        <label th:for="'type' + ${index.index}">-->
+<!--                            <select th:id="'type' + ${index.index}" name="">-->
+
+<!--                            </select>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                    <div class="col-4">-->
+<!--                        <label th:for="'type' + ${index.index}">-->
+<!--                            <input th:id="'type' + ${index.index}" name="" type="number">-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                    <div class="col-2">-->
+<!--                        <label th:for="'type' + ${index.index}">-->
+<!--                            <select name="" th:id="'type' + ${index.index}">-->
+<!--                                <option th:value="ml" th:text="ml"></option>-->
+<!--                                <option th:value="g" th:text="g"></option>-->
+<!--                            </select>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--        </div>-->
     </section>
 </body>
 </html>

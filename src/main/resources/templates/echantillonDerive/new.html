@@ -7,41 +7,65 @@
     <title>Echantillons derives new</title>
 </head>
 <body>
-    <section layout:fragment="content" class="container">
-        <h2 class="mb-4 text-center">Enregistrer un échantillon dérivé</h2>
-        <h1 class="text-center mt-5" th:text="${nb}"></h1>
-        <h1 class="text-center mt-5" th:text="${id}"></h1>
-<!--        <div class="row">-->
+<section layout:fragment="content" class="container">
+    <h2 class="text-center">Enregistrer un échantillon dérivé</h2>
+        <form  method="post" class="mt-5" th:action="@{/echantillons-derives/add}">
+            <div th:each="i : ${#numbers.sequence(1, nb)}" class="mb-4 d-flex justify-content-center" >
+                <label class="form-label ms-3 col-4">Type d'échantillons dérivés :
+                    <select th:id="${'select' + i}" th:name="${'select' + i}" class="form-select" name="">
+                        <option value=" " selected></option>
+                        <option th:value="ADN" th:text="ADN"></option>
+                        <option th:value="ARN" th:text="ARN"></option>
+                        <option th:value="BIOPSIE" th:text="BIOPSIE"></option>
+                        <option th:value="NASO" th:text="NASO"></option>
+                    </select>
+                </label>
+                <label class="form-label ms-3 col-3">Volume :
+                    <input th:id="${'input' + i}" th:name="${'input' + i}" class="form-control" type="text">
+                </label>
+                <label class="form-label ms-3 col-2">Unité :
+                    <select th:id="${'select' + i}" th:name="${'select' + i}" class="form-select" name="">
+                        <option th:value="ml" th:text="ml"></option>
+                        <option th:value="g" th:text="g"></option>
+                    </select>
+                </label>
+            </div>
+            <div class="mb-4 mx-auto d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary ">Enregistrer</button>
+            </div>
+        </form>
 
-<!--            <div class="col-6">-->
-<!--                <form method="post" th:action="@{/echantillons-derives/add}" th:each="nombre, index : ${nb}">-->
+        <div class="col-6">
 
+<!--            <form method="post" class="mb-4" th:action="@{/echantillons-derives/add}" th:each="nombre, index : ${nb}">-->
 
+<!--                <div class="col-6">-->
+<!--                    <label th:for="'type' + ${index.index}" class="form-label">-->
+<!--                        Type d'échantillons dérivés :-->
+<!--                        <select th:id="'type' + ${index.index}" class="form-select" name="">-->
 
-<!--                    <div class="col-6">-->
-<!--                        <label th:for="'type' + ${index.index}">-->
-<!--                            <select th:id="'type' + ${index.index}" name="">-->
+<!--                        </select>-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div class="col-4">-->
+<!--                    <label th:for="'type' + ${index.index}" class="form-label">-->
+<!--                        Volume :-->
+<!--                        <input th:id="'type' + ${index.index}" class="form-control" name="" type="number">-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div class="col-2">-->
+<!--                    <label th:for="'type' + ${index.index}" class="form-label">-->
+<!--                        Unité :-->
+<!--                        <select name="" th:id="'type' + ${index.index}" class="form-select">-->
+<!--                            <option th:value="ml" th:text="ml"></option>-->
+<!--                            <option th:value="g" th:text="g"></option>-->
+<!--                        </select>-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </form>-->
+        </div>
 
-<!--                            </select>-->
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                    <div class="col-4">-->
-<!--                        <label th:for="'type' + ${index.index}">-->
-<!--                            <input th:id="'type' + ${index.index}" name="" type="number">-->
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                    <div class="col-2">-->
-<!--                        <label th:for="'type' + ${index.index}">-->
-<!--                            <select name="" th:id="'type' + ${index.index}">-->
-<!--                                <option th:value="ml" th:text="ml"></option>-->
-<!--                                <option th:value="g" th:text="g"></option>-->
-<!--                            </select>-->
-<!--                        </label>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-
-<!--        </div>-->
-    </section>
+    </div>
+</section>
 </body>
 </html>

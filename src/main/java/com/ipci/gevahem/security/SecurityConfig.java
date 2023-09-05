@@ -23,6 +23,9 @@ public class SecurityConfig {
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/").hasRole("CHEF D'UNITE")
                 .requestMatchers("/webjars/**").permitAll()
+                .requestMatchers("/images/**").permitAll()
+                .requestMatchers("/css/**").permitAll()
+                .requestMatchers("/js/**").permitAll()
                 .requestMatchers("/preparation/**").hasRole("CHEF D'UNITE")
                 .requestMatchers("/preparation/**").hasRole("TECHNICIEN")
                 .anyRequest().authenticated();

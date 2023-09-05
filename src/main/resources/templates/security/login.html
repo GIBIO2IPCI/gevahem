@@ -9,29 +9,43 @@
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>Login</title>
+    <style>
+        body {
+            background-image: url('/images/cereb.jpg'); /* Assurez-vous que le chemin est correct */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+    </style>
 </head>
+
 <body>
-    <div class="row mt-3">
-        <div class="col-md-6 offset-3">
-            <div class="card">
-                <div class="card-header">Connexion</div>
-                <div class="card-body">
-                    <form th:action="@{/login}" method="post">
-                        <div class="mb-3 mt-3">
-                            <label for="username" class="form-label">Nom d'utilisateur:</label>
-                            <input type="text" name="username" id="username" class="form-control">
-                        </div>
-                        <div class="mb-3 mt-3">
-                            <label for="password" class="form-label">Mot de passe:</label>
-                            <input type="password" name="password" id="password" class="form-control">
-                        </div>
-                        <div class="">
-                            <button type="submit" class="btn btn-primary mb-4 me-4">Se connecter</button>
-                        </div>
-                    </form>
-                </div>
+
+<div class="row">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card" style="height: 300px; width: 500px;">
+            <div class="card-header text-center text-uppercase" style="font-size: x-large">Connexion</div>
+            <div class="card-body bg-light">
+                <form th:action="@{/login}" method="post">
+                    <div class="mb-3 mt-3">
+                        <label for="username" class="form-label">Nom d'utilisateur:</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="password" class="form-label">Mot de passe:</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+                    <div class="mb-4 mx-auto d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary ">Se connecter</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+</div>
+
+
 </body>
 </html>

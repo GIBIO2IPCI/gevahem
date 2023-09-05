@@ -3,6 +3,7 @@ package com.ipci.gevahem.controller;
 import com.ipci.gevahem.entity.*;
 import com.ipci.gevahem.service.EchantillonDeriveService;
 import com.ipci.gevahem.service.PreparationService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -55,20 +56,23 @@ public class EchantillonDeriveController {
     }
 
     @GetMapping("/add-form")
-    public String add_form(Model model, @RequestParam int pre, @RequestParam int nombre){
+    public String add_form(Model model, HttpSession httpSession, @RequestParam int nombre){
         if (!model.containsAttribute("echantillonDerive")){
             model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
+
         List<Preparation> preparation = (List<Preparation>) preparationService.getAllPreparations();
         model.addAttribute("preparations", preparation);
         model.addAttribute("nb", nombre);
-        model.addAttribute("id", pre);
+        model.addAttribute("id", httpSession.getAttribute("id"));
         return "echantillonDerive/new";
     }
 
     @GetMapping("/nb_select")
-    public String select_nb(Model model, @RequestParam int prelevement){
+    public String select_nb(Model model, @RequestParam int prelevement, HttpSession httpSession){
+        String id_pre = String.valueOf(prelevement);
+        httpSession.setAttribute("id", id_pre);
         model.addAttribute("id_pre", prelevement);
         return "echantillonDerive/nb_echantillon";
     }

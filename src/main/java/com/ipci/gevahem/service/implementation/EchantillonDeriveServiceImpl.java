@@ -3,6 +3,7 @@ package com.ipci.gevahem.service.implementation;
 import com.ipci.gevahem.entity.EchantillonDerive;
 import com.ipci.gevahem.entity.Preparation;
 import com.ipci.gevahem.repository.EchantillonDeriveRepository;
+import com.ipci.gevahem.repository.TypePrelevementRepository;
 import com.ipci.gevahem.service.EchantillonDeriveService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class EchantillonDeriveServiceImpl implements EchantillonDeriveService {
     private EchantillonDeriveRepository echantillonDeriveRepository;
+    private TypePrelevementRepository typePrelevementRepository;
     @Override
     public List<EchantillonDerive> getAllEchantillonDerive() {
         return echantillonDeriveRepository.findAll();

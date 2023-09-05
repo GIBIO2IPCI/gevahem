@@ -33,10 +33,10 @@
                 <td th:text="${client.raison_sociale}"></td>
                 <td th:text="${client.contact}"></td>
 
-                <td>
-                    <a th:href="@{/client/edit-form(id=${client.id})}" class="btn btn-warning">Modifier</a>
-                    <a th:href="@{/client/show(id=${client.id})}" class="btn btn-info">Details</a>
-                    <a th:href="@{/client/delete(id=${client.id})}" class="btn btn-outline-danger">Supprimer</a>
+                <td class="d-flex text-align">
+                    <a th:href="@{/client/edit-form(id=${client.id})}" class="btn btn-warning btn-sm ">Modifier</a>
+                    <a th:href="@{/client/show(id=${client.id})}" class="btn btn-outline-info btn-sm ms-1">Details</a>
+                    <a th:href="@{/client/delete(id=${client.id})}" class="btn btn-outline-danger btn-sm ms-1">Supprimer</a>
                 </td>
             </tr>
             </tbody>

@@ -3,6 +3,7 @@ package com.ipci.gevahem.controller;
 import com.ipci.gevahem.entity.*;
 import com.ipci.gevahem.service.EchantillonDeriveService;
 import com.ipci.gevahem.service.PreparationService;
+import com.ipci.gevahem.service.TypePrelevementService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,13 +21,13 @@ import java.util.List;
 public class EchantillonDeriveController {
     private PreparationService preparationService;
     private EchantillonDeriveService echantillonDeriveService;
+    private TypePrelevementService typePrelevementService;
 
     @GetMapping("")
     public String index(Model model) {
         model.addAttribute("echantillonDerives", echantillonDeriveService.getAllEchantillonDerive());
         return "echantillonDerive/index";
     }
-
 
     @PostMapping("/add")
     public String add(@Valid @ModelAttribute EchantillonDerive echantillonDerive, BindingResult result, RedirectAttributes redirectAttributes) {
@@ -63,7 +64,9 @@ public class EchantillonDeriveController {
 
 
         List<Preparation> preparation = (List<Preparation>) preparationService.getAllPreparations();
+        List<TypePrelevement> typePrelevement = typePrelevementService.getAllTypePrelevement();
         model.addAttribute("preparations", preparation);
+        model.addAttribute("typePrelevements", typePrelevement);
         model.addAttribute("nb", nombre);
         model.addAttribute("id", httpSession.getAttribute("id"));
         return "echantillonDerive/new";
@@ -83,7 +86,9 @@ public class EchantillonDeriveController {
             model.addAttribute("echantillonDerive", echantillonDeriveService.getEchantillonDeriveById(id));
         }
         List<Preparation> preparation = (List<Preparation>) preparationService.getAllPreparations();
+        List<TypePrelevement> typePrelevement = typePrelevementService.getAllTypePrelevement();
         model.addAttribute("preparations", preparation);
+        model.addAttribute("typePrelevements", typePrelevement);
         return "echantillonDerive/update";
     }
 

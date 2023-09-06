@@ -1,6 +1,8 @@
 package com.ipci.gevahem.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,10 +15,14 @@ public class EchantillonDerive {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
+    @NotBlank
     private String unite;
+    @NotNull
     private Float volume;
+    @NotNull
     @ManyToOne
     private Prelevement prelevement;
+    @NotNull
     @ManyToOne
     private TypePrelevement typePrelevement;
     @OneToMany

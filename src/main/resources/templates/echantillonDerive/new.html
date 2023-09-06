@@ -11,22 +11,21 @@
     <h2 class="text-center">Enregistrer un échantillon dérivé</h2>
         <form  method="post" class="mt-5" th:action="@{/echantillons-derives/add}">
             <div th:each="i : ${#numbers.sequence(1, nb)}" class="mb-4 d-flex justify-content-center" >
+                <input type="number" class="form-control" hidden name="prelevement" th:id="${'prelevement' + i}" th:value="${id}">
+
                 <label class="form-label ms-3 col-4">Type d'échantillons dérivés :
-                    <select th:id="${'select' + i}" th:name="${'select' + i}" class="form-select" name="">
+                    <select th:id="${'type' + i}" th:name="${'type' + i}" class="form-select" name="">
                         <option value=" " selected></option>
-                        <option th:value="ADN" th:text="ADN"></option>
-                        <option th:value="ARN" th:text="ARN"></option>
-                        <option th:value="BIOPSIE" th:text="BIOPSIE"></option>
-                        <option th:value="NASO" th:text="NASO"></option>
+                        <option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>
                     </select>
                 </label>
                 <label class="form-label ms-3 col-3">Volume :
-                    <input th:id="${'input' + i}" th:name="${'input' + i}" class="form-control" type="text">
+                    <input th:id="${'volume' + i}" th:name="${'volume' + i}" class="form-control" type="text">
                 </label>
                 <label class="form-label ms-3 col-2">Unité :
-                    <select th:id="${'select' + i}" th:name="${'select' + i}" class="form-select" name="">
-                        <option th:value="ml" th:text="ml"></option>
-                        <option th:value="g" th:text="g"></option>
+                    <select th:id="${'unite' + i}" th:name="${'unite' + i}" class="form-select" name="">
+                        <option value="ml">ml</option>
+                        <option value="g">g</option>
                     </select>
                 </label>
             </div>

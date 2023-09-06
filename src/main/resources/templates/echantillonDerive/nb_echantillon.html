@@ -14,11 +14,11 @@
         <div class="">
             <form th:action="@{/echantillons-derives/add-form}" method="GET">
                 <div class="row">
-                    <div class="mb-4 col-8">
+                    <div class="mb-4 col-10">
                         <label class="form-label" for="nombre">Nombre d'échantillons dérivés:</label>
                         <input type="number" id="nombre" class="form-control" name="nombre">
                     </div>
-                    <div class="mb-4 col-4">
+                    <div class="mb-4 col-4 visually-hidden">
                         <label class="form-label" for="pre">Id prélèvement:</label>
                         <input type="number" id="pre" class="form-control" name="pre" th:value="${id_pre}" disabled>
                     </div>

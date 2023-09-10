@@ -17,7 +17,7 @@ public class PreparationServiceImpl implements PreparationService {
     public void addPreparation(Preparation preparation) {
         preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
         preparation.setDatePreparation(new Date());
-        preparation.setNombreRestant(preparation.getNombre());
+        preparation.setNombreRestant(preparation.getNombre() - 1);
         preparationRepository.save(preparation);
     }
 

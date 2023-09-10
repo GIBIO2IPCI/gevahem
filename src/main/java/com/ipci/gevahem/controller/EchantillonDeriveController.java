@@ -30,11 +30,13 @@ public class EchantillonDeriveController {
     }
 
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute EchantillonDerive echantillonDerive, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String add(@Valid @ModelAttribute EchantillonDerive echantillonDerive,
+                      BindingResult result,
+                      RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("echantillonDerive", echantillonDerive);
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            return "redirect:/echantillons-derives/add-form";
+            return "redirect:/echantillons-derives/add-form?nombre=2";
         }
 
         echantillonDeriveService.addEchantillonDerive(echantillonDerive);

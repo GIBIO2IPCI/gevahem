@@ -21,7 +21,6 @@ public class Preparation {
     private Date datePreparation;
     @ManyToOne
     private Prelevement prelevement;
-    @ElementCollection
-    private Set<String> technique_preparation;
+    private String technique_preparation;
 
 }

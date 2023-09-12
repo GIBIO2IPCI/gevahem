@@ -14,6 +14,5 @@ public class TypePrelevement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JdbcTypeCode(SqlTypes.VARCHAR)
     private String libelle;
 }

@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Echantillons derives new</title>
-</head>
-<body>
-<section layout:fragment="content" class="container">
-    <h2 class="text-center">Enregistrer un échantillon dérivé</h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Echantillons derives new</title>
+    </head>
+    <body>
+        <section layout:fragment="content" class="container">
 
-    <div th:each="i : ${#numbers.sequence(1, nb)}" class="">
-        <form  method="post" class="mt-5" th:action="@{/echantillons-derives/add}">
-            <div class="mb-4 d-flex justify-content-center" >
-                <input type="number" class="form-control" hidden name="prelevement" th:id="${'prelevement' + i}" th:value="${id}">
+            <h1 class="text-center">Enregistrer un échantillon dérivé</h1>
 
-                <label class="form-label ms-3 col-4">Type d'échantillons dérivés :
-                    <select th:field="*{typePrelevements}" th:id="${'type' + i}" th:name="${'type' + i}" class="form-select" name="">
-                        <option value=" " selected></option>
-                        <option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>
-                    </select>
-                    <span th:if="${#fields.hasErrors('typePrelevements')}" th:errors="*{typePrelevements}" class="text-danger"></span>
-                </label>
-                <label class="form-label ms-3 col-3">Volume :
-                    <input th:field="*{volume}" th:id="${'volume' + i}" th:name="${'volume' + i}" class="form-control" type="text">
-                </label>
-                <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>
-                <label class="form-label ms-3 col-2">Unité :
-                    <select th:field="*{unite}" th:id="${'unite' + i}" th:name="${'unite' + i}" class="form-select" name="">
-                        <option value="ml">ml</option>
-                        <option value="g">g</option>
-                    </select>
-                </label>
+                <form th:each="i : ${#numbers.sequence(1, nb)}" th:object="${echantillonDerive}" method="post" class="mt-4" th:action="@{/echantillons-derives/add}">
+
+                    <div class="mb-4 d-flex justify-content-center" >
+
+                        <label class="form-label ms-3 col-4">
+                            Type d'échantillons dérivés :
+                            <select th:field="*{typePrelevement}" th:id="${'type' + i}" th:name="${'type' + i}" class="form-select">
+                                <option value=" " selected></option>
+                                <option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('typePrelevement')}" th:errors="*{typePrelevement}" class="text-danger"></span>
+                        </label>
+
+                        <label class="form-label ms-3 col-3">
+                            Volume :
+                            <input th:field="*{volume}" th:id="${'volume' + i}" th:name="${'volume' + i}" class="form-control" type="number">
+                            <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>
+                        </label>
+
+
+                        <label class="form-label ms-3 col-2">
+                            Unité :
+                            <select th:field="*{unite}" th:id="${'unite' + i}" th:name="${'unite' + i}" class="form-select">
+                                <option value="ml">ml</option>
+                                <option value="g">g</option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('unite')}" th:errors="*{unite}" class="text-danger"></span>
+                        </label>
+
+                    </div>
+
+                </form>
+
+            <div class="mb-4 mx-auto d-flex justify-content-center">
+                <button id="soumettreTous" class="btn btn-primary">Enregistrer</button>
             </div>
-        </form>
-    </div>
-    <div class="mb-4 mx-auto d-flex justify-content-center">
-        <button id="soumettreTous" type="submit" class="btn btn-primary">Enregistrer</button>
-    </div>
-</section>
-</body>
+
+        </section>
+    </body>
 </html>

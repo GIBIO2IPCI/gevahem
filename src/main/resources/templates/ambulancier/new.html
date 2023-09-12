@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,8 @@
 
                 <div class="mb-4">
                     <label for="contact">Contact:</label>
-                    <input type="text" id="contact" th:field="*{contact}" placeholder="Contact ambulancier" class="form-control">
+                    <input type="text" id="contact" th:field="*{contact}" placeholder="Contact ambulancier"
+                           class="form-control">
                     <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}" class="text-danger"></span>
                 </div>
             </div>
@@ -30,7 +32,6 @@
             </div>
 
         </form>
-
 
     </div>
 </section>

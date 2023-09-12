@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -15,7 +16,8 @@ public class PreparationServiceImpl implements PreparationService {
     private final PreparationRepository preparationRepository;
     @Override
     public void addPreparation(Preparation preparation) {
-        preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle());
+
+        preparation.setCode("PREPA" + preparation.getPrelevement().getLibelle().toUpperCase());
         preparation.setDatePreparation(new Date());
         preparation.setNombreRestant(preparation.getNombre() - 1);
         preparationRepository.save(preparation);
@@ -32,7 +34,7 @@ public class PreparationServiceImpl implements PreparationService {
     }
 
     @Override
-    public Object getAllPreparations() {
+    public List<Preparation> getAllPreparations() {
         return preparationRepository.findAll();
     }
 }

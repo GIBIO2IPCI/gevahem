@@ -11,20 +11,26 @@ import java.util.List;
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class EchantillonDerive {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String libelle;
-    @NotBlank
+
+    @NotNull
     private String unite;
+
     @NotNull
     private Float volume;
-    @NotNull
+
     @ManyToOne
+    @JoinColumn(name = "prelevement_id")
     private Prelevement prelevement;
+
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "type_prelevement_id")
     private TypePrelevement typePrelevement;
-    @OneToMany
-    private List<Preparation> preparation = new ArrayList<>();
+
 }

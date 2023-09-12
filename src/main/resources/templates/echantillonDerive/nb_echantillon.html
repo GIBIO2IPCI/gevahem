@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Echantillons derives new</title>
-</head>
-<body>
-<section layout:fragment="content" class="container">
-    <h2 class="mb-4 text-center">Enregistrer un échantillon dérivé</h2>
-    <div class="d-flex justify-content-center " >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Echantillons derives new</title>
+    </head>
+    <body>
+        <section layout:fragment="content" class="container" th:object="${prelevement}">
 
-        <div class="">
-            <form th:action="@{/echantillons-derives/add-form}" method="GET">
-                <div class="row">
-                    <div class="mb-4 col-10">
-                        <label class="form-label" for="nombre">Nombre d'échantillons dérivés:</label>
-                        <input type="number" id="nombre" class="form-control" name="nombre">
-                    </div>
-                    <div class="mb-4 col-4 visually-hidden">
-                        <label class="form-label" for="pre">Id prélèvement:</label>
-                        <input type="number" id="pre" class="form-control" name="pre" th:value="${id_pre}" disabled>
-                    </div>
-                    <div class="">
-                        <button type="submit" class="btn btn-primary">Suivant</button>
-                    </div>
+            <h1 class="mb-3 text-center">Enregistrer un échantillon dérivé</h1>
+            <h2 class="mb-5 text-center text-muted" th:text="'Pour le prélèvement : ' +  *{libelle}"></h2>
+
+            <div class="d-flex justify-content-center " >
+
+                <div class="">
+                    <form th:action="@{/echantillons-derives/add-form}" method="GET">
+                        <div class="row">
+                            <div class="mb-4 col-10">
+                                <label class="form-label" for="nombre">Nombre d'échantillons dérivés:</label>
+                                <input type="number" id="nombre" class="form-control" name="nombre">
+                            </div>
+
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">Suivant</button>
+                            </div>
+
+                        </div>
+
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
-</section>
-</body>
+
+            </div>
+
+        </section>
+    </body>
 </html>

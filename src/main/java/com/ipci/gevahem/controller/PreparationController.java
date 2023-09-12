@@ -5,6 +5,7 @@ import com.ipci.gevahem.entity.Prelevement;
 import com.ipci.gevahem.entity.Preparation;
 import com.ipci.gevahem.service.PrelevementService;
 import com.ipci.gevahem.service.PreparationService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,10 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/preparation")
 public class PreparationController {
+
     private final PreparationService preparationService;
     private final PrelevementService prelevementService;
+    private final HttpSession httpSession;
 
     @GetMapping("")
     public String index(Model model) {
@@ -32,12 +35,14 @@ public class PreparationController {
     public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes, @RequestParam int prelevement) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
-            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.preparation", result);
             return "redirect:/preparation/add-form";
         }
 
         preparationService.addPreparation(preparation);
         redirectAttributes.addAttribute("prelevement", prelevement);
+
+
         return "redirect:/echantillons-derives/nb_select";
 
     }
@@ -46,8 +51,7 @@ public class PreparationController {
     public String update(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
-            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            redirectAttributes.addFlashAttribute("preparation", preparation);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.preparation", result);
             return "redirect:/preparation/edit-form?id=" + preparation.getId();
         }
 

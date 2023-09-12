@@ -14,15 +14,15 @@
         <a th:href="@{/client/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter un nouveau client </a>
         <a class="btn btn-outline-primary btn-sm" th:href="@{/client}">Retour à la liste</a>
     </div>
-
+    <h1 class="mt-2 d-flex justify-content-center" >Informations du client</h1>
     <div class="row">
         <div class="col-6 ">
-            <h5 th:text=" 'Type client: ' +  *{typeClient.libelle}"></h5>
-            <h5 th:text=" 'Raison sociale du client: ' +  *{raison_sociale}"></h5>
-            <h5 th:text=" 'Nom du responsable: ' +  *{responsable_client}"></h5>
-            <h5 th:text=" 'Contact du client: ' +  *{contact}"></h5>
-            <h5 th:text=" 'E-mail du client: ' +  *{email}"></h5>
-            <h5 th:text=" 'Adresse du client: ' +  *{adresse}"></h5>
+            <h5>Type Client :<span th:text="*{typeClient.libelle}" class="badge bg-primary"></span></h5>
+            <h5>Raison sociale :<span th:text="*{raison_sociale}" class="badge bg-primary"></span></h5>
+            <h5>Responsable :<span th:text=" *{responsable_client}" class="badge bg-primary"></span></h5>
+            <h5>Contact :<span th:text=" *{contact}" class="badge bg-primary"></span></h5>
+            <h5>E-mail :<span th:text=" *{email}" class="badge bg-primary"></span></h5>
+            <h5>Adresse :<span th:text=" *{adresse}" class="badge bg-primary"></span></h5>
         </div>
         <div class="col-6">
             <img src="/images/reception.jpg" width="500" alt="reception">

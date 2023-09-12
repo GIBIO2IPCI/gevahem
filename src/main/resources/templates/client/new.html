@@ -8,9 +8,9 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
 
-        <form th:action="@{/client/add}" th:object="${client}" method="POST">
+        <form th:action="@{/client/add}" th:object="${client}" method="POST" class="mb-5">
             <h2 class="mb-4">Enregistrer un client</h2>
             <div class="row">
                 <div class="mb-4 col-4">
@@ -21,7 +21,7 @@
                     <span th:if="${#fields.hasErrors('typeClient')}" th:errors="*{typeClient}" class="text-danger"></span>
                 </div>
 
-                <div class="mb-4 col-3">
+                <div class="mb-4 col-4">
                     <label class="form-label" for="raison_sociale">Raison Sociale:</label>
                     <input type="text" id="raison_sociale" th:field="*{raison_sociale}" class="form-control">
                     <span th:if="${#fields.hasErrors('raison_sociale')}" th:errors="*{raison_sociale}" class="text-danger"></span>

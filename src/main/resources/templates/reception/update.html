@@ -13,7 +13,7 @@
         <form th:action="@{/reception/update}" th:object="${reception}" method="POST">
             <h2 class="mb-4">Modifier une reception</h2>
             <input type="hidden" th:field="*{id}">
-            <div class="mb-4 col-3">
+            <div class="mb-4">
                 <label class="form-label" for="glaciere">Glaciere</label>
                 <select th:field="*{glaciere.id}" class="form-select" name="glaciere" id="glaciere">
                     <option th:each="glaciere : ${glacieres}" th:value="${glaciere.id}" th:text="${glaciere.libelle}" th:selected="${glaciere.id == reception.glaciere.id}"></option>

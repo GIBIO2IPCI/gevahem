@@ -14,19 +14,31 @@
         <a th:href="@{/glaciere/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle glacière </a>
         <a class="btn btn-outline-primary btn-sm" th:href="@{/glaciere}">Retour à la liste</a>
     </div>
-
+    <h1 class="mt-2 d-flex justify-content-center" th:text="'Glacière ' + *{libelle} "></h1>
         <div class="row">
             <div class="col-6 ">
-                <h5 th:text=" 'Libelle glacière: ' +  *{libelle}"></h5>
-                <h5 th:text=" 'Nom de l\'ambulancier: ' +  *{ambulancier.nom}"></h5>
-                <h5 th:text=" 'Contact de l\'ambulancier: ' +  *{ambulancier.contact}"></h5>
-                <h5 th:text=" 'Nombre de prelevement: ' +  *{nombre_prelevement}"></h5>
-                <h5 th:text=" 'Température d\'arrivée: ' +  *{temperature_arrivee}"></h5>
-                <h5 th:text=" 'Température de départ: ' +  *{temperature_depart}"></h5>
-                <h5 th:text=" 'Conformité: ' +  *{conformite.libelle}"></h5>
-                <h5 th:text=" 'Cause conformité: ' +  *{cause_conformite}"></h5>
-                <h5 th:text=" 'Raison sociale du client: ' +  *{client.raison_sociale}"></h5>
-                <h5 th:text=" 'Contact du client: ' +  *{client.contact}"></h5>
+                <div class="mt-2">
+                    <h3 class="mt-2">Informations de l'ambulancier</h3>
+                    <h5>Nom :<span th:text=" *{ambulancier.nom}" class="badge bg-primary"></span></h5>
+                    <h5>Contact  :<span th:text=" *{ambulancier.contact}" class="badge bg-primary"></span></h5>
+                </div>
+               <div class="mt-4">
+                   <h3 class="mt-2">Informations de la glacière</h3>
+                   <h5>Nombre de prélèvements :<span th:text="*{nombre_prelevement}" class="badge bg-primary"></span></h5>
+                   <h5>Température d'arrivée :<span th:text="*{temperature_arrivee}" class="badge bg-primary"></span></h5>
+                   <h5>Température de départ :<span th:text="*{temperature_depart}" class="badge bg-primary"></span></h5>
+                   <h5>Conformité :<span th:text="*{conformite.libelle}" class="badge bg-primary"></span></h5>
+                   <h5>Cause conformité :<span th:text="*{cause_conformite}" class="badge bg-primary"></span></h5>
+
+               </div>
+                <div class="mt-4">
+                    <h3 class="mt-2">Informations du client</h3>
+                    <h5>Raison sociale :<span th:text="*{client.raison_sociale}" class="badge bg-primary"></span></h5>
+                    <h5>Responsable :<span th:text=" *{client.responsable_client}" class="badge bg-primary"></span></h5>
+                    <h5>Contact :<span th:text=" *{client.contact}" class="badge bg-primary"></span></h5>
+                    <h5>E-mail :<span th:text=" *{client.email}" class="badge bg-primary"></span></h5>
+                </div>
+
             </div>
             <div class="col-6">
                 <img src="/images/glaciere_bleue.jpg" width="500" alt="glaciere">

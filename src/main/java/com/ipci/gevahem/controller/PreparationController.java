@@ -81,7 +81,11 @@ public class PreparationController {
         return "redirect:/preparation";
     }
 
-
+    @GetMapping("/show")
+    public String show(@RequestParam(name = "id") long id, Model model){
+        model.addAttribute("reception", preparationService.getPreparationByID(id));
+        return "/preparation/show";
+    }
 
 
 }

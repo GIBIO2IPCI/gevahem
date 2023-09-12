@@ -29,8 +29,8 @@ public class PreparationServiceImpl implements PreparationService {
     }
 
     @Override
-    public Object getPreparationByID(Long id) {
-        return preparationRepository.findById(id);
+    public Preparation getPreparationByID(Long id) {
+        return preparationRepository.findById(id).orElse(null);
     }
 
     @Override

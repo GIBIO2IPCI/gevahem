@@ -22,9 +22,9 @@
                 <th>No</th>
                 <th>Code Préparation</th>
                 <th>Date Préparation</th>
-                <th>Prélèvement</th>
                 <th>Nombre Préparation</th>
                 <th>Technique de préparation</th>
+                <th>Nombre restant</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -33,9 +33,9 @@
                 <td th:text="${index.index + 1}"></td>
                 <td th:text="${preparation.code}"></td>
                 <td th:text="${preparation.datePreparation}"></td>
-                <td th:text="${preparation.prelevement.libelle}"></td>
                 <td th:text="${preparation.nombre}"></td>
                 <td th:text="${preparation.technique_preparation}"></td>
+                <td th:text="${preparation.nombreRestant}"></td>
                 <td>
                     <a th:href="@{/preparation/edit-form(id=${preparation.id})}" class="btn btn-warning btn-sm">Modifier</a>
                     <a th:href="@{/preparation/delete(id=${preparation.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>

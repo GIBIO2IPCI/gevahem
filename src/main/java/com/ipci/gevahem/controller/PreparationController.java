@@ -23,7 +23,6 @@ public class PreparationController {
 
     private final PreparationService preparationService;
     private final PrelevementService prelevementService;
-    private final HttpSession httpSession;
 
     @GetMapping("")
     public String index(Model model) {
@@ -41,8 +40,6 @@ public class PreparationController {
 
         preparationService.addPreparation(preparation);
         redirectAttributes.addAttribute("prelevement", prelevement);
-
-
         return "redirect:/echantillons-derives/nb_select";
 
     }
@@ -74,8 +71,8 @@ public class PreparationController {
             model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
-        List<Prelevement> prelevements = prelevementService.getAllPrelevement();
-        model.addAttribute("prelevements", prelevements);
+        String conforme = "CONFORME";
+        model.addAttribute("prelevements", prelevementService.getByConformiteLibelle(conforme));
         return "preparation/new";
     }
 

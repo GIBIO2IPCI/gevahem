@@ -18,7 +18,6 @@ public class Preparation {
 
     private String code;
 
-    @NotNull
     private Integer nombre;
 
     private Integer nombreRestant;

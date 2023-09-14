@@ -23,6 +23,7 @@ public class PreparationController {
 
     private final PreparationService preparationService;
     private final PrelevementService prelevementService;
+    private final HttpSession httpSession;
 
     @GetMapping("")
     public String index(Model model) {
@@ -31,7 +32,7 @@ public class PreparationController {
     }
 
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes, @RequestParam int prelevement) {
+    public String add(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.preparation", result);
@@ -39,7 +40,10 @@ public class PreparationController {
         }
 
         preparationService.addPreparation(preparation);
-        redirectAttributes.addAttribute("prelevement", prelevement);
+
+        httpSession.setAttribute("preparation", preparation.getId());
+        httpSession.setAttribute("prelevement", preparation.getPrelevement().getId());
+
         return "redirect:/echantillons-derives/nb_select";
 
     }
@@ -81,8 +85,5 @@ public class PreparationController {
         preparationService.deletePreparation(id);
         return "redirect:/preparation";
     }
-
-
-
 
 }

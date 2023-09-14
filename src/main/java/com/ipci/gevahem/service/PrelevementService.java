@@ -15,7 +15,6 @@ public interface PrelevementService {
     Prelevement getPrelevementByLibelle(String libelle);
 
     Prelevement getPrelevementByConformite(String conformite);
-    Prelevement getPrelevementByCodeAndConformite(String code, Conformite conformite);
 
     Prelevement getPrelevementById(long id);
 

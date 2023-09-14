@@ -33,4 +33,8 @@ public class EchantillonDerive {
     @JoinColumn(name = "type_prelevement_id")
     private TypePrelevement typePrelevement;
 
+    @ManyToOne
+    @JoinColumn(name = "preparation_id")
+    private Preparation preparation;
+
 }

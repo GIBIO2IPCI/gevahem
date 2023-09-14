@@ -9,26 +9,27 @@
 <body>
 
 
-<section layout:fragment="content" th:object="${prelevement}" class="container">
+<section layout:fragment="content" th:object="${prelevement}" class="container border border-2">
 
-  <h1 class="text-center mt-2">Détails prélèvement</h1>
+  <h1 class="text-center mt-4">Détails prélèvement</h1>
   <div class="row">
-    <div class="col-6 mt-4">
-      <h6 th:text=" 'Code Prelevement: ' +  *{libelle}"></h6>
-      <h6 th:text=" 'Volume: ' +  *{volume} + *{unite}"></h6>
-      <h6 th:text=" 'Patient: ' +  *{patient.email}"></h6>
-      <h6 th:text=" 'Glacière: ' +  *{glaciere.code}"></h6>
-      <h6 th:text=" 'Conformité: ' +  *{conformite.libelle}"></h6>
-      <h6 th:text=" 'Cause conformité: ' +  *{cause_conformite}"></h6>
-      <h6 th:text=" 'Type Prélèvement: ' +  *{typePrelevement.libelle}"></h6>
+    <div class="col-6 mt-5">
+      <h5> Code Prélèvement :<span th:text=" *{libelle}" class="badge bg-primary"></span></h5>
+      <h5> Glacière :<span th:text=" *{glaciere.code}" class="badge bg-primary"></span></h5>
+      <h5> Patient prélevé :<span th:text=" *{patient.email}" class="badge bg-primary"></span></h5>
+      <h5> Type Prélèvement :<span th:text=" *{typePrelevement.libelle}" class="badge bg-primary"></span></h5>
+      <h5> Volume :<span th:text="'' +  *{volume} + *{unite}" class="badge bg-primary"></span></h5>
+      <h5> Conformité :<span th:text=" *{conformite.libelle}" class="badge bg-primary"></span></h5>
+      <h5> Cause conformité :<span th:text=" *{cause_conformite}" class="badge bg-primary"></span></h5>
+
 
     </div>
 
-    <div class="col-6 mt-5">
-      <img src="/images/reception.jpg" width="500" alt="reception">
+    <div class="col-6 mt-4">
+      <img src="/images/prelevement.JPG" width="500" alt="reception">
       <div class="d-flex mt-4 mt-6">
-        <a th:href="@{/prelevement/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter un nouveau prélèvement </a>
-        <a class="btn btn-outline-primary btn-sm" th:href="@{/prelevement/}">Retour à la liste</a>
+        <a th:href="@{/prelevement/add-form}" class="btn btn-secondary btn-sm me-3 mb-3"> Ajouter un nouveau prélèvement </a>
+        <a class="btn btn-outline-primary btn-sm mb-3" th:href="@{/prelevement}">Retour à la liste</a>
       </div>
     </div>
   </div>

@@ -9,68 +9,69 @@
 <body>
 
 
-<section layout:fragment="content" th:object="${reception}" class="container">
+<section layout:fragment="content" th:object="${reception}" class="container ">
 
-<h1 class="mt-2" th:text="'Reception ' + *{code} + ' du '+ *{date_reception}"></h1>
-  <div class="row">
-    <div class="col-6 mt-4">
-      <div class="mt-2">
-        <h3 class="mt-3">Informations du client</h3>
-        <h5>Raison sociale :<span th:text="*{glaciere.client.raison_sociale}" class="badge bg-primary"></span></h5>
-        <h5>Responsable :<span th:text=" *{glaciere.client.responsable_client}" class="badge bg-primary"></span></h5>
-        <h5>Contact :<span th:text=" *{glaciere.client.contact}" class="badge bg-primary"></span></h5>
-        <h5>E-mail :<span th:text=" *{glaciere.client.email}" class="badge bg-primary"></span></h5>
+  <h1 class="mt-2 text-center" th:text="'Réception ' + *{code} + ' du '+ *{date_reception}"></h1>
+      <div class="row border border-2 mt-4">
+        <div class="col-6">
+          <h3 class="mt-3">Informations du client</h3>
+          <h5>Raison sociale :<span th:text="*{glaciere.client.raison_sociale}" class="badge bg-primary"></span></h5>
+          <h5>Responsable :<span th:text=" *{glaciere.client.responsable_client}" class="badge bg-primary"></span></h5>
+          <h5>Contact :<span th:text=" *{glaciere.client.contact}" class="badge bg-primary"></span></h5>
+          <h5>E-mail :<span th:text=" *{glaciere.client.email}" class="badge bg-primary"></span></h5>
+        </div>
+
+        <div class="col-6">
+          <h3 class="mt-3">Informations de l'ambulancier</h3>
+          <h5>Nom :<span th:text=" *{glaciere.ambulancier.nom}" class="badge bg-primary"></span></h5>
+          <h5>Contact  :<span th:text=" *{glaciere.ambulancier.contact}" class="badge bg-primary"></span></h5>
+        </div>
+
+
+        <div class="col-6">
+          <h3 class="mt-3">Informations de la glacière</h3>
+          <h5>Libellé :<span th:text=" *{glaciere.libelle}" class="badge bg-primary"></span></h5>
+          <h5>Prélèvement :<span th:text="*{glaciere.nombre_prelevement}" class="badge bg-primary"></span></h5>
+          <h5>Température d'arrivée :<span th:text="*{glaciere.temperature_arrivee}" class="badge bg-primary"></span></h5>
+          <h5>Température de départ :<span th:text="*{glaciere.temperature_depart}" class="badge bg-primary"></span></h5>
+          <h5>Conformité :<span th:text="*{glaciere.conformite.libelle}" class="badge bg-primary"></span></h5>
+          <h5>Cause conformité :<span th:text="*{glaciere.cause_conformite}" class="badge bg-primary"></span></h5>
+        </div>
+
+        <div class="col-6">
+          <img src="/images/reception.jpg" width="300" alt="reception">
+          <div class="d-flex mt-4 mt-6">
+            <a th:href="@{/reception/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle reception </a>
+            <a class="btn btn-outline-primary btn-sm" th:href="@{/reception}">Retour à la liste</a>
+          </div>
+        </div>
       </div>
-      <div class="mt-4">
-        <h3 class="mt-3">Informations de l'ambulancier</h3>
-        <h5>Nom :<span th:text=" *{glaciere.ambulancier.nom}" class="badge bg-primary"></span></h5>
-        <h5>Contact  :<span th:text=" *{glaciere.ambulancier.contact}" class="badge bg-primary"></span></h5>
+
+      <div class="row border border-2 mt-4">
+          <h3 class="mt-4 text-center">Informations des échantillons</h3>
+          <table class="table table-striped col-6 table-responsive-md table-bordered text-center">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Code échantillon</th>
+                <th>Patient</th>
+                <th>Volume</th>
+                <th>Type échantillon</th>
+                <th>Analyse</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="echantillon, index : *{glaciere.prelevements}">
+                <td th:text="${index.index +1}"></td>
+                <td th:text="${echantillon.libelle}"></td>
+                <td th:text="${echantillon.patient.email}"></td>
+                <td th:text="${echantillon.volume}"></td>
+                <td th:text="${echantillon.typePrelevement.libelle}"></td>
+                <td th:text="${echantillon.analyse.libelle}"></td>
+              </tr>
+              </tbody>
+          </table>
       </div>
-      <div class="mt-4">
-        <h3 class="mt-3">Informations de la glacière</h3>
-        <h5>Libellé :<span th:text=" *{glaciere.libelle}" class="badge bg-primary"></span></h5>
-        <h5>Prélèvement :<span th:text="*{glaciere.nombre_prelevement}" class="badge bg-primary"></span></h5>
-        <h5>Température d'arrivée :<span th:text="*{glaciere.temperature_arrivee}" class="badge bg-primary"></span></h5>
-        <h5>Température de départ :<span th:text="*{glaciere.temperature_depart}" class="badge bg-primary"></span></h5>
-        <h5>Conformité :<span th:text="*{glaciere.conformite.libelle}" class="badge bg-primary"></span></h5>
-        <h5>Cause conformité :<span th:text="*{glaciere.cause_conformite}" class="badge bg-primary"></span></h5>
-      </div>
-
-
-    </div>
-
-    <div class="col-6 mt-5">
-
-      <img src="/images/reception.jpg" width="400" alt="reception">
-      <div class="d-flex mt-4 mt-6">
-        <a th:href="@{/reception/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle reception </a>
-        <a class="btn btn-outline-primary btn-sm" th:href="@{/reception}">Retour à la liste</a>
-      </div>
-    </div>
-    <h3 class="mt-4">Informations des échantillons</h3>
-    <table class="table table-striped col-6 table-responsive-md table-bordered text-center">
-      <thead>
-      <tr>
-        <th>No</th>
-        <th>Code échantillon</th>
-        <th>Patient</th>
-        <th>Volume</th>
-        <th>Type échantillon</th>
-        <th>Analyse</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="echantillon, index : *{glaciere.prelevements}">
-        <td th:text="${index.index +1}"></td>
-        <td th:text="${echantillon.libelle}"></td>
-        <td th:text="${echantillon.patient.email}"></td>
-        <td th:text="${echantillon.volume}"></td>
-        <td th:text="${echantillon.typePrelevement.libelle}"></td>
-        <td th:text="${echantillon.analyse.libelle}"></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
 
 </section>
 

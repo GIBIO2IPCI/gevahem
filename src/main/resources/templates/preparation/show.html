@@ -8,6 +8,30 @@
 </head>
 <body>
 
-<section th:object="${p}"></section>
+<section layout:fragment="content" th:object="${preparation}" class="container mt-5 d-flex border border-2">
+    <div class="row">
+
+        <h2 class=" mb-5 mt-4 d-flex justify-content-center" th:text=" 'Détails sur la préparation : ' +  *{code}"></h2>
+        <div class="col-6">
+            <h5>Date de préparation : <span th:text="*{datePreparation}" class="badge bg-primary"></span></h5>
+            <h5>Echantillon préparé : <span th:text="*{prelevement.libelle}" class="badge bg-primary"></span></h5>
+            <h5>Type de l'échantillon : <span th:text="*{prelevement.typePrelevement.libelle}" class="badge bg-primary"></span></h5>
+            <h5>Technique de préparation : <span th:text="*{technique_preparation}" class="badge bg-primary"></span></h5>
+            <h5>Nombre de préparations : <span th:text="*{nombre}" class="badge bg-primary"></span></h5>
+            <h5>Nombre restant préparation : <span th:text="*{nombreRestant}" class="badge bg-danger"></span></h5>
+        </div>
+        <div class="col-6">
+            <img src="/images/preparation.JPG" width="500" alt="preparation">
+            <div class="d-flex mt-4 mb-5">
+                <a th:href="@{/preparation/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter une nouvelle préparation</a>
+                <a class="btn btn-outline-primary btn-sm" th:href="@{/preparation}">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
 
 </body>

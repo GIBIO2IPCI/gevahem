@@ -45,14 +45,16 @@ public class PreparationController {
     }
 
     @PostMapping("/update")
-    public String update(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String update(@Valid @ModelAttribute Preparation preparation, BindingResult result, RedirectAttributes redirectAttributes, @RequestParam int prelevement) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("preparation", preparation);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.preparation", result);
             return "redirect:/preparation/edit-form?id=" + preparation.getId();
         }
 
-        return "redirect:/preparation";
+        preparationService.addPreparation(preparation);
+        redirectAttributes.addAttribute("prelevement", prelevement);
+        return "redirect:/echantillons-derives/nb_select";
 
     }
 
@@ -84,7 +86,7 @@ public class PreparationController {
 
     @GetMapping("/show")
     public String show(@RequestParam(name = "id") long id, Model model){
-        model.addAttribute("reception", preparationService.getPreparationByID(id));
+        model.addAttribute("preparation", preparationService.getPreparationByID(id));
         return "/preparation/show";
     }
 

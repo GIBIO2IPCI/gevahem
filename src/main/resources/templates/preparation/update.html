@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Préparation update</title>
 </head>
 <body>
+<section layout:fragment="content" class="container">
+    <h2 class="mb-4 text-center">Modifier une préparation</h2>
+
+    <div class="d-flex justify-content-center " >
+
+        <div class="">
+            <form th:action="@{/preparation/update}" th:object="${preparation}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="row">
+<!--                    <div class="mb-4 col-6">-->
+<!--                        <label class="form-label" for="prelevement">Prélèvement:</label>-->
+<!--                        <select th:field="*{prelevement.id}" class="form-select" name="prelevement" id="prelevement" required>-->
+<!--                            <option value=" " selected></option>-->
+<!--                            <option th:each="prelevement : ${prelevement}" th:value="${prelevement.id}" th:text="${prelevement.libelle}"></option>-->
+<!--                        </select>-->
+<!--                        <span th:if="${#fields.hasErrors('prelevement')}" th:errors="*{prelevement}" class="text-danger"></span>-->
+<!--                    </div>-->
+
+                    <div class="mb-4 col-6">
+                        <label class="form-label" for="nombre">Nombre de préparation:</label>
+                        <input type="number" id="nombre" th:field="*{nombre}" class="form-control">
+                        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4 col-12">
+                        <label class="form-label" for="technique">Technique:</label>
+                        <select class="form-select" name="technique" id="technique" th:field="*{technique_preparation}">
+                            <option value="AUCUNE">AUCUNE</option>
+                            <option value="CENTRIFUGATION">CENTRIFUGATION</option>
+                            <option value="CULTURE">CULTURE</option>
+                            <option value="DILUTION">DILUTION</option>
+                            <option value="EXTRACTION">EXTRACTION</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-primary">Suivant</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
 
 </body>
 </html>

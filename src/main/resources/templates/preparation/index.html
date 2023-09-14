@@ -14,6 +14,7 @@
 
         <div class="d-flex mt-4">
             <a th:href="@{/preparation/add-form}" class="btn btn-primary btn-sm mb-3 me-3"> Faire une nouvelle préparation</a>
+            <a th:href="@{/echantillonDerive}" class="btn btn-info btn-sm mb-3 me-3"> Liste des échantillons dérivés</a>
         </div>
 
         <table class="table table-striped table-responsive-md table-bordered text-center">
@@ -31,14 +32,14 @@
             <tbody>
             <tr th:each="preparation, index: ${preparations}">
                 <td th:text="${index.index + 1}"></td>
-                <td th:text="${preparation.code}"></td>
+                <td th:text="${preparation.code}" ></td>
                 <td th:text="${preparation.datePreparation}"></td>
                 <td th:text="${preparation.nombre}"></td>
                 <td th:text="${preparation.technique_preparation}"></td>
                 <td th:text="${preparation.nombreRestant}"></td>
-                <td>
-                    <a th:href="@{/preparation/edit-form(id=${preparation.id})}" class="btn btn-warning btn-sm">Modifier</a>
-                    <a th:href="@{/preparation/delete(id=${preparation.id})}" class="btn btn-outline-danger btn-sm">Supprimer</a>
+                <td class="d-flex text-align">
+                    <a th:href="@{/preparation/delete(id=${preparation.id})}" class="btn btn-outline-danger btn-sm ms-1">Supprimer</a>
+                    <a th:href="@{/preparation/show(id=${preparation.id})}" class="btn btn-outline-info btn-sm ms-1">Details</a>
                 </td>
             </tr>
             </tbody>

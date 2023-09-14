@@ -124,7 +124,7 @@ public class EchantillonDeriveController {
     }
 
     @GetMapping("/delete")
-    public String delete(Long id){
+    public String delete(long id){
 
         echantillonDeriveService.deleteEchantillonDeriveById(id);
         return "redirect:/echantillons-derives";

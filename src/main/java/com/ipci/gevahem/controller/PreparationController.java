@@ -80,6 +80,12 @@ public class PreparationController {
         return "preparation/new";
     }
 
+    @GetMapping("/show")
+    public String show(@RequestParam(name = "id") long id, Model model){
+        model.addAttribute("preparation", preparationService.getPreparationByID(id));
+        return "/preparation/show";
+    }
+
     @GetMapping("/delete")
     public String delete(Long id) {
         preparationService.deletePreparation(id);

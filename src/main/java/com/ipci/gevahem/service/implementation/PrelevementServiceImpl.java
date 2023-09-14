@@ -41,13 +41,6 @@ public class PrelevementServiceImpl implements PrelevementService {
         return null;
     }
 
-
-    @Override
-    public Prelevement getPrelevementByCodeAndConformite(String code, Conformite conformite) {
-        return null;
-    }
-
-
     @Override
     public Prelevement getPrelevementById(long id) {
         return prelevementRepository.findById(id).orElse(null);

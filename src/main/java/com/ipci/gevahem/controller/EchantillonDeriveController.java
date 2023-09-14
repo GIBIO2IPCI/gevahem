@@ -25,6 +25,7 @@ public class EchantillonDeriveController {
     private EchantillonDeriveService echantillonDeriveService;
     private TypePrelevementService typePrelevementService;
     private PrelevementService prelevementService;
+    private PreparationService preparationService;
 
     @GetMapping("")
     public String index(Model model) {
@@ -42,8 +43,6 @@ public class EchantillonDeriveController {
             return "redirect:/echantillons-derives/add-form?nombre=" + httpSession.getAttribute("nombre");
         }
 
-        Prelevement prelevement = prelevementService.getPrelevementById(Long.parseLong((String) httpSession.getAttribute("id")));
-        echantillonDerive.setPrelevement(prelevement);
 
         echantillonDeriveService.addEchantillonDerive(echantillonDerive);
 
@@ -74,22 +73,32 @@ public class EchantillonDeriveController {
             model.addAttribute("echantillonDerive", new EchantillonDerive());
         }
 
+        long id_prelevement = (long) httpSession.getAttribute("prelevement");
+        long id_preparation = (long) httpSession.getAttribute("preparation");
+
+
+        Prelevement prelevement = prelevementService.getPrelevementById(id_prelevement);
+        Preparation preparation = (Preparation) preparationService.getPreparationByID(id_preparation);
         List<TypePrelevement> typePrelevement = typePrelevementService.getAllTypePrelevement();
+        List<Prelevement> prelevements = prelevementService.getAllPrelevement();
         httpSession.setAttribute("nombre", nombre);
 
-        model.addAttribute("typePrelevements", typePrelevement);
         model.addAttribute("nb", nombre);
+        model.addAttribute("typePrelevements", typePrelevement);
+        model.addAttribute("prelevements", prelevements);
+        model.addAttribute("preparation_id", preparation);
+        model.addAttribute("prelevement_id", prelevement);
 
         return "echantillonDerive/new";
     }
 
     @GetMapping("/nb_select")
-    public String select_nb(Model model, @RequestParam int prelevement, HttpSession httpSession){
+    public String select_nb(Model model){
 
-        String id_pre = String.valueOf(prelevement);
-        Prelevement prelevement1 = prelevementService.getPrelevementById(Long.parseLong(id_pre));
-        httpSession.setAttribute("id", id_pre);
-        model.addAttribute("prelevement", prelevement1);
+        long id_prelevement = (long) httpSession.getAttribute("prelevement");
+        Prelevement prelevement = prelevementService.getPrelevementById(id_prelevement);
+
+        model.addAttribute("prelevement", prelevement);
 
         return "echantillonDerive/nb_echantillon";
     }

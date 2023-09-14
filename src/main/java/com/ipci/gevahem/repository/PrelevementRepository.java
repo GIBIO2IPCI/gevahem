@@ -9,5 +9,4 @@ import java.util.List;
 public interface PrelevementRepository extends JpaRepository<Prelevement, Long> {
     Prelevement findByLibelle(String libelle);
     List<Prelevement> findByConformiteLibelle(String libelle);
-    Prelevement findByCodeAndConformite(String code, Conformite conformite);
 }

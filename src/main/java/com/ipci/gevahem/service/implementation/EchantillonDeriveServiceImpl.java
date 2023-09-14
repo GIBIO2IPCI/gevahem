@@ -30,7 +30,7 @@ public class EchantillonDeriveServiceImpl implements EchantillonDeriveService {
     @Override
     public void addEchantillonDerive(EchantillonDerive echantillonDerive) {
 
-        echantillonDerive.setLibelle(echantillonDerive.getPrelevement().getLibelle() + echantillonDerive.getTypePrelevement().getLibelle());
+        echantillonDerive.setLibelle(echantillonDerive.getTypePrelevement().getLibelle());
         echantillonDeriveRepository.save(echantillonDerive);
     }
 

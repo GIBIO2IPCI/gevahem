@@ -3,6 +3,9 @@ package com.ipci.gevahem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,6 +16,8 @@ public class ContenuBoite {
     private Long id;
     private String couleur;
     private Integer capacite;
+    @OneToMany
+    private List<EchantillonDerive> echantillonDerives;
     @ManyToOne
     private TypeContenuBoite typeContenuBoite;
 

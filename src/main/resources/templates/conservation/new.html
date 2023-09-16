@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>conservation new</title>
+</head>
+<body>
+    <section layout:fragment="content" class="container">
+        <div class="d-flex justify-content-center">
+            <form th:action="@{/conservation/add}" th:object="${conservation}" method="POST">
+                <h2 class="mb-4 text-center">Conserver un échantillon</h2>
+                <div class="">
+                    <div class="mb-4">
+                        <label class="form-label" for="contenuBoite">Visiotube :</label>
+                        <select th:field="*{contenuBoite}" name="contenuBoite" id="contenuBoite" class="form-select">
+                            <option value="" selected></option>
+                            <option th:each="contenuBoite : ${contenuBoites}" th:value="${contenuBoite.id}" th:text="${contenuBoite.couleur}" ></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('contenuBoite')}" th:errors="*{contenuBoite}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="boite">Boite :</label>
+                        <select th:field="*{boite}" name="boite" id="boite" class="form-select">
+                            <option value="" selected></option>
+                            <option th:each="boite : ${boites}" th:value="${boite.id}" th:text="${boite.libelle}" ></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('boite')}" th:errors="*{boite}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="canrack">Equipement (canrack) :</label>
+                        <select th:field="*{canrack}" name="canrack" id="canrack" class="form-select">
+                            <option value="" selected></option>
+                            <option th:each="canrack : ${canracks}" th:value="${canrack.id}" th:text="${canrack.libelle}" ></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('canrack')}" th:errors="*{canrack}" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="cryoconservateur">Cryoconservateur :</label>
+                        <select th:field="*{cryoconservateur}" name="cryoconservateur" id="cryoconservateur" class="form-select">
+                            <option value="" selected></option>
+                            <option th:each="cryoconservateur : ${cryoconservateurs}" th:value="${cryoconservateur.id}" th:text="${cryoconservateur.nom}" ></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('cryoconservateur')}" th:errors="*{cryoconservateur}" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-success mb-4 me-5">Conserver</button>
+                    <a class="btn btn-outline-danger mb-4" th:href="@{/conservation}">Retour à la liste</a>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+</body>
+</html>

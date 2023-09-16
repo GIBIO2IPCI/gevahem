@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>conservation list</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container my-2">
+        <h1>Liste des conservations</h1>
+
+        <div class="d-flex mt-4">
+            <a th:href="@{/conservation/add-form}" class="btn btn-secondary btn-sm mb-3 me-3"> Faire une nouvelle conservation </a>
+            <a th:href="@{/echantillons-derives}" class="btn btn-outline-primary btn-sm mb-3 me-3"> Retour à la liste des échantillons dérivés</a>
+        </div>
+
+        <table class="table table-striped table-responsive-md table-bordered text-center mt-2">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Code</th>
+                <th>Date</th>
+                <th>Echantillon dérivé</th>
+                <th>Cryoconservateur</th>
+                <th>Equipement</th>
+                <th>Boite</th>
+                <th>Visiotube</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="conservation, index: ${conservations}">
+                <td th:text="${index.index + 1}"></td>
+                <td th:text="${conservation.code}"></td>
+                <td th:text="${conservation.date_conservation}"></td>
+                <td th:text="${conservation.echantillonDerive.libelle}"></td>
+                <td th:text="${conservation.cryoconservateur.nom}"></td>
+                <td th:text="${conservation.canrack.libelle}"></td>
+                <td th:text="${conservation.boite.libelle}"></td>
+                <td th:text="${conservation.contenuBoite.couleur}"></td>
+                <td class="d-flex">
+                    <a th:href="@{/conservation/update(id=${conservation.id})}" class="btn btn-outline-danger btn-sm me-2">Modifier</a>
+                    <a th:href="@{/conservation/delete(id=${conservation.id})}" class="btn btn-outline-danger btn-sm me-2">Supprimer</a>
+                    <a th:href="@{/conservation/show(id=${conservation.id})}" class="btn btn-success btn-sm">Détails</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

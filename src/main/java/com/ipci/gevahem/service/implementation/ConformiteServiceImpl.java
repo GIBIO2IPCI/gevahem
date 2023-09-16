@@ -15,21 +15,25 @@ public class ConformiteServiceImpl implements ConformiteService {
 
     @Override
     public Conformite getConformiteByLibelle(String libelle) {
+
         return conformiteRepository.findByLibelle(libelle) ;
     }
 
     @Override
     public List<Conformite> getAllConformite() {
+
         return conformiteRepository.findAll();
     }
 
     @Override
     public void saveGlaciere(Conformite conformite) {
+
         conformiteRepository.save(conformite);
     }
 
     @Override
     public Conformite getConformiteById(long id) {
+
         return conformiteRepository.findById(id).orElse(null);
     }
 

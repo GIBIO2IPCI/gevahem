@@ -16,7 +16,6 @@ public class Canrack {
     private Long id;
     private Integer capacite;
     private String libelle;
-    private String couleur;
     @ManyToOne
     private TypeCanrack typeCanrack;
     @OneToMany

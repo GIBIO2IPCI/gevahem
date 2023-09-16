@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="./base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cryoconservateur new</title>
 </head>
 <body>
+<section layout:fragment="content" class="container">
+    <div class="d-flex justify-content-center">
 
+        <form th:action="@{/cryoconservateur/add}" th:object="${cryoconservateur}" method="POST">
+            <h2 class="mb-4 text-center">Enregistrer un cryoconservateur</h2>
+            <div class="">
+
+                <div class="mb-4">
+                    <label class="form-label" for="nom">Nom du cryoconservateur:</label>
+                    <input type="text" id="nom" name="nom" th:field="*{nom}" class="form-control">
+                    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="temperature">Température:</label>
+                    <input type="number" id="temperature" th:field="*{temperature}" class="form-control">
+                    <span th:if="${#fields.hasErrors('temperature')}" th:errors="*{temperature}" class="text-danger"></span>
+                </div>
+
+                </div>
+            <div class="row">
+                <div class="mb-4 col-8">
+                    <label class="form-label" for="volume">Volume:</label>
+                    <input type="text" id="volume" th:field="*{volume}" class="form-control">
+                    <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4 col-4">
+                    <label class="form-label" for="unite">Unité:</label>
+                    <select th:field="*{unite}" class="form-select" name="unite" id="unite">
+                        <option th:value="ml" th:text="ml"></option>
+                        <option th:value="g" th:text="g"></option>
+                        <option th:value="l" th:text="l"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('unite')}" th:errors="*{unite}" class="text-danger"></span>
+            </div>
+
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success mb-4 me-4">Enregistrer</button>
+                <a class="btn btn-outline-primary mb-4" th:href="@{/cryoconservateur}">Retour à la liste</a>
+            </div>
+
+        </form>
+    </div>
+</section>
 </body>
 </html>

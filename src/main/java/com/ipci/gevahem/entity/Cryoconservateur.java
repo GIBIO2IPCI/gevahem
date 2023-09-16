@@ -16,6 +16,7 @@ public class Cryoconservateur {
     private Long id;
     private String nom;
     private Float volume;
+    private String unite;
     private Integer temperature;
     @OneToMany
     private List<Canrack> canrack = new ArrayList<>();

@@ -39,8 +39,7 @@ public class ConservationController {
             return "redirect:/conservation/add-form";
         }
 
-        Date temps = new Date();
-        conservation.setCode("CONS" + temps.getTime());
+
         conservationService.saveConservation(conservation);
 
         return "redirect:/conservation";

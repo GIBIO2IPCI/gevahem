@@ -37,6 +37,7 @@
                 <div class="mb-4 col-4">
                     <label class="form-label" for="unite">Unité:</label>
                     <select th:field="*{unite}" class="form-select" name="unite" id="unite">
+                        <option value="" selected></option>
                         <option th:value="ml" th:text="ml"></option>
                         <option th:value="g" th:text="g"></option>
                         <option th:value="l" th:text="l"></option>

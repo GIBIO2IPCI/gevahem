@@ -12,7 +12,7 @@
 <section layout:fragment="content" th:object="${client}" class="container">
 
     <div class="border-top">
-        <h1 class="mt-2 d-flex justify-content-center" >Informations du client</h1>
+        <h1 class="mb-2 d-flex justify-content-center" >Informations du client</h1>
         <div class="row">
             <div class="col-6 mt-5">
                 <h5>Type Client :<span th:text="*{typeClient.libelle}" class="badge bg-primary"></span></h5>
@@ -25,7 +25,7 @@
             <div class="col-6">
                 <img src="/images/structure.jpg" width="300" alt="client">
                 <div class="d-flex mt-4 mb-5">
-                    <a th:href="@{/client/add-form}" class="btn btn-secondary btn-sm me-3"> Ajouter un nouveau client </a>
+                    <a th:href="@{/client/add-form}" class="btn btn-primary btn-sm me-3"> Ajouter un nouveau client </a>
                     <a class="btn btn-outline-primary btn-sm" th:href="@{/client}">Retour à la liste</a>
                 </div>
             </div>

@@ -8,9 +8,9 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
 
-        <form th:action="@{/reception/add}" th:object="${reception}" method="POST">
+        <form th:action="@{/reception/add}" th:object="${reception}" method="POST" class="mb-4">
             <h2 class="mb-4">Enregistrer une reception</h2>
                 <div class="mb-4">
                     <label class="form-label" for="glaciere">Glaciere</label>

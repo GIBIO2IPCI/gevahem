@@ -22,10 +22,13 @@ public class SecurityConfig {
         httpSecurity.formLogin().loginPage("/login").permitAll();
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/").hasRole("CHEF D'UNITE")
+                .requestMatchers("/prelevement").hasRole("CHEF D'UNITE")
+                .requestMatchers("/prelevement").hasRole("TECHNICIEN")
                 .requestMatchers("/webjars/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
                 .requestMatchers("/css/**").permitAll()
                 .requestMatchers("/js/**").permitAll()
+                .requestMatchers("/user/**").permitAll()
                 .requestMatchers("/preparation/**").hasRole("CHEF D'UNITE")
                 .requestMatchers("/preparation/**").hasRole("TECHNICIEN")
                 .anyRequest().authenticated();

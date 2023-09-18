@@ -8,9 +8,9 @@
 </head>
 <body>
 <section layout:fragment="content" class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
 
-        <form th:action="@{/client/update}" th:object="${client}" method="POST">
+        <form th:action="@{/client/update}" th:object="${client}" method="POST" class="mb-5">
             <h2 class="mb-4">Enregistrer un client</h2>
 
             <input type="hidden" id="id" th:field="*{id}" class="form-control">

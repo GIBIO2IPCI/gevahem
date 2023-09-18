@@ -13,11 +13,12 @@
 
                 <form th:each="i : ${#numbers.sequence(1, nb)}" th:object="${echantillonDerive}" th:id="'form' + ${i}" method="post" class="mt-4" th:action="@{/echantillons-derives/add}">
 
-                    <div class="mb-4 row d-flex justify-content-center" >
+                    <div  class="mb-4 row d-flex justify-content-center" >
 
                         <label class="form-label col-5">
                             Type d'échantillons dérivés :
                             <select th:field="*{typePrelevement}" th:id="${'type' + i}" th:name="${'type' + i}" class="form-select">
+                                <option value="" selected></option>
                                 <option th:each="typePrelevement : ${typePrelevements}" th:value="${typePrelevement.id}" th:text="${typePrelevement.libelle}"></option>
                             </select>
                             <span th:if="${#fields.hasErrors('typePrelevement')}" th:errors="*{typePrelevement}" class="text-danger"></span>
@@ -25,7 +26,7 @@
 
                         <label class="form-label col-4">
                             Volume :
-                            <input th:field="*{volume}" th:id="${'volume' + i}" th:name="${'volume' + i}" class="form-control" type="number">
+                            <input th:field="*{volume}" th:id="${'volume' + i}" th:name="${'volume' + i}" class="form-control" type="text">
                             <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="text-danger"></span>
                         </label>
 

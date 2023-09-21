@@ -46,20 +46,23 @@ public class ConservationController {
     }
 
     @GetMapping("/add-form")
-    public String add_form(Model model){
+    public String add_form(Model model, @RequestParam int id){
         if (!model.containsAttribute("conservation")){
             model.addAttribute("conservation", new Conservation());
         }
+
         List<ContenuBoite> contenuBoite = contenuBoiteService.getAllContenuBoite();
         List<Boite> boite = boiteService.getAllBoite();
         List<Canrack> canrack = canrackService.getAllCanrack();
         List<Cryoconservateur> cryoconservateur = cryoconservateurService.getAllCryoconservateur();
-        List<EchantillonDerive> echantillonDerive = echantillonDeriveService.getAllEchantillonDerive();
+//        List<EchantillonDerive> echantillonDerive = echantillonDeriveService.getAllEchantillonDerive();
         model.addAttribute("contenuBoites", contenuBoite);
         model.addAttribute("boites", boite);
         model.addAttribute("canracks", canrack);
         model.addAttribute("cryoconservateurs", cryoconservateur);
-        model.addAttribute("echantillonDerives", echantillonDerive);
+        model.addAttribute("id", id);
+        model.addAttribute("echantillon", echantillonDeriveService.getEchantillonDeriveById(id));
+//        model.addAttribute("echantillonDerives", echantillonDerive);
 
         return "conservation/new";
     }

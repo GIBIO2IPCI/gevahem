@@ -6,6 +6,9 @@ import com.ipci.gevahem.service.ReceptionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +39,24 @@ public class ReceptionServiceImpl implements ReceptionService {
     @Override
     public Reception getReceptionById(long id) {
         return receptionRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Reception> getByDate(String format) {
+
+        List<Reception> receptions = receptionRepository.findAll();
+        List<Reception> recep = new ArrayList<>();
+
+             for (Reception reception : receptions) {
+
+                 SimpleDateFormat formater = new SimpleDateFormat(format);
+
+                 if (formater.format(reception.getDate_reception()).equals(formater.format(new Date()))) {
+                     recep.add(reception);
+                 }
+             }
+
+             return recep;
     }
 
 }

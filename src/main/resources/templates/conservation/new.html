@@ -11,7 +11,16 @@
         <div class="d-flex justify-content-center">
             <form th:action="@{/conservation/add}" th:object="${conservation}" method="POST">
                 <h2 class="mb-4 text-center">Conserver un échantillon</h2>
+                <h2 class="mb-4 text-center" th:text="${id}"></h2>
                 <div class="">
+                    <div class="mb-4">
+                        <label class="form-label" for="echantillonDerive">Echantillon dérivé :</label>
+                        <select th:field="*{echantillonDerive}" name="echantillonDerive" id="echantillonDerive" class="form-select">
+                            <option th:each="derive : ${echantillon}" th:value="${derive.id}" th:text="${derive.libelle}" ></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('contenuBoite')}" th:errors="*{contenuBoite}" class="text-danger"></span>
+                    </div>
+
                     <div class="mb-4">
                         <label class="form-label" for="contenuBoite">Visiotube :</label>
                         <select th:field="*{contenuBoite}" name="contenuBoite" id="contenuBoite" class="form-select">

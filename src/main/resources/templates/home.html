@@ -24,7 +24,7 @@
                                         <div align="right">Aujourd'hui:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x0</div>
+                                        <div align="left" th:text="${total_reception_jour}"></div>
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                         <div align="right">Ce mois:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x0x1</div>
+                                        <div align="left" th:text="${total_reception_mois}"></div>
                                     </div>
                                 </div>
 
@@ -42,7 +42,7 @@
                                         <div align="right">Total:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x0x1</div>
+                                        <div align="left" th:text="${total_reception}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                         <div align="right">Aujourd'hui:</div>
                                     </div>
                                     <div class="col-md-6">
-                                            <div align="left">0x0x</div>
+                                        <div align="left" th:text="${total_preparation_jour}"></div>
                                     </div>
                                 </div>
 
@@ -71,7 +71,7 @@
                                         <div align="right">Ce mois:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x22</div>
+                                        <div align="left" th:text="${total_preparation_mois}"></div>
                                     </div>
                                 </div>
 
@@ -80,7 +80,7 @@
                                         <div align="right">Total:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x22</div>
+                                        <div align="left" th:text="${total_preparation}"></div>
                                     </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                         <div align="right">Aujourd'hui:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x44</div>
+                                        <div align="left" th:text="${total_conservation_jour}"></div>
                                     </div>
                                 </div>
 
@@ -110,7 +110,7 @@
                                         <div align="right">Ce mois:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x09</div>
+                                        <div align="left" th:text="${total_conservation_mois}"></div>
                                     </div>
                                 </div>
 
@@ -119,7 +119,7 @@
                                         <div align="right">Total:</div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div align="left">0x0x09</div>
+                                        <div align="left" th:text="${total_conservation}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -134,32 +134,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <legend class="text-center text-uppercase text-primary">mise à disposition</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div align="right">Aujourd'hui:</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div align="left">0x0x0x000</div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div align="right">Ce mois:</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div align="left">0x0x77</div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div align="right">Total:</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div align="left">0x0x77</div>
-                                    </div>
-                                </div>
+                                <p class="text-center">Aucune mise à disposition</p>
                             </div>
                         </div>
                     </div>

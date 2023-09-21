@@ -21,7 +21,6 @@ public class Conservation {
     private Date date_conservation;
 
     @ManyToOne
-    @NotNull
     private ContenuBoite contenuBoite;
 
     @ManyToOne

@@ -2,6 +2,7 @@ package com.ipci.gevahem.controller;
 
 import com.ipci.gevahem.entity.Glaciere;
 import com.ipci.gevahem.entity.Reception;
+import com.ipci.gevahem.repository.ReceptionRepository;
 import com.ipci.gevahem.service.GlaciereService;
 import com.ipci.gevahem.service.ReceptionService;
 import jakarta.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class ReceptionController {
 
     private final ReceptionService receptionService;
     private final GlaciereService glaciereService;
+    private final ReceptionRepository receptionRepository;
 
     @GetMapping("")
     public String index(Model model){
@@ -89,4 +92,5 @@ public class ReceptionController {
         receptionService.deleteReceptionById(id);
         return "redirect:/reception";
     }
+
 }

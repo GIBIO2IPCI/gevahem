@@ -23,11 +23,9 @@
                 <th>No</th>
                 <th>Code</th>
                 <th>Date</th>
-<!--                <th>Echantillon dérivé</th>-->
+                <th>Echantillon dérivé</th>
                 <th>Cryoconservateur</th>
                 <th>Equipement</th>
-                <th>Boite</th>
-                <th>Visiotube</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -36,11 +34,9 @@
                 <td th:text="${index.index + 1}"></td>
                 <td th:text="${conservation.code}"></td>
                 <td th:text="${conservation.date_conservation}"></td>
-<!--                <td th:text="${conservation.echantillonDerive.libelle}"></td>-->
+                <td th:text="${conservation.echantillonDerive.libelle}"></td>
                 <td th:text="${conservation.cryoconservateur.nom}"></td>
                 <td th:text="${conservation.canrack.libelle}"></td>
-                <td th:text="${conservation.boite.libelle}"></td>
-                <td th:text="${conservation.contenuBoite.couleur}"></td>
                 <td class="d-flex">
                     <a th:href="@{/conservation/update(id=${conservation.id})}" class="btn btn-outline-primary btn-sm me-2">Modifier</a>
                     <a th:href="@{/conservation/delete(id=${conservation.id})}" class="btn btn-outline-danger btn-sm me-2">Supprimer</a>

@@ -1,18 +1,12 @@
 package com.ipci.gevahem.service.implementation;
 
 import com.ipci.gevahem.entity.EchantillonDerive;
-import com.ipci.gevahem.entity.Prelevement;
-import com.ipci.gevahem.entity.Preparation;
 import com.ipci.gevahem.repository.EchantillonDeriveRepository;
-import com.ipci.gevahem.repository.PreparationRepository;
-import com.ipci.gevahem.repository.TypePrelevementRepository;
 import com.ipci.gevahem.service.EchantillonDeriveService;
-import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -30,14 +24,14 @@ public class EchantillonDeriveServiceImpl implements EchantillonDeriveService {
     @Override
     public void addEchantillonDerive(EchantillonDerive echantillonDerive) {
 
-        echantillonDerive.setLibelle(echantillonDerive.getTypePrelevement().getLibelle());
+        echantillonDerive.setLibelle(echantillonDerive.getTypePrelevement().getLibelle() + echantillonDerive.getPrelevement().getLibelle());
         echantillonDeriveRepository.save(echantillonDerive);
     }
 
     @Override
-    public Optional<EchantillonDerive> getEchantillonDeriveById(long id) {
+    public EchantillonDerive getEchantillonDeriveById(long id) {
 
-        return echantillonDeriveRepository.findById(id);
+        return echantillonDeriveRepository.findById(id).orElse(null);
     }
 
     @Override
